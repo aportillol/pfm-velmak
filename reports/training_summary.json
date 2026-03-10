@@ -1,0 +1,55 @@
+{
+  "training_timestamp": "2026-03-10T20:28:47.681131",
+  "best_model": {
+    "name": "logistic_regression",
+    "metrics": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0
+    }
+  },
+  "all_results": {
+    "accuracy": {
+      "logistic_regression": 1.0,
+      "random_forest": 1.0,
+      "xgboost": 1.0
+    },
+    "precision": {
+      "logistic_regression": 1.0,
+      "random_forest": 1.0,
+      "xgboost": 1.0
+    },
+    "recall": {
+      "logistic_regression": 1.0,
+      "random_forest": 1.0,
+      "xgboost": 1.0
+    },
+    "f1_score": {
+      "logistic_regression": 1.0,
+      "random_forest": 1.0,
+      "xgboost": 1.0
+    },
+    "roc_auc": {
+      "logistic_regression": 1.0,
+      "random_forest": 1.0,
+      "xgboost": 1.0
+    }
+  },
+  "dataset_info": {
+    "total_records": 3,
+    "models_compared": [
+      "logistic_regression",
+      "random_forest",
+      "xgboost"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall",
+      "f1_score",
+      "roc_auc"
+    ]
+  }
+}
