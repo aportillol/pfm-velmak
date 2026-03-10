@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFM Velmak - Demo Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background: var(--secondary-color);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .score-indicator {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto;
+        }
+        
+        .score-high { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+        .score-medium { background: linear-gradient(45deg, #f39c12, #f1c40f); }
+        .score-low { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        
+        .tab-content {
+            padding: 30px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .result-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .shap-chart {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .feature-bar {
+            height: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            margin: 5px 0;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .positive-bar { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+        .negative-bar { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-university"></i> PFM Velmak
+            </a>
+            <span class="navbar-text">
+                Sistema de Scoring Crediticio con IA Explicable
+            </span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">
+                            <i class="fas fa-chart-line"></i> 
+                            Demo Interactiva de Scoring Crediticio
+                        </h1>
+                        <p class="text-center text-muted">
+                            Experimenta el poder del Machine Learning con IA Explicable
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="individual-tab" data-bs-toggle="tab" data-bs-target="#individual" type="button">
+                            <i class="fas fa-user"></i> Evaluación Individual
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="batch-tab" data-bs-toggle="tab" data-bs-target="#batch" type="button">
+                            <i class="fas fa-users"></i> Análisis por Lotes
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="explainability-tab" data-bs-toggle="tab" data-bs-target="#explainability" type="button">
+                            <i class="fas fa-brain"></i> IA Explicable
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="mainTabsContent">
+                    <!-- Individual Evaluation -->
+                    <div class="tab-pane fade show active" id="individual" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3><i class="fas fa-user-edit"></i> Información del Solicitante</h3>
+                                <form id="scoringForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Edad</label>
+                                                <input type="range" class="form-range" id="edad" min="18" max="80" value="35">
+                                                <span id="edadValue">35</span> años
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Ingresos Mensuales (€)</label>
+                                                <input type="range" class="form-range" id="ingresos" min="1000" max="10000" value="3500">
+                                                <span id="ingresosValue">3500</span> €
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Deuda Existente (€)</label>
+                                                <input type="range" class="form-range" id="deuda" min="0" max="5000" value="500">
+                                                <span id="deudaValue">500</span> €
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Antigüedad Laboral (años)</label>
+                                                <input type="range" class="form-range" id="antiguedad" min="0" max="30" value="5">
+                                                <span id="antiguedadValue">5</span> años
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Tipo de Contrato</label>
+                                                <select class="form-select" id="tipoContrato">
+                                                    <option value="permanente">Permanente</option>
+                                                    <option value="autonomo">Autónomo</option>
+                                                    <option value="temporal">Temporal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="tienePropiedad">
+                                                    <label class="form-check-label" for="tienePropiedad">
+                                                        Tiene Propiedades
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Tarjetas de Crédito</label>
+                                                <input type="range" class="form-range" id="tarjetas" min="0" max="10" value="2">
+                                                <span id="tarjetasValue">2</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Consultas Recientes</label>
+                                                <input type="range" class="form-range" id="consultas" min="0" max="10" value="1">
+                                                <span id="consultasValue">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Impagos Previos</label>
+                                                <input type="range" class="form-range" id="impagos" min="0" max="5" value="0">
+                                                <span id="impagosValue">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Score Bureau</label>
+                                                <input type="range" class="form-range" id="scoreBureau" min="300" max="900" value="750">
+                                                <span id="scoreBureauValue">750</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-search"></i> Evaluar Riesgo
+                                    </button>
+                                </form>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div id="resultsSection" class="result-section">
+                                    <h3><i class="fas fa-chart-pie"></i> Resultados</h3>
+                                    
+                                    <div class="text-center mb-4">
+                                        <div id="scoreIndicator" class="score-indicator">
+                                            <span id="scoreValue">-</span>
+                                        </div>
+                                        <p class="mt-2"><strong id="scoreLevel">-</strong></p>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-6">
+                                            <div class="metric-card">
+                                                <div class="metric-value" id="decisionValue">-</div>
+                                                <div class="metric-label">Decisión</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="metric-card">
+                                                <div class="metric-value" id="probValue">-</div>
+                                                <div class="metric-label">Prob. Aprobación</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5><i class="fas fa-exclamation-triangle"></i> Factores de Riesgo</h5>
+                                            <div id="riskFactors">
+                                                <p class="text-muted">No se detectaron factores de riesgo significativos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Batch Analysis -->
+                    <div class="tab-pane fade" id="batch" role="tabpanel">
+                        <h3><i class="fas fa-users"></i> Análisis por Lotes</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Cargar Datos</h5>
+                                        <input type="file" class="form-control" id="batchFile" accept=".csv">
+                                        <button class="btn btn-primary mt-3" onclick="processBatchData()">
+                                            <i class="fas fa-upload"></i> Procesar Datos
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Estadísticas del Lote</h5>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="metric-card">
+                                                    <div class="metric-value">-</div>
+                                                    <div class="metric-label">Total Registros</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="metric-card">
+                                                    <div class="metric-value">-</div>
+                                                    <div class="metric-label">Tasa Aprobación</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Explainability -->
+                    <div class="tab-pane fade" id="explainability" role="tabpanel">
+                        <h3><i class="fas fa-brain"></i> IA Explicable con SHAP</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="shap-chart">
+                                    <h5>Contribución de Características</h5>
+                                    <div id="shapBars">
+                                        <div class="feature-bar positive-bar">
+                                            Score Bureau: +120
+                                        </div>
+                                        <div class="feature-bar positive-bar">
+                                            Edad: +80
+                                        </div>
+                                        <div class="feature-bar positive-bar">
+                                            Ingresos: +60
+                                        </div>
+                                        <div class="feature-bar negative-bar">
+                                            Impagos: -150
+                                        </div>
+                                        <div class="feature-bar negative-bar">
+                                            Consultas: -90
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Explicación del Modelo</h5>
+                                        <p><strong>Score Base:</strong> 500 puntos</p>
+                                        <p><strong>Factores Positivos:</strong></p>
+                                        <ul>
+                                            <li>Score bureau alto: +120 puntos</li>
+                                            <li>Edad madura: +80 puntos</li>
+                                            <li>Ingresos estables: +60 puntos</li>
+                                        </ul>
+                                        <p><strong>Factores Negativos:</strong></p>
+                                        <ul>
+                                            <li>Impagos previos: -150 puntos</li>
+                                            <li>Consultas recientes: -90 puntos</li>
+                                        </ul>
+                                        <p><strong>Score Final:</strong> 520 puntos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard -->
+                    <div class="tab-pane fade" id="dashboard" role="tabpanel">
+                        <h3><i class="fas fa-tachometer-alt"></i> Dashboard de Métricas</h3>
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <div class="metric-value">1,234</div>
+                                    <div class="metric-label">Evaluaciones Hoy</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <div class="metric-value">68.5%</div>
+                                    <div class="metric-label">Tasa Aprobación</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <div class="metric-value">687</div>
+                                    <div class="metric-label">Score Promedio</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <div class="metric-value">0.023s</div>
+                                    <div class="metric-label">Tiempo Respuesta</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Tendencia de Scores</h5>
+                                        <canvas id="trendChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Distribución de Riesgo</h5>
+                                        <canvas id="riskChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p>&copy; 2024 PFM Velmak - Sistema de Scoring Crediticio con IA Explicable</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update range values
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const valueSpan = document.getElementById(this.id + 'Value');
+                if (valueSpan) {
+                    valueSpan.textContent = this.value;
+                }
+            });
+        });
+
+        // Scoring form submission
+        document.getElementById('scoringForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const edad = parseInt(document.getElementById('edad').value);
+            const ingresos = parseInt(document.getElementById('ingresos').value);
+            const deuda = parseInt(document.getElementById('deuda').value);
+            const antiguedad = parseInt(document.getElementById('antiguedad').value);
+            const tipoContrato = document.getElementById('tipoContrato').value;
+            const tienePropiedad = document.getElementById('tienePropiedad').checked;
+            const tarjetas = parseInt(document.getElementById('tarjetas').value);
+            const consultas = parseInt(document.getElementById('consultas').value);
+            const impagos = parseInt(document.getElementById('impagos').value);
+            const scoreBureau = parseInt(document.getElementById('scoreBureau').value);
+            
+            // Calculate score
+            let score = 500;
+            
+            // Positive factors
+            score += (scoreBureau - 684) * 0.5;
+            score += (edad - 34) * 2;
+            score += (ingresos - 3715) * 0.01;
+            score += (antiguedad - 6) * 5;
+            
+            if (tienePropiedad) score += 50;
+            if (tipoContrato === 'permanente') score += 30;
+            else if (tipoContrato === 'autonomo') score += 20;
+            
+            // Negative factors
+            score -= impagos * 100;
+            score -= consultas * 30;
+            score -= tarjetas * 10;
+            
+            // Debt ratio
+            const debtRatio = deuda / ingresos;
+            if (debtRatio > 0.5) score -= 100;
+            else if (debtRatio > 0.3) score -= 50;
+            
+            score = Math.max(0, Math.min(1000, Math.round(score)));
+            
+            // Determine risk level and decision
+            let riskLevel, decision, colorClass;
+            if (score >= 800) {
+                riskLevel = "Mínimo";
+                decision = "Aprobado Automático";
+                colorClass = "score-high";
+            } else if (score >= 650) {
+                riskLevel = "Bajo";
+                decision = "Aprobado Automático";
+                colorClass = "score-high";
+            } else if (score >= 500) {
+                riskLevel = "Medio";
+                decision = "Revisión Manual";
+                colorClass = "score-medium";
+            } else {
+                riskLevel = "Alto";
+                decision = "Rechazado";
+                colorClass = "score-low";
+            }
+            
+            const approvalProb = Math.max(Math.min((score - 300) / 700, 1), 0);
+            
+            // Update results
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.style.display = 'block';
+            
+            const scoreIndicator = document.getElementById('scoreIndicator');
+            scoreIndicator.className = 'score-indicator ' + colorClass;
+            document.getElementById('scoreValue').textContent = score;
+            document.getElementById('scoreLevel').textContent = riskLevel;
+            document.getElementById('decisionValue').textContent = decision;
+            document.getElementById('probValue').textContent = (approvalProb * 100).toFixed(1) + '%';
+            
+            // Update risk factors
+            const riskFactors = [];
+            if (impagos > 0) riskFactors.push(`• Impagos previos: ${impagos}`);
+            if (consultas > 3) riskFactors.push(`• Consultas recientes: ${consultas}`);
+            if (tarjetas > 3) riskFactors.push(`• Tarjetas: ${tarjetas}`);
+            if (debtRatio > 0.5) riskFactors.push(`• Ratio deuda/ingresos: ${(debtRatio * 100).toFixed(1)}%`);
+            
+            const riskFactorsDiv = document.getElementById('riskFactors');
+            if (riskFactors.length > 0) {
+                riskFactorsDiv.innerHTML = riskFactors.map(factor => `<p class="text-warning">${factor}</p>`).join('');
+            } else {
+                riskFactorsDiv.innerHTML = '<p class="text-success">✅ No se detectaron factores de riesgo significativos</p>';
+            }
+        });
+
+        // Initialize charts
+        const ctx1 = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Score Promedio',
+                    data: [680, 685, 682, 690, 687, 687],
+                    borderColor: '#3498db',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('riskChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Mínimo', 'Bajo', 'Medio', 'Alto', 'Crítico'],
+                datasets: [{
+                    data: [15, 35, 30, 15, 5],
+                    backgroundColor: ['#27ae60', '#3498db', '#f39c12', '#e67e22', '#e74c3c']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>
