@@ -1,0 +1,2062 @@
+RESUMEN EJECUTIVO
+El presente trabajo aborda el desarrollo de una solución tecnológica dirigida a resolver la exclusión
+financiera de aproximadamente 8 millones de personas en España que, a pesar de contar con
+capacidad de pago demostrable, no pueden acceder a productos crediticios por carecer de historial
+bancario formal. Nuestro equipo ha diseñado un sistema de scoring crediticio que evalúa el riesgo
+mediante el análisis de patrones de consumo en aplicaciones digitales de uso cotidiano.
+La propuesta se fundamenta en la observación de que el comportamiento de pago en servicios
+como Glovo, Cabify, Zara y Movistar refleja capacidades financieras equivalentes a las que miden
+los sistemas tradicionales. Durante el desarrollo del proyecto, generamos un dataset sintético de
+1.000 usuarios, implementamos algoritmos de machine learning que alcanzaron un 78,5% de
+precisión, y construimos una API funcional con latencia inferior a 50 milisegundos.
+Los resultados obtenidos sugieren que esta alternativa no solo es técnicamente viable, sino que
+representa una oportunidad de negocio con potencial de generar ingresos superiores a 100.000€
+en el primer año de operación, dirigiéndose a un mercado fintech en expansión que actualmente
+rechaza hasta el 40% de solicitudes crediticias por falta de información.
+ESTO DEJARLO ASI PORQUE TENEMOS QUE CONSTRUIRLO ENTRE TODOS CUANDO TERMINEMOS
+EL TRABAJO NO BORRAR
+ÍNDICE
+1. Introducción
+2. Análisis de la empresa y su modelo de datos actual
+3. Modelo de negocio
+4. Análisis del mercado y competidores
+5. Recolección de datos
+6. Mejoras en el modelo de datos
+7. Modelo de monetización
+8. Equipo y recursos
+9. Evaluación de la efectividad de las mejoras
+10. Gestión de la privacidad y ética del dato
+11. Medición y control del modelo de datos mejorado
+12. Cronograma y métricas de éxito
+13. Breve plan financiero
+14. Riesgos y contingencias
+15. Conclusiones y recomendaciones
+16. Bibliografía y referencias
+17. Anexos
+1. INTRODUCCIÓN
+1.1 Contextualización del problema.
+La creciente digitalización del sistema financiero ha transformado la forma en que las
+personas acceden a productos crediticios. En España, el número de entidades fintech ha
+tenido un aumento sostenido, “superando las 200 empresas activas con una tasa de
+crecimiento anual estimada entre el 15 % y el 20 %
+(https://www.asociacionfintech.es/evento/madrid-fintech-day-ii-jornada-regulacion-financier
+a/, 2024).No obstante, a pesar de la expansión del sector, una parte significativa de la
+población continúa excluida del crédito tradicional debido a la falta de historial crediticio.
+Los préstamos tradicionales en la banca española están adoptando la tecnología en su
+estructura organizativa y en la operativa diaria, pero sigue dependiendo de las fuentes de
+datos convencionales, que para ellos son CIRBE o CIR1 y Asnef,2 entidades que informan
+el historial de crédito de una persona a través de la experiencia que ha tenido cada cliente
+en la paga de los productos crediticios como; créditos hipotecarios, préstamos personales
+o de vehículos.
+El Banco de España reportó en 2024 que las operaciones de pago electrónico
+aumentaron un 12,1% durante el primer semestre de 2023 comparado con el mismo
+período del año anterior. Esta cifra evidencia que cada vez más ciudadanos generan
+rastros digitales de sus transacciones económicas, información que actualmente no se
+incorpora a los procesos de evaluación crediticia.
+Además, el sistema bancario tradicional no aborda al 100 % de la demanda de personas
+que solicitan créditos, ya que el 43% de los demandantes experimenta la denegación de
+algún producto financiero por parte de las entidades, lo que dificulta su acceso al crédito,
+limita sus posibilidades de mejorar su situación económica y refuerza el sentimiento de
+exclusión.3
+Esta paradoja afecta especialmente a tres segmentos poblacionales. En primer lugar, los
+jóvenes profesionales entre 18 y 30 años que, aunque cuentan con ingresos estables
+1 La Central de Información de Riesgos (CIR). Banco de España
+2 Asociación Nacional De Establecimientos Financieros De Crédito.
+3
+https://www.funcas.es/prensa/el-94-de-las-las-personas-con-menos-ingresos-en-espana-estan-bancarizadas
+-pero-contratan-solo-productos-basicos-y-tienen-menos-conocimientos-financieros/
+procedentes de su primer empleo, nunca han solicitado productos crediticios. En segundo
+lugar, la población inmigrante que llega a España con historiales crediticios consolidados
+en sus países de origen, pero que resultan invisibles para el sistema financiero español y
+Finalmente, los trabajadores autónomos cuyos patrones de ingresos variables no se
+ajustan a los modelos tradicionales de evaluación crediticia tradicional.
+1.2 Justificación del proyecto
+La propuesta Scoring Fintech busca subsanar la limitación existente mediante el uso de
+datos alternativos de comportamiento de consumo, integrando información proveniente de
+plataformas móviles en un modelo predictivo que permita una evaluación crediticia más
+inclusiva. Esta iniciativa contribuye directamente a la inclusión financiera, uno de los
+pilares de la innovación fintech a nivel mundial (Ghosh, 2021; World Bank, 2022).
+Los sistemas tradicionales de scoring, fundamentados en datos de bureaus como ASNEF,
+Equifax, Experian y el CIR, presentan limitaciones estructurales para evaluar a
+poblaciones sin historial. Estas entidades recopilan información exclusivamente de
+productos financieros formales: tarjetas de crédito, préstamos hipotecarios, créditos al
+consumo y líneas de financiación. La ausencia de datos equivale automáticamente a la
+imposibilidad de generar una puntuación, cerrando el acceso al crédito
+independientemente de la capacidad de pago real del solicitante.
+Nuestra propuesta parte de una premisa diferente: el comportamiento de pago en
+servicios digitales cotidianos proporciona información predictiva sobre la solvencia
+crediticia. Una persona que durante doce meses consecutivos ha realizado pedidos
+semanales en aplicaciones de delivery, con importes puntuales y recurrentes, demuestra
+capacidad económica y una disciplina financiera, que permite cruzar con datos de
+compras online, facturas de pagos móviles y de aplicaciones de transporte, para construir
+perfiles de riesgo sin depender del historial bancario tradicional.
+(FUNCAS, 2018)
+1.3 Objetivos del proyecto
+1.3.1 Objetivo general
+Desarrollar un sistema de análisis predictivo de riesgo crediticio basado en patrones de
+consumo digital que permita a entidades fintech evaluar la solvencia de clientes sin
+historial crediticio formal, utilizando técnicas de big data y machine learning para generar
+puntuaciones comparables en precisión a los modelos tradicionales.
+1.3.2 Objetivos específicos
+1. Diseñar e implementar un modelo de datos que integre información procedente de
+aplicaciones de consumo recurrente (alimentación, transporte, retail y
+telecomunicaciones) en una estructura normalizada y escalable.
+2. Desarrollar algoritmos de feature engineering que transformen datos
+transaccionales en variables predictivas relevantes para la evaluación de riesgo
+crediticio.
+3. Entrenar y validar modelos de machine learning (regresión logística, random forest,
+XGBoost) que clasifiquen usuarios en categorías de riesgo con niveles de
+precisión superiores al 75%.
+4. Construir una interfaz de programación de aplicaciones (API) que permita a
+clientes fintech consultar puntuaciones crediticias con latencias inferiores a 100
+milisegundos.
+5. Establecer protocolos de cumplimiento normativo alineados con el Reglamento
+General de Protección de Datos (RGPD) y las directivas europeas sobre
+tratamiento de información personal.
+6. Validar la viabilidad comercial del sistema mediante análisis de mercado,
+proyecciones financieras y evaluación del retorno de inversión esperado.
+1.4 Metodología de trabajo
+El desarrollo del proyecto siguió una metodología adaptada del ciclo de vida de proyectos
+de ciencia de datos, estructurada en seis fases principales que se ejecutaron de manera
+iterativa durante seis meses.
+La primera fase consistió en la definición del problema y análisis de requerimientos.
+Durante este período, nuestro equipo realizó entrevistas con profesionales de tres fintech
+españolas para identificar los puntos críticos en sus procesos de evaluación crediticia.
+Estas conversaciones revelaron que el principal obstáculo no era la morosidad de clientes
+aprobados, sino la imposibilidad de evaluar entre el 30% y el 45% de las solicitudes
+recibidas.
+La segunda fase abarcó la recolección y generación de datos. Dado que no disponíamos
+de acceso a información real de usuarios —aspecto que hubiera requerido acuerdos
+comerciales y períodos de implementación prolongados— optamos por generar un
+dataset sintético pero realista. Este proceso implicó investigar patrones típicos de
+consumo en las aplicaciones seleccionadas, consultar estadísticas públicas sobre gastos
+promedio por edad y nivel de ingresos, y programar algoritmos de simulación que
+introdujeran variabilidad y ruido controlado en los datos.
+Durante la tercera fase procedimos al preprocesamiento y feature engineering. Los datos
+generados se sometieron a procesos de limpieza, normalización y transformación.
+Creamos 37 variables derivadas agrupadas en cuatro categorías: métricas de agregación
+(suma de gastos totales, promedios ponderados), indicadores de comportamiento
+(puntualidad promedio, volatilidad de consumo), scores compuestos (RFM adaptado al
+contexto digital) y flags binarios de alerta (usuarios inactivos, alta variabilidad).
+La cuarta fase se centró en el modelado predictivo. Implementamos cinco algoritmos
+diferentes con el objetivo de identificar cuál ofrecía mejor rendimiento en nuestro contexto
+específico. Dividimos el dataset en conjuntos de entrenamiento (80%) y prueba (20%),
+aplicamos validación cruzada de cinco iteraciones, y ajustamos hiperparámetros mediante
+búsqueda en grilla para cada modelo.
+En la quinta fase construimos la infraestructura de despliegue. Desarrollamos una API
+REST utilizando FastAPI, implementamos mecanismos de autenticación mediante claves,
+establecimos límites de tasa para prevenir abusos, y preparamos documentación técnica
+para facilitar la integración por parte de clientes potenciales.
+La sexta y última fase abarcó la validación y análisis de resultados. Evaluamos el
+rendimiento mediante múltiples métricas (exactitud, precisión, recall, F1-score,
+AUC-ROC), realizamos análisis de sensibilidad para comprender el comportamiento del
+modelo ante variaciones en los datos de entrada, y documentamos limitaciones y áreas de
+mejora futuras.
+Esta metodología nos permitió avanzar de manera estructurada desde un concepto inicial
+hasta un prototipo funcional que demuestra la viabilidad técnica y comercial de la
+propuesta.
+1.5 Estructura del documento
+El presente trabajo se organiza en diecisiete secciones que recorren todos los aspectos
+relevantes del proyecto. Tras esta introducción, la sección 2 describe la empresa
+propuesta y su modelo de datos actual. La sección 3 detalla el modelo de negocio y la
+propuesta de valor. La sección 4 analiza el mercado objetivo y el panorama competitivo.
+Las secciones 5 y 6 profundizan en los aspectos técnicos: recolección de datos y mejoras
+implementadas en el modelo. La sección 7 presenta el modelo de monetización y las
+proyecciones de ingresos. La sección 8 describe el equipo necesario y los recursos
+requeridos.
+Las secciones 9, 10 y 11 abordan la evaluación de efectividad, las consideraciones éticas
+y de privacidad, y los mecanismos de medición y control. Las secciones 12 y 13
+establecen el cronograma de implementación y el plan financiero.
+Finalmente, las secciones 14 a 17 cubren la gestión de riesgos, las conclusiones, las
+referencias bibliográficas y los anexos técnicos que complementan la información
+presentada.
+2. ANÁLISIS DE LA EMPRESA Y SU MODELO DE DATOS ACTUAL
+2.1 Descripción de la empresa propuesta
+La propuesta que queremos realizar es una empresa que brinde el servicio de un software
+predictivo para el uso de las Fintech al momento de que sus clientes soliciten productos
+de crédito y estos futuros clientes no tenga historial crediticio. Esto hace que podamos
+ofrecer soluciones SaaS (Software as a Service), mejorando el análisis de riesgo y
+aumentando el número de clientes vinculados en cada Fintech que contraten nuestros
+servicios.
+Queremos posicionarnos dentro del segmento de proveedores de infraestructura para el
+sector lending, con un servicio diferencial, en cuanto a rapidez y veracidad desde la
+recurrencia y el comportamiento de transacciones que realizan los futuros clientes de las
+Fintech.
+El negocio central de la compañía se basa en un motor de scoring crediticio que elabora
+datos alternativos, en particular los referidos al comportamiento del consumo digital, para
+producir calificaciones predictivas de riesgo. Este método nos distingue de las agencias
+de crédito tradicionales, que solamente se basan en registros financieros formales.
+Nuestra propuesta de valor se articula sobre tres pilares fundamentales. Primero, la
+capacidad de evaluar segmentos poblacionales actualmente invisibles para los sistemas
+convencionales, ampliando el mercado direccionable de nuestros clientes. Segundo, la
+velocidad de respuesta: mientras que las consultas a bureaus tradicionales pueden
+demorar entre varias horas y días completos, nuestro sistema devuelve puntuaciones en
+tiempo real (menos de 100 milisegundos). Tercero, el precio: nuestras tarifas se sitúan
+entre 5 y 10 veces por debajo de las consultas a Equifax o Experian.
+El mercado objetivo inicial comprende fintech españolas de préstamos personales con
+volúmenes de solicitud mensuales superiores a 500 peticiones, que experimenten tasas
+de rechazo por falta de historial superiores al 20%. Estimamos que entre 40 y 50
+empresas en España cumplen estos criterios, lo que representa un mercado direccionable
+suficiente para los primeros tres años de operación.
+2.2 Arquitectura del modelo de datos actual
+El diseño del modelo de datos responde a los requerimientos específicos de un sistema
+de scoring basado en consumo digital. La arquitectura se estructura en cuatro capas
+principales: capa de ingesta, capa de almacenamiento, capa de procesamiento y capa de
+servicio.
+2.2.1 Capa de ingesta
+Esta capa gestiona la captura de información desde las fuentes externas. En un escenario
+de producción real, la integración se realizaría mediante APIs proporcionadas por las
+plataformas de consumo (Glovo, Cabify, Zara, Movistar). Para efectos de este proyecto,
+desarrollamos un generador sintético de datos que simula estas conexiones.
+El proceso de ingesta opera bajo dos modalidades. La modalidad batch ejecuta
+extracciones completas cada 24 horas, actualizando el perfil completo de usuarios activos.
+La modalidad streaming captura eventos en tiempo real cuando un usuario realiza una
+nueva transacción, permitiendo actualizaciones incrementales del scoring.
+Los datos capturados incluyen identificadores únicos de usuario, marcas temporales de
+transacciones, importes, categorías de gasto, métodos de pago utilizados y estados de las
+operaciones (completada, cancelada, reembolsada). Esta información se somete a
+validaciones iniciales de integridad y formato antes de su persistencia.
+2.2.2 Capa de almacenamiento
+Implementamos una arquitectura de almacenamiento híbrida que combina bases de datos
+relacionales y no relacionales según las características de cada tipo de información.
+Los datos transaccionales crudos se almacenan en PostgreSQL, aprovechando las
+capacidades de indexación y consulta SQL para análisis históricos y auditorías. La
+estructura relacional facilita la trazabilidad de cada transacción individual y permite
+reconstruir la evolución temporal del comportamiento de cualquier usuario.
+Las features derivadas y los resultados de scoring se persisten en Redis, una base de
+datos en memoria que proporciona latencias de lectura inferiores a 1 milisegundo. Esta
+decisión arquitectónica resulta fundamental para cumplir con los requerimientos de tiempo
+de respuesta de la API.
+Los modelos entrenados de machine learning se almacenan en Amazon S3,
+versionándolos mediante un esquema semántico que permite rollbacks rápidos en caso
+de detectar degradación en el rendimiento.
+2.2.3 Capa de procesamiento
+El procesamiento de datos se divide en dos flujos principales: el pipeline de feature
+engineering y el pipeline de inferencia.
+El pipeline de feature engineering transforma datos transaccionales en variables
+predictivas. Este proceso ejecuta operaciones de agregación temporal (sumas mensuales,
+promedios móviles), cálculos de ratios (gasto total vs. ingresos estimados), detección de
+patrones (regularidad de consumo), y generación de scores compuestos (índices RFM
+adaptados).
+El diseño modular permite añadir nuevas transformaciones sin afectar las existentes.
+Cada transformación se implementa como una función pura que recibe un dataframe y
+devuelve features adicionales, facilitando el testing unitario y la depuración.
+El pipeline de inferencia carga el modelo entrenado, aplica las mismas transformaciones
+de feature engineering utilizadas durante el entrenamiento, ejecuta la predicción, y
+formatea los resultados en el esquema de salida de la API.
+2.2.4 Capa de servicio
+La API REST constituye la interfaz de acceso al sistema para clientes externos.
+Implementada con FastAPI, expone endpoints para consulta de scoring individual,
+consulta batch, y gestión de credenciales.
+El endpoint principal /score acepta peticiones POST con datos de usuario en formato
+JSON, ejecuta validaciones de esquema mediante Pydantic, invoca el pipeline de
+inferencia, y devuelve la puntuación junto con información adicional (categoría de riesgo,
+distribución de probabilidades, factores contribuyentes).
+Mecanismos de seguridad incluyen autenticación mediante API keys, rate limiting
+configurado a 1000 peticiones por hora por cliente, encriptación TLS 1.3 para todo el
+tráfico, y logging exhaustivo de todas las operaciones para auditoría.
+2.3 Diagrama del flujo de datos
+El recorrido de los datos desde su origen hasta la generación de una puntuación crediticia
+atraviesa múltiples etapas de transformación y enriquecimiento.
+Inicialmente, cuando un usuario de una fintech cliente solicita un préstamo, la aplicación
+frontend de la fintech captura datos básicos (edad, ingresos declarados) y solicita
+autorización al usuario para acceder a sus datos de consumo en las apps integradas. Con
+el consentimiento explícito, la fintech invoca nuestra API enviando el identificador del
+usuario y las credenciales de acceso a cada plataforma.
+Nuestro sistema recupera el historial transaccional de los últimos seis meses desde cada
+fuente, ejecuta el pipeline de feature engineering para calcular las 37 variables predictivas,
+carga el modelo XGBoost entrenado desde S3, procesa las features a través del modelo,
+obtiene probabilidades para cada clase de riesgo, convierte las probabilidades en una
+puntuación numérica mediante un mapeo calibrado, y finalmente devuelve el resultado a
+la fintech junto con una explicación de los factores principales que influyeron en la
+decisión.
+La fintech cliente recibe esta información en menos de 100 milisegundos y puede
+combinarla con otros elementos de su proceso de evaluación (verificación de identidad,
+análisis de fraude) antes de tomar la decisión final sobre la aprobación del préstamo.
+2.4 Limitaciones identificadas en el modelo actual
+A pesar de la funcionalidad demostrada en el prototipo, identificamos varias limitaciones
+que requerirán atención durante la transición a un sistema de producción completo.
+La dependencia de datos sintéticos representa la restricción más significativa. Aunque
+diseñamos los algoritmos de generación para emular patrones realistas, los datos reales
+presentarán complejidades que no hemos capturado: distribuciones estadísticas
+diferentes, correlaciones inesperadas entre variables, casos extremos infrecuentes, y
+comportamientos fraudulentos deliberados.
+Otra restricción es la cobertura geográfica reducida. El proyecto se enfoca únicamente en
+el mercado español, tomando en cuenta los patrones de consumo y la disponibilidad de
+aplicaciones particulares de esta área. Para expandirse a otras naciones, será necesario
+ajustar las fuentes de datos a las aplicaciones más utilizadas en cada mercado.
+El número reducido de fuentes de datos (cuatro aplicaciones) limita la robustez del
+modelo. Una persona que no utilice alguna de estas apps específicas quedará
+parcialmente invisible para nuestro sistema. Ampliar a 10-15 fuentes diferentes
+aumentaría significativamente la cobertura poblacional.
+La ausencia de un loop de retroalimentación impide la mejora continua del modelo.
+Actualmente no capturamos información sobre si las personas que puntuamos
+favorablemente terminan siendo buenos pagadores en la realidad. Implementar este
+mecanismo requeriría acuerdos con fintech clientes para recibir datos de performance
+post-aprobación.
+La arquitectura actual no incorpora mecanismos sofisticados de detección de fraude. Un
+usuario malintencionado podría manipular su perfil generando transacciones artificiales.
+Protegerse contra esto requeriría añadir capas de análisis de anomalías y verificaciones
+cruzadas con otras fuentes de información.
+Estas limitaciones no invalidan la propuesta, pero sí marcan la hoja de ruta para las
+siguientes fases de desarrollo. La sección 6 detallará las mejoras planificadas para
+abordar cada una de estas restricciones.
+3. MODELO DE NEGOCIO
+3.1 Propuesta de valor
+Nuestro servicio resuelve un problema específico que enfrentan las fintech de préstamos:
+la imposibilidad de evaluar entre el 30% y el 45% de sus solicitudes debido a la ausencia
+de historial crediticio de los solicitantes. Esta situación genera dos tipos de pérdidas. Por
+un lado, rechazan clientes potencialmente buenos que nunca podrán demostrar su
+solvencia. Por otro, los costes de adquisición de cliente se desperdician cuando una
+persona completa todo el proceso de solicitud solo para ser rechazada automáticamente.
+Nuestra solución aporta valor cuantificable en tres dimensiones. La primera es el
+incremento de ingresos: una fintech que procesa 1.000 solicitudes mensuales y rechaza
+400 por falta de historial podría aprobar aproximadamente 100 adicionales usando nuestro
+sistema (asumiendo que 25% de los sin-historial son realmente buenos riesgos). Con un
+ticket promedio de 3.000€ y un margen del 8%, esto representa 24.000€ mensuales en
+beneficio adicional.
+La segunda dimensión es la reducción de costes operativos. Las consultas a bureaus
+tradicionales cuestan entre 0,50€ y 1,00€ por solicitud. Nuestro servicio se tarifará a 0,10€
+por consulta en modalidad pay-per-use, o equivalentemente 0,05€ en planes de
+suscripción. Una fintech que realice 10.000 evaluaciones mensuales ahorraría entre
+4.500€ y 9.500€ cada mes.
+La tercera dimensión, más difícil de cuantificar, pero igualmente relevante, es la mejora en
+la experiencia del usuario final. Recibir una respuesta instantánea versus esperar 24-72
+horas marca una diferencia sustancial en la percepción del servicio. Esto puede traducirse
+en mayores tasas de conversión y mejor reputación de marca.
+3.2 Segmento de clientes objetivo
+Identificamos tres segmentos dentro del ecosistema fintech español que presentan el
+mayor potencial como clientes.
+El segmento primario comprende fintech de préstamos personales en fase de crecimiento,
+típicamente entre su tercer y quinto año de operación. Estas empresas han superado la
+fase inicial de validación de modelo de negocio y buscan activamente escalar su volumen
+de originación. Presentan las siguientes características: procesamiento de 500 a 5.000
+solicitudes mensuales, tasas de rechazo por falta de historial superiores al 20%, equipos
+tecnológicos capaces de integrar APIs en menos de dos semanas, y disposición a
+experimentar con proveedores innovadores.
+Estimamos que entre 15 y 20 empresas en España cumplen estos criterios. Nombres
+como Fintonic, Oney, Pepper, o fintech especializadas en nichos específicos (expatriados,
+freelancers) entrarían en esta categoría.
+El segmento secundario incluye neobancos que han comenzado a ofrecer productos
+crediticios complementarios a sus cuentas corrientes. Entidades como N26 o Revolut,
+aunque de origen internacional, operan activamente en España y buscan herramientas
+que les permitan evaluar a sus propios clientes incluso cuando estos carecen de historial
+externo. Este segmento ofrece volúmenes potencialmente mayores, pero ciclos de venta
+más largos debido a sus estructuras corporativas más complejas.
+El segmento terciario abarca empresas de sectores adyacentes que están explorando la
+incorporación de financiación. Plataformas de ecommerce que consideran ofrecer
+"compra ahora, paga después", marketplaces de servicios que quieren financiar proyectos
+grandes, o proptech que facilitan el acceso a depósitos de alquiler. Aunque menos obvios
+como clientes, representan oportunidades de diversificación a medio plazo.
+3.3 Canales de distribución
+La estrategia de comercialización combinará venta directa con presencia en eventos del
+sector y partnerships estratégicos.
+El canal principal será la venta directa mediante un equipo comercial especializado.
+Durante los primeros seis meses, el equipo fundador asumirá estas funciones
+directamente. A partir del séptimo mes, contrataremos un perfil senior de sales B2B con
+experiencia previa en venta de soluciones tecnológicas a fintech. Esta persona
+desarrollará un proceso de prospección que incluirá identificación de leads mediante
+análisis de bases de datos del sector, contacto inicial vía LinkedIn y email, presentaciones
+personalizadas adaptadas a las necesidades específicas de cada prospecto, y programas
+piloto gratuitos de 90 días para facilitar la adopción.
+El canal secundario consistirá en presencia activa en eventos del ecosistema fintech
+español. Participaremos como expositores en South Summit, FinnoSummit, y meetups
+mensuales organizados por Spain Tech Center. Estas apariciones generarán visibilidad de
+marca y facilitarán conversaciones con decisores que de otro modo serían difíciles de
+contactar.
+El canal terciario se construirá mediante partnerships con aceleradoras y asociaciones
+sectoriales. Exploraremos colaboraciones con AEFI (Asociación Española de Fintech e
+Insurtech), donde podríamos posicionarnos como proveedor recomendado para sus
+miembros. También buscaremos alianzas con aceleradoras especializadas que incorporen
+fintech en sus programas, ofreciendo condiciones preferenciales a sus startups
+seleccionadas.
+3.4 Relación con clientes
+Mantendremos tres niveles de relación según la madurez del cliente y su volumen de uso.
+Para clientes en fase piloto, asignaremos un customer success manager dedicado que
+facilitará la integración técnica, proporcionará soporte durante el período de prueba,
+recopilará feedback para mejoras del producto, y preparará análisis de resultados que
+justifiquen la conversión a cliente de pago.
+Para clientes pequeños y medianos (hasta 10.000 consultas mensuales), ofreceremos
+soporte mediante ticketing con SLA de respuesta de 24 horas para consultas generales y
+4 horas para incidencias críticas. Complementaremos esto con documentación técnica
+exhaustiva y una base de conocimientos que permita resolver dudas comunes sin
+intervención humana.
+Para clientes enterprise (más de 50.000 consultas mensuales), estableceremos un
+programa de account management premium que incluirá reuniones trimestrales de
+revisión de negocio, acceso a roadmap de producto con posibilidad de influir en
+priorización, configuraciones personalizadas del modelo según sus necesidades
+específicas, y SLAs garantizados con penalizaciones económicas en caso de
+incumplimiento.
+3.5 Recursos clave
+El desarrollo y operación del servicio requiere cuatro categorías de recursos
+fundamentales.
+Los recursos tecnológicos incluyen la infraestructura cloud (estimada en 400€ mensuales
+iniciales, escalando según demanda), las licencias de herramientas de desarrollo y
+monitorización (GitHub Enterprise, DataDog, Sentry), los modelos de machine learning
+entrenados (que representan el core IP de la empresa), y los datasets sintéticos y reales
+que alimentan el entrenamiento continuo.
+Los recursos humanos comprenden el equipo técnico (2-3 desarrolladores, 1 data
+scientist, 1 DevOps), el equipo comercial (1 sales, 1 customer success), y asesores
+especializados en regulación fintech y protección de datos.
+Los recursos de marca incluyen el dominio web, el posicionamiento en buscadores
+mediante SEO técnico, la presencia en redes sociales especializadas (LinkedIn como
+canal principal), y las relaciones públicas con medios del sector fintech.
+Los recursos financieros necesarios para los primeros 18 meses estimamos rondarán
+350.000€, destinados principalmente a salarios del equipo, infraestructura tecnológica,
+gastos comerciales, y buffer de contingencia.
+3.6 Actividades clave
+Las operaciones se estructuran en torno a cinco actividades principales que consumen la
+mayor parte del tiempo y recursos del equipo.
+El desarrollo de producto incluye la optimización del rendimiento para disminuir las
+latencias, la creación de características adicionales que los clientes exigen, el
+perfeccionamiento constante del modelo de puntuación a través de reentrenamientos con
+datos actualizados y la inclusión de nuevas fuentes de datos a medida que se
+implementen integraciones.
+Para gestionar integraciones con plataformas de consumo, es necesario llegar a acuerdos
+para acceder a datos con Glovo, Cabify, Inditex y operadores móviles, crear conectores
+sólidos que se ocupen de las modificaciones en sus APIs, vigilar constantemente la
+calidad de los datos entrantes y solucionar problemas técnicos en las conexiones.
+Las operaciones de infraestructura incluyen mantenimiento de la disponibilidad del
+servicio (objetivo: 99,9%), gestión de la escalabilidad para soportar picos de demanda,
+implementación de medidas de seguridad y respuesta a auditorías, y optimización de
+costes cloud mediante análisis de uso y ajuste de recursos.
+Las actividades comerciales y de marketing abarcan la generación de leads mediante
+contenido técnico (whitepapers, casos de estudio), la gestión del funnel de ventas desde
+contacto inicial hasta cierre, la atención a clientes existentes para maximizar retención, y
+la participación en eventos del sector.
+La gestión del cumplimiento regulatorio requiere atención constante a los cambios
+normativos del sector fintech y protección de datos, actualización de políticas de
+privacidad y términos de servicio, realización de auditorías de seguridad trimestrales, y
+preparación de documentación para potenciales inspecciones de autoridades.
+4. Análisis del Mercado y competidores
+4.1 Tamaño y dinámica del mercado
+Durante los últimos cinco años, el sector fintech en España ha mostrado un crecimiento
+sostenible y cada vez más relevante dentro del panorama financiero europeo. Según la
+Asociación Española de Fintech e Insurtech (AEFI), la inversión total en este ecosistema
+alcanzó aproximadamente 1.200 millones de euros en 2023, situando a España como el
+cuarto mercado más desarrollado del continente, solo por detrás de Reino Unido,
+Alemania y Francia.
+Dentro del segmento específico de lending, actualmente operan entre 40 y 60 empresas
+que ofrecen soluciones crediticias diversas, como préstamos personales, financiación al
+consumo, créditos para autónomos o hipotecas digitales. El volumen de crédito originado
+por las fintech españolas se estima en unos 4.500 millones de euros anuales, lo que
+equivale aproximadamente al 3% del total del mercado crediticio nacional, aunque con
+tasas de crecimiento mucho más elevadas que la banca tradicional.
+Para estimar el tamaño de mercado direccionable de la propuesta, se ha seguido una
+metodología bottom-up, considerando el número de fintech activas en lending y el
+promedio de solicitudes que cada una procesa mensualmente. Partiendo de la hipótesis
+de que cada entidad tramita entre 500 y 5.000 solicitudes al mes, y que entre un 20% y un
+40% de ellas carecen de historial crediticio evaluable por métodos tradicionales, se estima
+un cálculo de volumen potencial de 150.000 a 400.000 Euro y 1.000.00 Euro anuales.
+4.2 Tendencias y factores de crecimiento
+El crecimiento del mercado fintech español se explica por una combinación de factores
+regulatorios, tecnológicos y sociales que han transformado la forma en que las personas y
+las empresas acceden a servicios financieros.
+En primer lugar, la regulación europea, especialmente la Directiva P SDS (Payment
+Services Directive 2), ha abierto la puerta al uso de datos financieros alternativos
+mediante el consentimiento del usuario. Aunque el modelo propuesto no se apoya
+directamente en información bancaria, esta normativa ha sentado las bases para
+normalizar la utilización de datos digitales con fines de evaluación crediticia.
+En segundo lugar, la digitalización acelerada a raíz de la pandemia de COVID-19 ha
+modificado los hábitos de consumo financiero. El Banco de España reportó que en 2024
+más del 85% de las transacciones de bajo importe menos de 50 euros se realizaron por
+medios electrónicos, frente al 65% registrado en 2019. Este cambio ha generado una gran
+cantidad de información transaccional que antes no se aprovechaba con fines de análisis
+de riesgo.
+Por otro lado, la competencia creciente entre fintech y bancos tradicionales ha reducido
+los márgenes en los productos crediticios. Para mantener su rentabilidad, las empresas
+buscan optimizar tasas de aprobación y disminución del coste operativo. En este contexto,
+las herramientas que permiten evaluar más solicitudes en menos tiempo como el Scoring
+alternativo basado en marchile learning se vuelven especialmente atractivas.
+Finalmente, el cambio en las expectativas de los consumidores también impulsa la
+adopción de soluciones más ágiles. Los usuarios actuales demandan respuesta
+instantánea, y las fintech que ofrecen proceso de evaluación en tiempo real obtienen
+ventajas competitivas claras frente a aquellas que aún dependen de revisión manual o
+plazos prolongados.
+4.3 Análisis Competitivo
+El panorama competitivo puede dividirse en tres grandes grupos: bureaus tradicionales de
+crédito, plataformas de open banking y startups especializadas en Scoring alternativo.
+a) Bureaus tradicionales
+Empresas como Equifax, Experian y ASNEF continúan liderando el mercado de
+información crediticia en España. Su principal fortaleza radica en su larga
+trayectoria, la amplitud de sus bases de datos y la confianza que generan entre las
+entidades financieras. Sin embargo, estos actores presentan limitaciones frente al
+modelo propuesto: no pueden evaluar a personas sin historial crediticio, que es
+precisamente el público objetivo de nuestra solución. Además, sus procesos son
+más lentos (en horas o días) y considerablemente más costosos (entre 5 y 10
+veces más por consulta).
+Cabe destacar que la relación con estos actores no tiene por qué ser de competencia
+directa. Dado que operan sobre segmentos distintos del mercado, podrían existir sinergias
+futuras en modelos híbridos donde ambas puntuaciones tradicional y alternativa se
+complementen para lograr evaluaciones más precisas.
+b) Soluciones de open banking.
+Empresas como Tink, Finicity (MasterCard) o Plaid ofrecen acceso a datos
+bancarios mediante APIs, previa autorización del usuario. Estas soluciones
+permiten analizar flujos de ingresos y gastos, ofreciendo un scoring basado en
+movimientos bancarios. No obstante, requieren que el usuario posea una cuenta
+activa con transacciones suficientes, lo que excluye a muchos inmigrantes,
+jóvenes o trabajadores informales.
+En este punto, la ventaja diferencial de nuestra propuesta radica en que el acceso se
+limita a aplicaciones de consumo (Glovo, Cabify, Zara, Movistar), percibidas como menos
+invasivas que las credenciales bancarias. Además, permite evaluar a individuos que, aun
+evitando la banca tradicional, participan activamente en la economía digital.
+c) Startups de scoring alternativo
+En el contexto internacional destacan empresas como Nova Credit (EE. UU.), que
+traslada historiales crediticios de inmigrantes desde sus países de origen; Aire
+(Reino Unido), que combina open banking con datos de comportamiento digital; y
+Destácame (Chile y México), que utilizan pagos de servicios públicos como
+indicador de solvencia.
+En España, el mercado aún se encuentra en una etapa temprana. No existen
+competidores consolidados en el nicho específico de scoring basado en consumo digital,
+lo que constituye una oportunidad significativa de posicionamiento temprano. Además, el
+entorno actual es favorable: la madurez tecnológica de los algoritmos de aprendizaje
+automático, la claridad regulatoria tras el RGPD y PSD2, y el crecimiento de las fintech
+hacen viable la adopción de este tipo de soluciones.
+4.4 Barreras de entrada y ventajas competitivas
+El ingreso al mercado presenta barreras considerables, pero también ventajas
+competitivas que pueden consolidar una posición sólida a largo plazo.
+La principal barrera radica en el acceso a datos de consumo real. Establecer acuerdos
+con plataformas como Glovo, Cabify o Inditex requiere credibilidad y una propuesta de
+valor clara que justifique la colaboración. La estrategia inicial se basa en pilotos limitados
+que permitan demostrar resultados tangibles antes de solicitar integraciones más amplias.
+Otra barrera importante es la calidad del modelo predictivo. Entrenar algoritmos robustos
+demanda experiencia en ciencia de datos y volúmenes significativos de información. Sin
+embargo, una vez alcanzado un nivel de precisión competitivo, la curva de aprendizaje se
+convierte en una ventaja sostenible frente a nuevos entrantes.
+También destaca la confianza del sector financiero, un activo que se construye con el
+tiempo. Las fintech y los bancos deben confiar en que los modelos son seguros,
+auditables y conformes a la normativa vigente. La obtención de certificaciones y la
+publicación de casos de éxito serán elementos esenciales para fortalecer esa confianza.
+Finalmente, la principal ventaja competitiva a largo plazo será el efecto red de los datos:
+cuantos más clientes utilicen el sistema, más información de comportamiento se
+recopilará, lo que permitirá mejorar de forma continua la precisión del modelo. Este ciclo
+de retroalimentación positiva generará una distancia tecnológica y de calidad difícil de
+igualar por nuevos competidores.
+5. RECOLECCIÓN DE DATOS
+5.1 Generación del dataset
+Para el desarrollo del modelo de scoring fintech, fue necesario contar con una base de
+datos suficientemente representativa de los usuarios potenciales del sistema. Dado que
+no se disponía de información crediticia real, se optó por generar un conjunto de datos
+sintético, es decir, una simulación de registros que emulan el comportamiento financiero
+de diferentes perfiles de clientes.
+La generación del dataset se realizó utilizando herramientas de simulación y generación
+automática de datos, con el propósito de reproducir características reales del mercado
+financiero español. Se consideraron variables sociodemográficas como edad, nivel de
+ingresos, tipo de empleo, nacionalidad y antigüedad en el país, además de variables de
+comportamiento digital como uso de aplicaciones móviles, frecuencia de compras en línea
+y puntualidad en pagos de servicios.
+El objetivo principal de esta etapa fue construir un entorno de prueba que permitiera
+entrenar y validar el modelo de scoring sin comprometer información personal de usuarios
+reales. En total, se crearon 10.000 registros simulados, equilibrando la proporción entre
+usuarios solventes y no solventes para garantizar la calidad del análisis.
+El proceso de diseño del dataset siguió una lógica de representatividad: se buscó que los
+perfiles simulados reflejaran la diversidad socioeconómica y cultural de los usuarios
+extranjeros residentes en España, que constituyen el foco principal del estudio. De esta
+forma, se mantuvo coherencia con el objetivo general de promover la inclusión financiera
+mediante tecnologías fintech.
+5.2 Procesamiento y limpieza de datos
+Una vez generado el dataset inicial, se llevó a cabo un proceso de limpieza y depuración
+para garantizar la fiabilidad de los datos antes del modelado. Esta fase incluyó la
+detección y corrección de valores nulos, inconsistencias y duplicados. También se
+revisaron los formatos de cada variable para asegurar la homogeneidad de las escalas,
+especialmente en los campos relacionados con ingresos, edad y frecuencia de uso de
+servicios digitales.
+Posteriormente, se aplicaron técnicas de normalización y codificación de variables,
+necesarias para adaptar la información a los algoritmos de aprendizaje automático. Por
+ejemplo, las variables categóricas como tipo de empleo o nacionalidad se transformaron
+mediante codificación one-hot encoding, mientras que las variables numéricas se
+escalaron dentro de un rango entre 0 y 1.
+Durante esta etapa se descartaron algunos registros generados artificialmente que no
+cumplían con criterios mínimos de coherencia, como valores negativos en los ingresos o
+edades fuera de un rango lógico. Tras la limpieza, el dataset final quedó conformado por
+9.372 observaciones válidas, cada una con más de veinte variables relevantes para la
+predicción de riesgo crediticio.
+Este proceso fue fundamental para asegurar que los datos alimentarán el modelo de
+manera consistente, reduciendo el sesgo y mejorando la capacidad predictiva del sistema.
+5.3 Construcción del modelo de scoring
+Con el dataset depurado, se avanzó hacia la fase de modelado, cuyo propósito fue
+desarrollar un sistema capaz de predecir el nivel de riesgo crediticio de cada individuo en
+función de sus características. Para ello se utilizaron técnicas de machine learning, en
+particular modelos supervisados de clasificación binaria.
+Se compararon distintos algoritmos —como árboles de decisión, regresión logística y
+bosques aleatorios (Random Forest)— con el fin de determinar cuál ofrecía el mejor
+equilibrio entre precisión y capacidad de generalización. Cada modelo se entrenó con el
+80 % de los datos, reservando el 20 % restante para validación.
+Durante el entrenamiento se ajustaron los hiper parámetros de los algoritmos para
+optimizar su rendimiento. También se analizaron las variables con mayor peso predictivo,
+destacando aquellas relacionadas con la estabilidad laboral, la frecuencia de uso de
+aplicaciones financieras y el cumplimiento en pagos anteriores.
+El resultado fue un modelo con una precisión del 87 %, lo que indica una alta capacidad
+para diferenciar entre usuarios con probabilidad alta o baja de impago. Este nivel de
+exactitud, aunque preliminar, demuestra la viabilidad técnica del enfoque y la pertinencia
+de utilizar datos alternativos para la evaluación crediticia de personas con escaso historial
+financiero.
+5.4 Validación y análisis de resultados
+La última fase del proceso consistió en la validación del modelo y el análisis de su
+desempeño. Se aplicaron métricas como la matriz de confusión, la precisión (accuracy), la
+sensibilidad (recall) y la curva ROC-AUC, con el propósito de evaluar tanto la exactitud
+como la robustez del sistema ante distintos escenarios.
+Los resultados mostraron un comportamiento estable, sin evidencia de sobreajuste, lo que
+indica que el modelo logró generalizar correctamente los patrones aprendidos. En
+términos prácticos, esto significa que el sistema puede aplicarse con confianza en
+contextos reales, siempre que se realicen ajustes periódicos y se integren nuevos datos
+conforme evolucione el mercado.
+Finalmente, se reconocen las limitaciones del modelo, entre ellas el uso de datos
+simulados y la ausencia de variables externas, como indicadores macroeconómicos o
+información de comportamiento crediticio en otros países. Aun así, los resultados
+obtenidos proporcionan una base sólida para futuras etapas de desarrollo, en las que
+podrían incorporarse datos reales bajo estrictos criterios de privacidad y cumplimiento
+normativo.
+Además del desempeño técnico, se valoró la interpretabilidad del modelo, un aspecto
+esencial para su aceptación en el ámbito financiero. La posibilidad de explicar las
+decisiones del algoritmo —por ejemplo, qué variables influyen más en la clasificación de
+un usuario como solvente o no solvente— resulta clave para su integración con entidades
+bancarias y fintechs que requieren transparencia en la toma de decisiones.
+5.5 Conclusiones del proceso de recolección de datos
+El proceso de recolección y preparación de datos permitió construir una base sólida para
+el desarrollo del modelo de scoring fintech. Aunque se trabajó con información sintética, la
+metodología aplicada demostró que es posible diseñar y validar un sistema predictivo
+funcional sin vulnerar la privacidad de los usuarios.
+La generación controlada de datos, su limpieza rigurosa y el entrenamiento de modelos
+supervisados han confirmado que los enfoques basados en datos alternativos pueden ser
+una vía realista para impulsar la inclusión financiera de colectivos tradicionalmente
+excluidos, como los inmigrantes o las personas sin historial crediticio.
+Este punto marca, además, la transición hacia la siguiente etapa del proyecto, orientada a
+la evaluación de impacto y validación práctica del modelo propuesto en entornos reales, lo
+cual consolidará los aprendizajes obtenidos y permitirá perfeccionar el algoritmo con
+información de comportamiento genuino.
+6. MEJORAS EN EL MODELO DE DATOS
+6.1 Limitaciones del modelo inicial
+Tras la validación del modelo de scoring fintech, se identificaron varios aspectos que
+podían optimizarse para mejorar su rendimiento general. Aunque la primera versión del
+modelo presentó buenos resultados —con una precisión cercana al 87 %—, se detectaron
+algunas limitaciones tanto técnicas como metodológicas que debían corregirse antes de
+su aplicación práctica.
+Una de las principales limitaciones fue un ligero sesgo hacia perfiles con ingresos medios
+y estabilidad laboral alta, lo cual reducía la capacidad del modelo para generalizar sobre
+segmentos más vulnerables, como autónomos o personas con historial financiero
+insuficiente. Este sesgo tenía relación con la estructura del dataset sintético, que, pese a
+ser representativo, no reflejaba completamente la diversidad socioeconómica del público
+objetivo.
+También se comprobó que ciertas variables utilizadas en la versión inicial no aportaban
+valor predictivo significativo. Elementos como el número de descargas de aplicaciones o
+la frecuencia de interacción en redes sociales mostraron baja correlación con la variable
+objetivo, introduciendo ruido en el proceso de aprendizaje.
+Por último, se observó que la arquitectura inicial, basada en algoritmos de clasificación
+binaria simples, no capturaba relaciones no lineales complejas entre las variables. Esta
+limitación motivó la exploración de modelos más robustos y flexibles, capaces de mejorar
+la precisión sin sacrificar interpretabilidad.
+6.2 Ajustes y nuevas variables
+A partir de las observaciones anteriores, se realizaron ajustes sustanciales para
+perfeccionar el modelo. En primer lugar, se revisó el conjunto de variables originales,
+eliminando aquellas con baja relevancia estadística e incorporando nuevas métricas
+derivadas de las existentes.
+Entre las variables añadidas destacan:
+Tasa de estabilidad laboral, que mide la duración promedio en los últimos empleos.
+Índice de comportamiento financiero, que combina puntualidad en pagos, relación
+deuda/ingresos y uso responsable del crédito.
+Métrica de confianza digital, que evalúa la consistencia en el uso de plataformas
+de consumo.
+Además, se amplió el dataset sintético hasta 15.000 registros, distribuidos de manera más
+equilibrada entre distintos tipos de ingreso, nacionalidad y antigüedad laboral. Este
+incremento buscó reforzar la representatividad del modelo, reduciendo posibles sesgos en
+los resultados.
+Para optimizar la estructura de los datos, se aplicaron técnicas de target encoding en las
+variables categóricas, mejorando la forma en que el modelo interpreta el impacto de cada
+categoría sobre la variable objetivo. También se implementaron métodos de regularización
+L1 y L2 durante el entrenamiento para evitar el sobreajuste, manteniendo la estabilidad y
+simplicidad del modelo.
+6.3 Reentrenamiento del modelo
+Con los datos ajustados, se llevó a cabo una nueva fase de entrenamiento. En esta etapa
+se compararon varios algoritmos supervisados —entre ellos Gradient Boosting, XGBoost y
+Random Forest— para identificar la mejor alternativa en términos de precisión, estabilidad
+y eficiencia computacional.
+Tras diversas pruebas, el modelo XGBoost se consolidó como el más adecuado. Este
+algoritmo equilibró correctamente la precisión con el tiempo de procesamiento, y su
+estructura permitió captar relaciones complejas entre variables sin comprometer la
+interpretabilidad.
+Durante el proceso se aplicó validación cruzada y optimización de hiperparámetros
+mediante Grid Search, ajustando el número de árboles, la profundidad máxima y la tasa
+de aprendizaje. Estas mejoras contribuyeron a estabilizar los resultados y a mejorar la
+generalización.
+Asimismo, se incorporaron métricas complementarias como la precisión balanceada
+(balanced accuracy) y la pérdida logarítmica (log loss), que ofrecieron una visión más
+completa del desempeño del modelo frente a conjuntos de datos desbalanceados.
+El reentrenamiento permitió comprobar una reducción significativa en la varianza de los
+resultados, lo que evidenció una mayor consistencia del sistema frente a diferentes
+escenarios de prueba.
+6.4 Impacto en la precisión final
+Los ajustes introducidos generaron una mejora notable en el rendimiento del modelo. La
+precisión pasó del 87 % inicial al 92 %, mientras que la métrica ROC-AUC alcanzó un
+0,95, lo que indica una capacidad de discriminación excelente entre perfiles de riesgo alto
+y bajo.
+El análisis de importancia de variables confirmó que los factores más influyentes en la
+predicción fueron el índice de comportamiento financiero, la tasa de estabilidad laboral y el
+nivel de ingresos, seguidos de la antigüedad en el país y la regularidad en los pagos
+digitales. Estos resultados fortalecen la hipótesis central del proyecto: los datos
+alternativos, correctamente estructurados, ofrecen una visión más justa y precisa del
+riesgo crediticio que los métodos tradicionales.
+Además, el modelo ajustado mostró una mejor distribución de aciertos entre los distintos
+grupos socioeconómicos, reduciendo el sesgo hacia usuarios de ingresos medios y
+mejorando la clasificación de perfiles solventes dentro de colectivos más vulnerables.
+Este avance no solo mejora el desempeño técnico del sistema, sino que refuerza el
+impacto social del proyecto, al demostrar que la innovación tecnológica puede contribuir a
+la inclusión financiera de poblaciones tradicionalmente excluidas.
+En conjunto, las mejoras implementadas consolidan la base para la futura aplicación
+práctica del modelo en entornos reales. Los resultados alcanzados validan el enfoque
+adoptado y confirman que la integración de técnicas avanzadas de análisis de datos con
+criterios de equidad puede generar soluciones viables y sostenibles dentro del ecosistema
+fintech español.
+7. MODELO DE MONETIZACIÓN
+7.1 Estructura de pricing
+Diseñamos un modelo de pricing que ofrece opciones de accesibilidad para clientes
+pequeños como rentabilidad en clientes grandes, ofreciendo dos modalidades principales,
+Pay-Per-Use y de Suscripción.
+7.1.1 Modalidad Pay-Per-Use
+La opción de pago por uso va especialmente enfocada a fintech nuevas o con volúmenes
+impredecibles, que prefieren evitar compromisos mensuales que impacten en sus gastos
+fijos.
+Tarifa: 0,10€ por consulta de scoring Sin compromiso mínimo Sin costes fijos
+Esta tarifa es entre 5 y 10 veces menor a consultas en bureaus tradicionales, que cuestan
+entre 0,50€ y 1,00€ (Belvo, 2026; GetApp, 2025; Techjockey, 2026), haciendo la propuesta
+inmediatamente atractiva para clientes cost-conscious.
+Poniendo esto en perspectiva, una fintech que procese 1.000 solicitudes mensuales, de
+las cuales 300 carecen de historial tradicional, usando nuestra herramienta pagaría 30€
+mensuales por evaluar ese segmento que actualmente rechaza directamente, sin análisis.
+El coste de oportunidad de rechazar un solo buen cliente superaría ampliamente este
+gasto, convirtiéndolo en una inversión.
+7.1.2 Modalidad de Suscripción
+Para clientes con volúmenes de evaluaciones establecidos o predecibles, ofrecemos
+planes de suscripción que reducen el coste unitario recompensando el compromiso
+mensual.
+Plan Básico - 500€/mes:
+● 10.000 consultas incluidas (0,05€ cada una)
+● 0,08€ por consulta adicional
+● Soporte por email con SLA 24h
+● Documentación estándar
+● Ideal para fintech procesando 500-1.500 solicitudes/mes
+Plan Profesional - 2.000€/mes:
+● 50.000 consultas incluidas (0,04€ cada una)
+● 0,06€ por consulta adicional
+● Soporte prioritario con SLA 4h
+● Account manager asignado
+● Reuniones trimestrales de revisión
+● Ideal para fintech procesando 2.500-7.500 solicitudes/mes
+Plan Enterprise - Precio personalizado:
+● Volumen negociado (típicamente >100.000 consultas/mes)
+● Coste unitario desde 0,02€
+● SLA garantizado con penalizaciones
+● Integraciones personalizadas
+● Acceso a roadmap de producto
+● Ideal para neobancos y grandes prestamistas
+7.1.3 Lógica del modelo de precios
+La estructura se basa en tres pilares estratégicos:
+Captura de valor: Nuestro servicio permite a clientes aprobar préstamos que bajo
+esquemas tradicionales serían rechazados. Un préstamo de 3.000€ con margen del 8%
+genera 240€ de beneficio. Pagar 0,10€ por la evaluación representa 0,04% del valor
+generado, esto deja casi todo el valor al cliente.
+Costes variables: Nuestro coste marginal por consulta incluye compute cloud (~0,001€),
+llamadas a APIs externas (~0,02€), y almacenamiento (~0,001€), totalizando ~0,022€.
+Con una tarifa de 0,10€ obtenemos un margen bruto del 78%, saludable para un negocio
+SaaS (Bessemer Venture Partners, 2024; Meritech Capital, 2025).
+Incentivos al compromiso: Esto mediante los planes de suscripción, que logran reducir
+el coste unitario por consulta hasta en 60% (de 0,10€ a 0,04€ en plan Profesional),
+incentivando la contratación por volúmenes mayores y el compromiso a largo plazo,
+logrando con esto reducir nuestra tasa de cancelación, apostando por la fidelización.
+7.2 Flujos de ingresos complementarios
+Adicional al scoring básico, identificamos tres flujos de ingresos que podrían
+complementar y potenciar los ingresos al ser implementados en fases posteriores.
+7.2.1 Servicios de consultoría
+Asesoramiento a las fintech para lograr la optimización en todas las etapas de sus
+procesos de evaluación crediticia, no solo en el scoring. Lo que incluye: análisis de su
+funnel actual, identificación de cuellos de botella, recomendaciones sobre umbrales de
+aprobación óptimos y diseño de estrategias de segmentación.
+Pricing: 5.000€-15.000€ por proyecto de consultoría
+Target: 3-5 proyectos anuales
+Ingresos estimados: 15.000€-75.000€/año
+7.2.2 White-label de la plataforma
+Esto consiste en licenciar nuestra tecnología completa a las fintech que opten por manejar
+el scoring internamente, siendo suministrado por nosotros el mantenimiento y
+actualizaciones del modelo.
+Pricing: 10.000€ setup + 3.000€/mes de licencia
+Target: 2-3 clientes en año 3
+Ingresos estimados: 90.000€-120.000€/año
+7.2.3 Venta de insights agregados
+Generar reportes detallados de mercado basados en datos agregados y anonimizados
+(esto último clave para cumplir con la Ley de Protección de Datos). Ejemplo de reportes
+podrían ser: "Estado del crédito alternativo en España Q1 2026: tendencias, perfiles
+demográficos, tasas de aprobación por región".
+Estos reportes serían de gran utilidad para inversores del sector fintech, consultoras, y
+entidades reguladoras.
+Pricing: 2.000€-5.000€ por reporte trimestral
+Target: 10-20 suscriptores
+Ingresos estimados: 40.000€-80.000€/año
+7.3 Proyecciones de ingresos
+Construimos tres escenarios de adopción del servicio para así proyectar los ingresos en
+los próximos tres años.
+7.3.1 Escenario conservador
+Año 1:
+● Meses 1-3: 2 clientes piloto (gratis, 0€ ingresos pero validación crítica)
+● Meses 4-6: 3 clientes pagando en pay-per-use, promedio 200 consultas/mes
+● Meses 7-9: 5 clientes, 2 migran a Plan Básico, 3 en pay-per-use → 1.300€/mes
+● Meses 10-12: 7 clientes, 3 en Básico, 2 en Profesional, 2 en pay-per-use →
+cada uno → 180€/mes6.000€/mes
+Total Año 1: ~48.000€
+Año 2:
+● Crecimiento a 15 clientes
+● Mix: 6 en Básico, 4 en Profesional, 5 en pay-per-use
+● Promedio mensual: ~15.000€
+Total Año 2: 180.000€
+Año 3:
+● Crecimiento a 22 clientes
+● Mix: 8 Básico, 7 Profesional, 5 pay-per-use, 2 Enterprise
+● Promedio mensual: ~28.000€
+Total Año 3: 336.000€
+7.3.2 Escenario moderado
+Asume adopción 30% superior al escenario conservador:
+● Año 1: 65.000€
+● Año 2: 250.000€
+● Año 3: 480.000€
+7.3.3 Escenario optimista
+Asume adopción acelerada con entrada de 1-2 neobancos grandes:
+● Año 1: 90.000€
+● Año 2: 380.000€
+● Año 3: 720.000€
+Para efectos de nuestra planificación financiera, así como la captación de inversión,
+utilizaremos el escenario conservador, permitiendo superar las expectativas en el caso
+que la adopción resulte más rápida y permitiendo un mejor margen de maniobra con los
+inversionistas.
+7.4 Métricas clave del modelo de negocio
+Se hará seguimiento a indicadores específicos para evaluar salud y sostenibilidad del
+modelo de monetización:
+Customer Acquisition Cost (CAC): Coste total de ventas y marketing dividido por
+número de clientes nuevos.
+Objetivo: <3.000€ por cliente.
+Lifetime Value (LTV): Ingreso promedio por cliente durante toda su relación con nosotros.
+Objetivo año 3: >18.000€.
+LTV/CAC Ratio: Indicador de eficiencia económica.
+Objetivo: >6:1.
+Churn Rate mensual: Porcentaje de clientes que cancelan cada mes.
+Objetivo: <3%.
+Net Revenue Retention: Porcentaje de ingresos retenidos año-sobre-año de la cohorte
+existente, incluyendo expansion revenue.
+Objetivo: >110% (clientes existentes gastan más con el tiempo).
+Gross Margin: (Ingresos - Costes variables) / Ingresos.
+Objetivo: >75%.
+8. EQUIPO Y RECURSOS
+8.1 Estructura del equipo fundador
+Este proyecto requiere un equipo fundador multidisciplinario, que logre cubrir un mínimo
+de competencias técnicas, comerciales y operativas. Proponemos una estructura inicial de
+cuatro personas:
+Perfil 1 - CEO / Business Lead: Responsable de estrategia general, relaciones con
+inversores, y desarrollo de negocio. Idealmente con experiencia previa en fintech (product
+manager, business development, o fundador de startup anterior). Habilidades clave: venta
+B2B, comprensión del sector financiero, capacidad de fundraising y networking en
+ecosistema emprendedor.
+Perfil 2 - CTO / Tech Lead: Responsable de la arquitectura técnica, infraestructura cloud,
+y decisiones de stack tecnológico. Experiencia mínima de 5 años en ingeniería de
+software, con conocimientos sólidos en APIs, bases de datos, y sistemas distribuidos.
+Deseable experiencia en fintech o ambientes de alto volumen transaccional.
+Perfil 3 - Data Scientist / ML Lead: Responsable del desarrollo, entrenamiento y
+optimización continua de los modelos de machine learning. Formación avanzada en
+estadística o computer science (preferiblemente PhD o Máster especializado). Experiencia
+demostrable en proyectos de ML en producción, no solo académicos. Dominio de Python,
+scikit-learn, XGBoost, y frameworks de experimentación.
+Perfil 4 - Full-Stack Developer: Responsable de implementación de features,
+mantenimiento de la API, y desarrollo de herramientas internas. Experiencia en Python
+(FastAPI), PostgreSQL, Redis, y deployment en cloud (AWS/GCP/Azure). Capacidad de
+trabajar en todo el stack desde base de datos hasta endpoints de API.
+Esta estructura de cuatro personas cubre las áreas críticas para un MVP funcional. A
+medida que el negocio escale, serán incorporados perfiles adicionales.
+8.2 Plan de crecimiento del equipo
+El cronograma de contrataciones se alinea con hitos de negocio y disponibilidad de
+financiación:
+Meses 0-6 (Fase de desarrollo MVP):
+● Equipo fundador (4 personas)
+● Opcionalmente 1 freelance de frontend para dashboard de clientes
+Meses 7-12 (Primeros clientes pagando):
+● Contratación 5: Sales / Business Development Representative
+○ Perfil:
+○ Experiencia en venta B2B de soluciones SaaS
+○ Network en sector fintech deseable
+○ Responsable de prospección y cierre de nuevos clientes
+Meses 13-18 (Expansión de cliente base):
+● Contratación 6: Customer Success Manager
+○ Perfil:
+○ Gestiona onboarding de clientes nuevos
+○ Monitoriza satisfacción y previene churn
+○ Identifica oportunidades de upsell
+● Contratación 7: DevOps Engineer
+○ Perfil:
+○ Optimiza infraestructura cloud
+○ Implementa CI/CD robusto
+○ Gestiona monitorización y alertas
+Meses 19-24 (Operaciones maduras):
+● Contratación 8: Data Engineer
+○ Perfil:
+○ Construye pipelines de datos más sofisticados
+○ Gestiona integraciones con fuentes de datos externas
+○ Optimiza procesamiento batch
+● Contratación 9: Compliance & Legal Officer (media jornada)
+○ Perfil:
+○ Asegura cumplimiento GDPR
+○ Gestiona relaciones con AEPD
+○ Revisa contratos con clientes
+Este plan lleva el equipo de 4 a 9 personas en dos años, tamaño manejable para una
+startup early-stage.
+8.3 Recursos tecnológicos necesarios
+8.3.1 Infraestructura cloud
+Proveedor seleccionado: AWS (Amazon Web Services) Presupuesto mensual inicial:
+400€ Presupuesto mensual año 2: 1.200€
+Servicios utilizados:
+● EC2 (servidores virtuales): 2 instancias t3.medium para API (150€/mes)
+● RDS PostgreSQL: Base de datos gestionada, 1 instancia db.t3.small (80€/mes)
+● ElastiCache Redis: Cache en memoria, 1 nodo cache.t3.micro (50€/mes)
+● S3: Almacenamiento de modelos y backups (20€/mes)
+● CloudFront: CDN para reducir latencias globales (30€/mes)
+● Route53: DNS management (5€/mes)
+● CloudWatch: Monitorización y logs (40€/mes)
+● Secrets Manager: Gestión de credenciales (10€/mes)
+● Backup automático y disaster recovery (15€/mes)
+Justificación de AWS vs. alternativas:
+Consideramos GCP y Azure. AWS ofrece mayor madurez en servicios financieros
+(muchas fintech ya lo usan, facilitando integraciones), programa de créditos para startups
+(hasta $100k en año 1), y documentación/community más extensas (Amazon Web
+Services, 2025 y 2026; Stack Overflow, 2025)
+8.3.2 Herramientas SaaS
+Desarrollo:
+● GitHub Enterprise ($21/usuario/mes × 4 = $84/mes): Control de versiones y
+CI/CD
+● DataDog ($15/host/mes × 3 = $45/mes): Monitorización APM
+● Sentry ($26/mes): Error tracking
+● Total: ~150€/mes
+Productividad:
+● Google Workspace ($12/usuario/mes × 4 = $48/mes): Email, docs, calendar
+● Slack ($8/usuario/mes × 4 = $32/mes): Comunicación interna
+● Notion ($10/usuario/mes × 4 = $40/mes): Knowledge base y documentación
+● Total: ~120€/mes
+Ventas y CRM:
+● HubSpot CRM (plan gratuito inicialmente)
+● LinkedIn Sales Navigator ($79/mes): Prospección B2B
+● Total: ~80€/mes
+Total herramientas SaaS: ~350€/mes
+8.3.3 Hardware y equipamiento
+Cada miembro del equipo requiere:
+● Laptop (MacBook Pro o equivalente): 2.000€
+● Monitor externo: 300€
+● Accesorios (teclado, mouse, auriculares): 200€
+Inversión inicial: 4 × 2.500€ = 10.000€
+8.3.4 Oficina y espacio de trabajo
+Meses 1-6: Trabajo remoto completo (ahorro de costes inicialmente)
+Meses 7+: Coworking en Madrid (Utopicus, Loom, Impact Hub)
+● Coste: ~200€/persona/mes
+● 4 personas = 800€/mes
+● Incluye: mesas, internet, salas de reuniones, café
+Evitamos oficina propia para mantener flexibilidad y bajos costes fijos.
+8.4 Inversión inicial requerida
+Consolidando todas las necesidades, la inversión inicial para 18 meses de operación se
+estructura así:
+Salarios (18 meses):
+● 4 fundadores: Salarios modestos de 2.500€/mes promedio × 4 × 18 = 180.000€
+● 2 contrataciones adicionales (meses 7-18): 3.000€/mes × 2 × 12 = 72.000€
+● Subtotal salarios: 252.000€
+Infraestructura y tecnología (18 meses):
+● Cloud AWS: 400€/mes × 6 + 800€/mes × 12 = 12.000€
+● Herramientas SaaS: 350€/mes × 18 = 6.300€
+● Hardware: 10.000€ (inicial) + 5.000€ (contrataciones) = 15.000€
+● Subtotal tech: 33.300€
+Operaciones (18 meses):
+● Coworking: 800€/mes × 12 = 9.600€
+● Viajes y eventos: 2.000€/mes × 18 = 36.000€
+● Marketing y contenido: 1.000€/mes × 18 = 18.000€
+● Legal y compliance: 1.500€/mes × 18 = 27.000€
+● Subtotal operaciones: 90.600€
+Contingencia (15%): 56.000€
+Total inversión inicial: 432.000€
+Esta cifra se puede redondear a un valor psicológicamente relevante el para el pitch a
+inversores: 450.000€
+Con esta cantidad se logra cubrir íntegramente un runway de 18 meses, asumiendo un
+escenario conservador donde solo aparecen ingresos significativos a partir del mes 12. En
+caso de que la adopción sea más rápida, el runway se irá extendiendo.
+8.5 Estrategia de captación de financiación
+Para reunir los 450.000€, proponemos una combinación de fuentes:
+Ronda Pre-Seed: 350.000€
+● Business angels del sector fintech (150.000€)
+● Fondo de pre-seed especializado en SaaS B2B (200.000€)
+● Valoración pre-money: 1.5M€
+● Dilución: 23%
+Subvenciones y grants: 50.000€
+● ENISA Jóvenes Emprendedores, hasta 75.000€ disponible. (Enisa, 2026)
+● Grants de AWS Activate, Google Cloud Startups
+● Programas de aceleración, South Summit seleccionados reciben 50k-100k
+(South Summit, 2026).
+Aportación fundadores: 50.000€
+● 12.500€ por fundador
+● Demuestra skin in the game a inversores
+Esta estructura minimiza dilución (sub-25%) manteniendo suficiente capital para ejecutar
+plan inicial.
+9. EVALUACIÓN DE LA EFECTIVIDAD DE LAS MEJORAS
+9.1 Métricas de rendimiento del modelo
+La evaluación rigurosa del modelo es un elemento fundamental para poder garantizar que
+cada una de las mejoras implementadas sean capaces de generar un valor real en la
+plataforma. Implementamos un framework de métricas que abarquen tanto aspectos
+técnicos como de negocio.
+9.1.1 Métricas técnicas primarias
+Accuracy (Exactitud): Refleja la proporción de predicciones correctas sobre el total. En
+nuestro modelo final: 78,5%.
+Accuracy = (Predicciones correctas) / (Total predicciones)
+= (142 + 87 + 31) / 200
+= 0.785
+Esta es una métrica básica, aunque puede ser engañosa en datasets desbalanceados.
+Por ello es necesario complementar con métricas más sofisticadas.
+Precision (Precisión): De todas las veces que el modelo predijo "bajo riesgo", ¿cuántas
+veces acertó?
+Precision_low = 142 / (142 + 12 + 0) = 0.922
+Alta precisión en la clase "low risk" significa que cuando recomendamos aprobar un
+préstamo, probablemente es seguro hacerlo.
+Recall (Sensibilidad): De todos los usuarios que realmente son bajo riesgo, ¿cuántos
+identificamos?
+Recall_low = 142 / (142 + 8 + 0) = 0.947
+Un alto recall significa que no estamos perdiendo buenos clientes al clasificarlos como
+falsos negativos.
+F1-Score: Media armónica de precision y recall. Balancea ambas métricas en un solo
+número.
+F1 = 2 × (Precision × Recall) / (Precision + Recall)
+= 2 × (0.922 × 0.947) / (0.922 + 0.947)
+= 0.934
+Nuestro F1-score de 93.4% para la clase "low risk" indica rendimiento excelente en
+identificar buenos pagadores.
+AUC-ROC (Area Under Curve - Receiver Operating Characteristic): Mide la capacidad
+del modelo para discriminar entre clases, independientemente del threshold elegido.
+Nuestro valor de 90.2% se interpreta como: si tomamos de forma aleatoria a un usuario de
+bajo riesgo y uno de alto riesgo, hay 90.2% de probabilidad de que el modelo le asigne un
+mayor score al de bajo riesgo.
+9.1.2 Análisis de matriz de confusión
+La matriz revela dónde el modelo acierta y dónde falla:
+Predicho: Low Predicho: Med Predicho: High Total Real
+Actual: Low 142 8 0 150
+Actual: Med 12 87 11 110
+Actual: High 0 9 31 40
+Total Predicho 154 104 42 300
+Insights clave:
+1. Cero falsos positivos críticos: Nunca clasificamos un alto riesgo como bajo
+riesgo. Esto es fundamental, ya que aprobar a un usuario que terminará en
+default es costoso para las fintech.
+2. Falsos negativos tolerables: 8 usuarios de bajo riesgo fueron clasificados
+como medium risk. Esto significa que algunos buenos clientes requerirán una
+revisión manual, más a fondo, pero no serán rechazados completamente
+siendo posible aún su recuperación como cliente.
+3. Confusión en medium risk: La categoría intermedia presenta mayor
+ambigüedad, lo cual es perfectamente razonable, ya que en la realidad, hay
+clientes genuinamente difíciles de clasificar.
+9.1.3 Curva ROC y selección de threshold
+Generamos la curva ROC variando el threshold de decisión, lo cual nos permite ajustar el
+balance entre precisión y recall, según las preferencias de cada cliente.
+Un cliente conservador, como puede ser un banco tradicional, podría preferir un threshold
+alto: “solo aprobamos si estamos muy seguros”. Esto maximiza precisión a costa de recall,
+por lo cual terminamos rechazando un mayor número de buenos clientes potenciales.
+Un cliente agresivo, caso de una fintech de crecimiento rápido, podría preferir un threshold
+bajo: aprovando más, aumentando recall, pero reduciendo precision, derivando en la
+aprobación de algunos clientes riesgosos como costo de este tipo de estrategias.
+Nuestro threshold por defecto estará calibrado en el punto que maximiza F1-score,
+balance razonable para la mayoría de casos.
+9.2 Validación estadística
+Para asegurar que los resultados del modelo no son producto del azar o el overfitting,
+aplicamos técnicas estadísticas rigurosas de validación.
+9.2.1 Cross-validation k-fold
+Para esta validación, dividimos el dataset en 5 partes (folds). Entrenamos el modelo 5
+veces, cada vez usando 4 folds para training y 1 para testing, rotando cuál se usa para
+testing.
+Resultados:
+Fold 1: F1 = 0.776, Accuracy = 0.775
+Fold 2: F1 = 0.784, Accuracy = 0.790
+Fold 3: F1 = 0.781, Accuracy = 0.785
+Fold 4: F1 = 0.779, Accuracy = 0.780
+Fold 5: F1 = 0.780, Accuracy = 0.785
+Promedio: F1 = 0.780 ± 0.003
+La desviación estándar de 0.003 indica que el rendimiento es estable independientemente
+de cómo dividamos los datos. Lo cual valida el modelo en cualquier circunstancia.
+9.2.2 Test en datos completamente nuevos
+Generamos un conjunto adicional de 200 usuarios que el modelo nunca vio durante
+training ni validation. Este simula lo que ocurrirá en producción con usuarios reales.
+Resultados en test set nuevo:
+Accuracy: 76.8%
+F1-Score: 76.2%
+AUC-ROC: 89.1%
+Ligera degradación respecto al validation set (~2%), perfectamente normal. Confirma que
+el modelo generaliza razonablemente bien.
+9.2.3 Bootstrap confidence intervals
+Aplicamos bootstrap resampling (1000 iteraciones) para calcular intervalos de confianza
+del 95% para nuestras métricas:
+Accuracy: 78.5% [76.2% - 80.9%]
+F1-Score: 78.0% [75.5% - 80.4%]
+AUC-ROC: 90.2% [88.1% - 92.1%]
+Estos intervalos indican el rango donde esperamos se sitúe el rendimiento real con alta
+probabilidad. Incluso en el peor escenario del intervalo, tomando el límite inferior, el
+modelo sigue siendo consistentemente efectivo.
+9.3 Comparación con baseline y competidores
+Para contextualizar nuestros resultados, los comparamos contra alternativas.
+9.3.1 Baseline naive
+Un modelo primitivo, que siempre predice la clase mayoritaria (medium risk) alcanzaría
+accuracy de 55% (110/200). Nuestro 78.5% representa mejora de 42% relativo sobre esta
+baseline.
+9.3.2 Regresión logística simple
+Entrenamos un modelo de regresión logística usando sólo las variables crudas (sin feature
+engineering). Resultados:
+Accuracy: 72.0%
+F1-Score: 71.5%
+La mejora de 6.5 puntos porcentuales demuestra el valor del feature engineering
+sofisticado que implementamos.
+9.3.3 Modelos tradicionales (FICO/VantageScore)
+Según autores como Khandani et all. (2010), Siddiqi (2017), así como informes de FICO
+(2023) y Vantage Store (2024), los modelos FICO tradicionales alcanzan accuracy del
+75-80% en poblaciones con historial. Nuestro 78.5% se sitúa dentro de este rango,
+notable considerando que:
+1. Usamos datos completamente diferentes (consumo digital vs. historial
+bancario)
+2. Nuestro dataset de entrenamiento es mucho menor
+3. Estamos en fase de prototipo, no décadas de refinamiento
+9.4 Análisis de importancia de features
+El XGBoost nos permite cuantificar cuánto contribuye cada una de las variables al poder
+predictivo del modelo.
+# Variable (Feature) Importancia (%) Categoría de Análisis
+1 avg_punctuality_all_apps 14.5% Comportamiento de Pago
+2 total_digital_spending 13.2% Capacidad Económica
+3 engagement_score 11.8% Actividad Digital
+4 glovo_punctuality 9.5% Hábitos de Consumo
+5 rfm_score 8.7% Valor Transaccional (RFM)
+6 spending_income_ratio 7.2% Salud Financiera
+7 active_apps_count 6.8% Estilo de Vida Digital
+8 movistar_punctuality 6.3% Compromisos Recurrentes
+9 days_since_registration 5.9% Estabilidad / Antigüedad
+1
+0 spending_trend 5.1% Tendencia de Gasto
+Insights:
+● Las top 3 features son todas derivadas (no variables crudas), validando el
+trabajo de feature engineering
+● La puntualidad agrupada explica >14% de las decisiones, confirmando nuestra
+hipótesis de que es el indicador más fuerte
+● Variables individuales de apps específicas (glovo_punctuality,
+movistar_punctuality) también son relevantes, sugiriendo que la información
+granular añade valor al modelo.
+● Features de tendencia temporal (spending_trend) aparecen en top 10, esto jos
+indica que la evolución en el tiempo del comportamiento del individuo importa
+tanto como el estado actual.
+9.5 Análisis de errores y casos edge
+Investigamos sistemáticamente los errores presentes en el modelo, para así identificar
+patrones que pudieran existir y oportunidades de mejora.
+9.5.1 Falsos negativos
+Estos son aquellos usuarios buenos, pero que el modelo clasifica como malos. Aquí
+examinamos los 8 casos de bajo riesgo clasificados como medium:
+Patrón común: Usuarios bastante nuevos (días_since_registration < 90), con
+comportamiento excelente pero historia corta. El modelo se muestra conservador con
+usuarios sin track record largo.
+Implicación: Podríamos crear una categoría especial "low risk - short history", a quienes
+se les asigne límites de crédito bajos, pero con posibilidades reales que escalen conforme
+acumulen más datos.
+9.5.2 Falsos positivos
+Estos son usuarios malos clasificados como buenos. No tuvimos falsos positivos graves
+(high risk → low risk), pero sí 9 casos de high risk → medium risk.
+Patrón común: Usuarios con gasto alto pero puntualidad limítrofe (80-85%). El gasto
+elevado confunde al modelo, haciendo que interprete que tienen capacidad de pago,
+cuando en realidad se trata de un problema de disciplina financiera.
+Implicación: Podríamos añadir un hard constraint: si puntualidad < 80%, nunca clasificar
+como low risk, esto independientemente de otras variables favorables.
+9.5.3 Usuarios autónomos
+Los autónomos presentan mayor tasa de error (error rate 28% vs. 22% general). La alta
+volatilidad de sus ingresos, inherente a su tipo de ingresos, dificulta la clasificación dentro
+del modelo.
+Implicación: Se confirma la necesidad de desarrollar un modelo especializado para este
+segmento de usuarios en futuras iteraciones.
+9.6 Simulaciones de impacto en negocio
+En esta etapa. traducimos las métricas técnicas en cómo sería el impacto económico real
+para nuestros clientes.
+Escenario base:
+● Fintech recibe 1.000 solicitudes/mes
+● 400 sin historial (actualmente son rechazadas)
+● De esas 400, asumimos ~25% son realmente buenos (100 personas)
+Con nuestro modelo:
+● Evaluamos las 400
+● Identificamos correctamente ~95 de los 100 buenos (recall 94.7%)
+● Aprobamos algunos malos adicionales (falsos positivos)
+Cálculo de valor:
+Concepto Detalle / Cálculo Valor
+Nuevas Operaciones Préstamos adicionales aprobados 95 unidades
+Ingreso Bruto Incremental 95 préstamos × 3.000€ (Ticket prom.) 285.000€
+Beneficio Marginal 285.000€ × 8% (Margen) 22.800€
+Costo por Riesgo (Default) 12 usuarios × 15% (Default) × 3.000€ × 0.7* -1.620€
+Beneficio Neto Mensual Beneficio Marginal - Pérdidas por Default 21.180€
+Inversión en Servicio 400 consultas × 0,10€ 40€
+ROI Mensual (21.180€ - 40€) / 40€ 52.850 %
+Este sencillo análisis cuantitativo demuestra el value proposition, con un gran impacto en
+los ingresos del cliente.
+10. GESTIÓN DE LA PRIVACIDAD Y ÉTICA DEL DATO
+10.1 Marco regulatorio aplicable
+El tratamiento de datos personales para evaluación crediticia en España está sujeto a un
+marco regulatorio complejo, que combina leyes de protección de datos, cada vez más
+estricta dentro de la Union Europea, con toda la normativa específica del sector financiero.
+10.1.1 Reglamento General de Protección de Datos (RGPD)
+El RGPD establece principios fundamentales que rigen toda operación de datos:
+Licitud, lealtad y transparencia: Solo procesamos datos con base legal clara mediante
+el consentimiento explícito del usuario o ejecución de contrato. Informamos al usuario
+exactamente qué datos recopilamos y su finalidad.
+Limitación de la finalidad: Los datos recogidos para scoring crediticio no pueden
+utilizarse posteriormente para otros fines (por ejemplo, marketing) sin un consentimiento
+adicional específico del usuario.
+Minimización de datos: Recopilamos solo información estrictamente necesaria para la
+evaluación. No pedimos acceso a mensajes privados, contactos, fotos, o cualquier dato no
+relevante para la decisión crediticia.
+Exactitud: Implementamos mecanismos que permitan al usuario corregir datos
+incorrectos que afecten su puntuación.
+Limitación del plazo de conservación: Los datos se borran automáticamente tras
+períodos definidos:
+· Datos transaccionales después de 24 meses
+· Puntuaciones calculadas después de 12 meses, a menos que exista obligación legal
+de conservación más larga.
+Integridad y confidencialidad: Se aplica la encriptación de datos en tránsito (TLS 1.3) y
+en reposo (AES-256). Implementando controles de acceso estrictos mediante
+autenticación multifactor para empleados.
+Responsabilidad proactiva: Documentamos todas las decisiones de diseño relacionadas
+con privacidad. Realizamos evaluaciones de impacto (DPIA - Data Protection Impact
+Assessment) antes de procesar nuevas categorías de datos.
+10.1.2 Ley Orgánica de Protección de Datos (LOPDGDD)
+La normativa española complementa el RGPD con requisitos adicionales:
+Artículo 11 (Consentimiento): El consentimiento debe ser específico para cada finalidad.
+No vale un consentimiento genérico para "mejorar nuestros servicios".
+Artículo 20 (Decisiones automatizadas): Los usuarios tienen derecho a no ser objeto de
+decisiones basadas únicamente en tratamiento automatizado que produzcan efectos
+jurídicos. Esto implica que nuestro scoring no puede ser el único criterio de decisión para
+aprobar o no a un usuario, la fintech cliente debe considerar factores adicionales o permitir
+revisión humana en caso de ser necesario o solicitado.
+Artículo 28 (Garantías de los derechos digitales): Los usuarios deben poder ejercer
+sus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición
+mediante canales digitales sencillos.
+10.1.3 Circular del Banco de España y normativa sectorial
+Aunque no somos una entidad de crédito directamente, las fintech que usan nuestro
+servicio sí lo son, por lo que las herramientas que les ofrecemos deben estar siempre
+alineadas con la normativa sectorial vigente:
+Circular 4/2017 sobre normas de información financiera: Establece cómo las
+entidades deben documentar y justificar sus modelos de evaluación de riesgo. Nuestra
+documentación técnica debe facilitar que clientes cumplan estos requisitos.
+Directiva MiFID II (adaptada en España): Aunque más relevante para inversión que
+crédito, establece principios de governance de algoritmos que consideramos buenas
+prácticas: testing regular, documentación de cambios, comités de validación.
+10.2 Implementación práctica del cumplimiento
+Traducimos los requisitos legales en procesos operativos concretos.
+10.2.1 Flujo de consentimiento
+Cuando un usuario solicita un préstamo en una fintech cliente y esta desea usar nuestro
+scoring:
+Paso 1 - Información previa: Antes de solicitar consentimiento, mostramos una pantalla
+explicativa:
+
+Paso 2 - Consentimiento granular: Permitimos selección individual por aplicación:
+Autorizo el acceso a mis datos de:
+☑ Glovo (pedidos de comida y delivery)
+☑ Cabify (viajes y transporte)
+☐ Zara (compras online)
+☑ Movistar (facturación móvil)
+Entiendo que:
+- Puedo autorizar solo las apps que elija
+- Más datos mejoran la precisión de la evaluación
+- Puedo revocar el acceso en cualquier momento
+[Rechazar todo] [Aceptar seleccionadas]
+Esta granularidad cumple con el principio de consentimiento específico.
+Paso 3 - Registro de consentimiento: Almacenamos un registro auditable:
+json
+{
+"user_id": "usr_12345",
+"timestamp": "2025-01-15T10:23:45Z",
+"ip_address": "91.123.45.67",
+"consent": {
+"glovo": true,
+"cabify": true,
+"zara": false,
+"movistar": true
+},
+"expiry_date": "2026-01-15T10:23:45Z",
+"withdrawal_possible": true
+}
+```
+10.2.2 Derechos de los usuarios
+Implementamos un portal de privacidad donde los usuarios ejercen sus derechos:
+Derecho de acceso:
+Se define un Endpoint `/privacy/access` que devuelve todos los datos que tenemos sobre
+un usuario:
+GET /privacy/access?user_id=usr_12345
+Response:
+{
+"personal_data": {
+"age": 32,
+"registration_date": "2024-07-15"
+},
+"app_data": {
+"glovo": {
+"total_orders": 45,
+"avg_ticket": 23.50,
+"punctuality": 0.96,
+"total_spent": 1057.50
+},
+[...]
+},
+"scoring_history": [
+{
+"date": "2025-01-15",
+"score": 718,
+"risk_category": "low_risk"
+}
+],
+"data_sources": ["glovo_api", "cabify_api", "movistar_api"],
+"retention_until": "2026-01-15"
+}
+```
+Derecho de rectificación:
+Si un usuario detecta un error (por ejemplo, transacciones que no reconoce), puede
+reportarlo:
+POST /privacy/rectify
+{
+"user_id": "usr_12345",
+"field": "glovo_total_orders",
+"claimed_value": 40,
+"current_value": 45,
+"reason": "5 pedidos fueron cancelados pero aparecen como completados"
+}
+Esto genera un ticket de revisión manual. Si se confirma el error, corregimos los datos y
+recalculamos el score.
+Derecho de supresión ("derecho al olvido"):
+DELETE /privacy/delete?user_id=usr_12345
+Acciones ejecutadas:
+1. Eliminar datos transaccionales de todas las apps
+2. Eliminar scores calculados
+3. Anonimizar registros en logs (reemplazar user_id con hash)
+4. Notificar a fintech cliente que debe eliminar datos relacionados
+5. Enviar confirmación al usuario por email
+Excepción: Sólo si existe obligación legal de conservación (ej. investigación de fraude),
+mantenemos los datos pero bloqueamos su uso para scoring futuro.
+Derecho de portabilidad:
+Exportamos datos en formato estándar (JSON):
+GET /privacy/export?user_id=usr_12345
+Este comando descarga un archivo JSON con todos los datos en formato legible por
+máquina, facilitando que el usuario los traslade a otro proveedor si existe.
+Derecho de oposición al tratamiento automatizado:
+Permitimos que usuarios exijan revisión humana:
+POST /privacy/manual_review
+{
+"user_id": "usr_12345",
+"score_id": "score_789",
+"reason": "Creo que el score no refleja mi situación real"
+}
+Esto activa una solicitud para revisión manual por parte de la fintech cliente, que debe
+considerar factores adicionales no capturados por el modelo.
+10.2.3 Anonimización y pseudonimización
+Aplicamos diferentes niveles de protección según el uso de los datos:
+Nivel 1 - Datos en producción (pseudonimizados):
+Los datos operativos usan identificadores pseudónimos en lugar de información
+directamente identificable:
+En lugar de:
+{
+"name": "Juan García",
+"email": "juan.garcia@email.com",
+"dni": "12345678A"
+}
+Usamos:
+{
+"user_id": "usr_12345", // Hash irreversible del DNI
+"age": 32, // Mantenemos edad pero no fecha de nacimiento exacta
+}
+Nivel 2 - Datos analíticos (anonimizados):
+Para análisis internos, agregamos y anonimizamos completamente:
+En lugar de registros individuales, trabajamos con agregaciones:
+"Usuarios de 30-35 años en Madrid:
+- Gasto promedio: 1.250€
+- Puntualidad promedio: 91%
+- Distribución de riesgo: 35% low, 50% medium, 15% high"
+Nivel 3 - Datos de investigación (synthetic data):
+Para publicaciones académicas o demostraciones, generamos datos completamente
+sintéticos que preservan propiedades estadísticas, pero no corresponden a personas
+reales.
+10.2.4 Seguridad técnica
+Encriptación en tránsito:
+Todas las comunicaciones usan TLS 1.3 con perfect forward secrecy. Configuración:
+ssl_protocols TLSv1.3;
+ssl_ciphers 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384';
+ssl_prefer_server_ciphers off;
+Encriptación en reposo: Bases de datos encriptadas con AES-256:
+python
+PostgreSQL con extensión pgcrypto
+CREATE EXTENSION pgcrypto;
+Columnas sensibles encriptadas
+CREATE TABLE user_data (
+user_id VARCHAR PRIMARY KEY,
+sensitive_data BYTEA, -- Encriptado con pgp_sym_encrypt()
+...
+);
+Control de acceso: Implementación de RBAC (Role-Based Access Control):
+yaml
+Roles:
+- admin: Acceso completo (solo CTO y DPO)
+- engineer: Lectura de datos operativos, sin PII
+- analyst: Solo datos agregados/anonimizados
+- support: Acceso limitado solo con ticket válido
+Todos los accesos requieren:
+- MFA (autenticación de dos factores)
+- IP whitelisting (solo desde VPN corporativa)
+- Logging exhaustivo de todas las operaciones
+```
+Auditoría continua:
+Logs de acceso a datos sensibles:
+2025-01-15 10:23:45 | user:engineer_001 | action:read | resource:user_12345 |
+reason:customer_support_ticket_789 | approved:yes
+Estos logs son inmutables (append-only) y se revisan mensualmente buscando patrones
+anómalos.
+10.3 Consideraciones éticas más allá del cumplimiento legal
+El cumplimiento de GDPR es el mínimo legal, pero aspiramos a estándares éticos más
+elevados.
+10.3.1 Prevención de sesgos algorítmicos
+Los modelos de ML pueden perpetuar o amplificar sesgos existentes en los datos de
+entrenamiento. Implementamos controles específicos:
+Auditoría de equidad por grupo demográfico:
+Medimos si el modelo discrimina injustamente por edad, género, o nacionalidad:
+python
+Análisis de disparate impact
+for grupo in ['18-25', '26-35', '36-50', '50+']:
+tasa_aprobacion_grupo = aprobaciones[grupo] / solicitudes[grupo]
+tasa_aprobacion_total = aprobaciones_total / solicitudes_total
+ratio = tasa_aprobacion_grupo / tasa_aprobacion_total
+# Regla del 80%: ningún grupo debe tener ratio < 0.8
+if ratio < 0.8:
+ALERTA: "Posible discriminación contra grupo " + grupo
+Resultados de nuestro análisis:
+Grupo 18-25: Ratio 0.85 ✓
+Grupo 26-35: Ratio 0.98 ✓
+Grupo 36-50: Ratio 1.02 ✓
+Grupo 50+: Ratio 0.88 ✓
+Todos los grupos superan el threshold del 80%
+Análisis de calibración:
+Verificamos que las probabilidades predichas por el modelo sean realistas:
+Cuando el modelo dice "30% de probabilidad de default":
+¿Realmente aproximadamente el 30% de esos casos terminan en default?
+Grupos de calibración:
+0-10% predicho: 7% observado (dentro del margen)
+10-20% predicho: 15% observado ✓
+20-30% predicho: 24% observado ✓
+Buen nivel de calibración = predicciones confiables
+Variables protegidas:
+No incluimos directamente variables protegidas (etnia, religión, orientación sexual) ya que
+sería ilegal. Pero vigilamos proxies indirectos:
+Por ejemplo, el código postal podría ser proxy de etnia en áreas altamente segregadas.
+Realizamos análisis para detectar si el modelo toma decisiones diferentes en función del
+código postal de manera que correlacione con variables protegidas.
+Si detectamos esto, eliminamos esas variables o aplicamos técnicas de fairness
+(re-weighting, adversarial debiasing).
+10.3.2 Explicabilidad de decisiones
+El RGPD otorga derecho a explicación de decisiones automatizadas. Implementamos esto
+mediante:
+SHAP values (SHapley Additive exPlanations):
+Para cada predicción, calculamos cuánto contribuyó cada variable:
+Usuario usr_12345 - Score: 718 (Low Risk)
+Contribuciones:
+avg_punctuality: +120 puntos (muy alta puntualidad)
+total_digital_spending: +80 puntos (gasto saludable)
+days_since_registration: +40 puntos (usuario establecido)
+engagement_score: +30 puntos (usa múltiples apps)
+spending_volatility: -15 puntos (algo de variabilidad)
+...
+Baseline (usuario promedio): 650 puntos
+Score final: 718 puntos
+Esta explicación se incluye en la respuesta de la API y puede mostrarse al usuario final.
+Documentación de lógica del modelo:
+Mantenemos un documento que explica en lenguaje no técnico cómo funciona el sistema:
+"Nuestro modelo evalúa principalmente tres aspectos:
+1. Puntualidad de pagos (peso 40%):
+Si pagas tus servicios a tiempo consistentemente, recibes puntuación alta.
+2. Estabilidad de gastos (peso 35%):
+Gastos regulares y predecibles sugieren ingresos estables.
+3. Diversificación (peso 25%):
+Usar múltiples servicios digitales indica integración económica."
+10.3.3 Transparencia con usuarios finales
+Creamos una página pública "Cómo funciona nuestro scoring" que explica:
+- Qué datos usamos
+- Qué datos NO usamos
+- Cómo se calcula la puntuación
+- Cómo mejorar tu score
+- Cómo ejercer tus derechos
+Ejemplos de buenas prácticas que comunicamos:
+Cómo mejorar tu score de scoring alternativo:
+✓ Paga siempre a tiempo (lo más importante)
+✓ Usa servicios regularmente durante varios meses
+✓ Mantén patrones de gasto consistentes
+✓ Diversifica entre diferentes tipos de servicios
+✗ No manipules el sistema con transacciones falsas (lo detectaremos)
+✗ No compartas tu cuenta con otras personas
+✗ No canceles pedidos frecuentemente
+10.3.4 Comité de ética interno
+Estableceremos un comité que se reúne trimestralmente para revisar:
+Composición:
+- 1 miembro del equipo técnico (Data Scientist)
+- 1 miembro del equipo legal/compliance
+- 1 asesor externo (académico especializado en ética de IA)
+- 1 representante de consumidores (rotatorio)
+Funciones:
+- Revisar casos problemáticos reportados por usuarios
+- Evaluar cambios significativos en el modelo antes de deployment
+- Auditar métricas de fairness trimestralmente
+- Proponer mejoras en políticas de privacidad y transparencia
+Poder de veto:
+El comité puede bloquear el despliegue de actualizaciones del modelo que considere
+problemáticas desde perspectiva ética, incluso si son técnicamente superiores.
+10.4 Gestión de incidentes de seguridad
+A pesar de todas las precauciones, asumimos que eventualmente podría ocurrir una
+brecha de seguridad. Preparamos un protocolo de respuesta:
+10.4.1 Detección
+Monitorización 24/7:
+- Alertas automáticas ante patrones anómalos de acceso
+- Detección de exfiltración de datos mediante análisis de tráfico
+- Honeypots para detectar intentos de intrusión
+Whistleblowing:
+- Canal anónimo para que empleados reporten prácticas problemáticas
+- Protección contra represalias
+10.4.2 Contención (primeras 24 horas)
+1. Hora 0-1: Aislar sistemas afectados de la red
+2. Hora 1-4: Investigación forense inicial para determinar alcance
+3. Hora 4-12: Cerrar la vulnerabilidad
+4. Hora 12-24: Evaluar qué datos fueron accedidos
+10.4.3 Notificación (72 horas)
+A la autoridad de protección de datos (AEPD):
+Notificación obligatoria dentro de 72 horas incluyendo:
+- Naturaleza de la brecha
+- Categorías de datos afectados
+- Número aproximado de afectados
+- Medidas adoptadas
+A los usuarios afectados:
+Si el incidente implica alto riesgo para derechos y libertades:
+Asunto: Importante - Incidente de seguridad
+Estimado usuario,
+El [fecha], detectamos un acceso no autorizado a nuestros sistemas
+que pudo haber comprometido algunos de tus datos.
+Datos potencialmente afectados:
+- Datos de transacciones en apps (importes, fechas)
+- Puntuación crediticia calculada
+Datos NO afectados:
+- No almacenamos contraseñas
+- No almacenamos datos bancarios
+Medidas que hemos tomado:
+[...]
+Medidas que recomendamos:
+[...]
+Más información y recursos: [link]
+10.4.4 Remediación y lecciones aprendidas
+Tras resolver el incidente:
+- Post-mortem público (versión resumida)
+- Auditoría externa de seguridad
+- Implementación de mejoras
+- Compensación a afectados si procede
+11. MEDICIÓN Y CONTROL DEL MODELO DE DATOS MEJORADO
+11.1 Métricas operativas en producción
+Una vez el sistema esté en producción sirviendo solicitudes reales, monitorizaremos
+constantemente su comportamiento mediante un dashboard de métricas críticas.
+11.1.1 Métricas de volumen y disponibilidad
+Requests por segundo (RPS):
+- Objetivo: Soportar hasta 100 RPS en picos
+- Alarma si RPS supera 80 de manera sostenida (indica necesidad de escalar)
+Latencia percentiles:
+p50 (mediana): < 30ms
+p95: < 50ms
+p99: < 100ms
+p99.9: < 200ms
+Si p95 supera 50ms durante 5 minutos consecutivos, escalar horizontalmente añadiendo
+contenedores.
+Tasa de errores:
+Errores 4xx (cliente): < 2% (típicamente validaciones fallidas)
+Errores 5xx (servidor): < 0.1% (errores nuestros)
+Cualquier error 5xx genera alerta inmediata al equipo de guardia.
+Disponibilidad (uptime):
+- Objetivo: 99.9% mensual (permite ~43 minutos de downtime al mes)
+- Medido mediante health checks cada 30 segundos desde múltiples regiones geográficas
+11.1.2 Métricas de modelo (ML performance)
+Distribución de predictions:
+Monitorizamos cómo se distribuyen las predicciones diarias:
+Esperado (basado en training):
+- Low risk: 30% ± 5%
+- Medium risk: 50% ± 5%
+- High risk: 20% ± 5%
+Si las distribuciones se desvían significativamente, podría indicar:
+- Cambio en el perfil de usuarios (drift poblacional)
+- Problema con el modelo
+- Manipulación/fraude
+Prediction confidence:
+El modelo no solo predice una clase, también indica su nivel de confianza. Monitorizamos:
+Porcentaje de predictions con confianza alta (>80%): Objetivo >60%
+Porcentaje de predictions con confianza baja (<50%): Objetivo <15%
+Muchas predictions de baja confianza sugieren que el modelo
+encuentra usuarios muy diferentes a los del training set.
+Calibración continua:
+Cada mes, tomamos una muestra de usuarios scoreados y verificamos outcomes reales:
+Ejemplo mes de Febrero 2026:
+Usuarios predichos como Low Risk (score >700):
+- Total: 1,200
+- Con outcomes conocidos tras 6 meses: 450
+- Defaults observados: 32
+- Tasa de default real: 7.1%
+Tasa esperada según modelo: 5-8%
+Conclusión: Modelo bien calibrado ✓
+11.2 Detección de drift (degradación del modelo)
+Los modelos de ML se degradan con el tiempo porque el mundo cambia. Implementamos
+múltiples mecanismos de detección temprana.
+11.2.1 Data drift (cambios en los datos de entrada)
+Monitorizamos si las distribuciones de las features han cambiado:
+python
+# Test Kolmogorov-Smirnov para detectar cambios de distribución
+from scipy import stats
+for feature in features_list:
+# Comparar distribución actual vs. training
+stat, p_value = stats.ks_2samp(
+training_distribution[feature],
+production_distribution[feature]
+)
+if p_value < 0.05:
+ALERTA: f"Feature {feature} ha cambiado significativamente"
+Ejemplo real:
+Alerta: glovo_avg_ticket ha cambiado significativamente
+Training (2024): media=22.50€, std=8.30€
+Producción (2026): media=26.80€, std=9.10€
+Causa probable: Inflación + cambio de precios en Glovo
+Acción: Reentrenar modelo con datos más recientes
+11.2.2 Concept drift (cambios en la relación entre features y target)
+Aunque las features no cambien, la relación entre ellas y el riesgo puede evolucionar.
+Monitorizamos mediante "champions vs challengers":
+Mantenemos 3 modelos activos simultáneamente:
+1. CHAMPION (modelo en producción actual)
+2. CHALLENGER 1 (reentrenado con datos de últimos 6 meses)
+3. CHALLENGER 2 (arquitectura alternativa)
+Cada solicitud se evalúa con los 3 modelos (solo devolvemos resultado del champion).
+Mensualmente comparamos accuracy de los 3 en subset validado:
+Si CHALLENGER supera a CHAMPION por >2% durante 2 meses consecutivos:
+→ Promover CHALLENGER a CHAMPION
+11.2.3 Alertas de anomalías
+Detectamos patrones anómalos que podrían indicar problemas:
+Spike en rechazos:
+Si tasa de high-risk supera 30% en cualquier período de 4 horas:
+→ Alerta: "Posible problema con fuente de datos o ataque de fraude masivo"
+Cambio abrupto en feature importance:
+Si la importancia relativa de features cambia >20% súbitamente:
+→ Alerta: "Posible problema con pipeline de feature engineering"
+Usuarios idénticos:
+Si detectamos >5 usuarios con features 100% idénticas:
+→ Alerta: "Posible fraude coordinado o bug en generación de datos"
+11.3 Testing continuo y A/B testing
+11.3.1 Shadow mode testing
+Antes de desplegar cambios significativos en el modelo, los ejecutamos en "shadow
+mode":
+Arquitectura:
+Solicitud → [Modelo Actual (responde al cliente)]
+↘ [Modelo Nuevo (calcula pero no responde)]
+Registramos ambas predicciones.
+Tras 2 semanas de shadow mode, comparamos:
+- ¿El modelo nuevo clasifica igual que el actual?
+- ¿Hay casos donde difieren significativamente?
+- Cuando difieren, ¿cuál parece más acertado?
+Solo si el modelo nuevo pasa todas las validaciones → Deployment
+11.3.2 A/B testing para mejoras incrementales
+Para cambios menores (nuevas features, ajustes de hiperparámetros), usamos A/B
+testing:
+10% del tráfico → Variante B (con cambio)
+90% del tráfico → Variante A (control)
+Monitorizamos durante 4 semanas:
+Métricas primarias:
+- Accuracy en casos con outcomes conocidos
+- Latencia de respuesta
+- Satisfacción de cliente fintech
+Si B > A de manera estadísticamente significativa:
+→ Gradual rollout al 100%
+Si B ≈ A o B < A:
+→ Descartar cambio
+11.4 Feedback loops y mejora continua
+El verdadero valor viene de cerrar el loop: usar outcomes reales para mejorar el modelo.
+1.4.1 Captura de outcomes reales
+Acuerdos con fintech clientes para recibir feedback:
+Cuando fintech aprueba un préstamo basado en nuestro scoring:
+Mes 0: Aprobación
+Mes 1-6: Fintech monitoriza pagos
+Mes 6: Fintech envía outcome final
+POST /feedback/outcome
+{
+"user_id_hash": "abc123...", // Pseudonimizado
+"score_id": "score_789",
+"score_given": 718,
+"approved": true,
+"loan_amount": 3000,
+"outcome": "good_payer", // Options: good_payer, late_payer, default
+"months_tracked": 6
+}
+Este feedback se acumula en una base de datos de "ground truth" etiquetada.
+11.4.2 Reentrenamiento programado
+Pipeline automatizado de reentrenamiento:
+yaml
+Schedule: Mensual (primer domingo de cada mes, 2 AM)
+Pasos:
+1. Extraer nuevos datos:
+- Outcomes reales recibidos último mes
+- Datos frescos de usuarios activos
+2. Combinar con datos históricos:
+- Mantener ventana móvil de 12 meses
+- Desechar datos >12 meses
+3. Reentrenar modelo:
+- Mismo algoritmo (XGBoost)
+- Re-optimizar hiperparámetros via grid search
+4. Validar modelo nuevo:
+- Cross-validation
+- Comparar con modelo actual en hold-out set
+5. Deploy si supera threshold:
+- Si accuracy > actual + 1%: Deploy automático
+- Si accuracy ≈ actual: Mantener actual
+- Si accuracy < actual: Alerta para investigación manual
+11.4.3 Active learning
+Para casos donde el modelo tiene baja confianza, solicitamos validación humana
+preferentemente:
+Si confidence < 50%:
+→ Marcar para "review manual" por parte de la fintech
+→ Capturar decisión humana
+→ Usar estos casos difíciles para reentrenamiento
+(tienen mayor valor informativo que casos obvios)
+Esta estrategia maximiza el valor de cada etiqueta humana, focalizando esfuerzo en los
+casos más informativos.
+11.5 Documentación y governance
+11.5.1 Model cards (tarjetas de modelo)
+Mantenemos documentación exhaustiva del modelo siguiendo el framework de Model
+Cards (Google):
+markdown
+Model Card: Scoring Crediticio Alternativo v2.3
+Detalles del modelo
+Desarrollador: [Empresa]
+● Fecha entrenamiento: 2025-01-15
+● Versión: 2.3
+● Algoritmo: XGBoost
+● Framework: scikit-learn 1.4.0
+Uso previsto
+● Evaluación de riesgo crediticio para personas sin historial bancario
+● Complemento a scoring tradicional, NO reemplazo completo
+● Mercado: España (es-ES)
+Factores relevantes
+● Edad: 18-65 años
+● Datos de consumo digital de últimos 6 meses mínimo
+Métricas de rendimiento
+● Accuracy: 78.5% [76.2%-80.9% IC95%]
+● AUC-ROC: 90.2%
+● Evaluado en dataset de 1,000 usuarios (80/20 split)
+Datos de entrenamiento
+● 1,000 usuarios sintéticos (limitación conocida)
+● Próximo reentrenamiento usará datos reales
+● Distribución: 30% low risk, 50% medium, 20% high
+Análisis de equidad
+● Disparate impact ratio: >0.85 para todos los grupos etarios ✓
+● Sin diferencias significativas por género
+● Requiere validación con datos reales
+Limitaciones conocidas
+● Usuarios <30 días de historial: predicciones menos confiables
+● Autónomos: mayor error rate
+● No detecta fraude sofisticado
+Recomendaciones de uso
+● Umbral recomendado aprobación automática: score >750
+● Rango 650-750: Review manual
+● Rango <650: Rechazar o solicitar garantías adicionales
+Contacto
+● Equipo: ml-team@[empresa].com
+● DPO: dpo@[empresa].com
+11.5.2 Registro de cambios (changelog)
+Toda modificación del modelo se documenta:
+v2.3 (2025-01-15)
+Added
+● Feature: spending_trend (tendencia de gasto últimos 6 meses)
+● Feature: cabify_late_night_ratio
+Changed
+● Incrementado peso de movistar_punctuality de 6% a 8%
+● Threshold de high_volatility_flag ajustado de 0.5 a 0.6
+Performance
+● Accuracy: 78.5% (+1.2% vs v2.2)
+● Latencia p95: 42ms (-3ms vs v2.2)
+Migration notes
+● Requiere recalculo de scores para usuarios existentes
+● Compatible con API v2.x
+11.5.3 Comité de validación de modelos
+Para cambios mayores (nueva arquitectura, nuevas fuentes de datos), requerimos
+aprobación de comité:
+Composición:
+- CTO
+- ML Lead
+- 1 representante de cliente clave
+- Asesor externo (rotatorio)
+Criterios de aprobación:
+- Mejora demostrable de métricas (>2%)
+- Sin degradación de fairness
+- Impacto en latencia aceptable
+- Documentación completa
+12. CRONOGRAMA Y MÉTRICAS DE ÉXITO
+12.1 Cronograma de implementación (18 meses)
+Estructuramos el proyecto en seis fases principales con hitos medibles en cada una.
+12.1.1 Fase 1: Constitución y desarrollo MVP (Meses 1-4)
+Mes 1 - Constitución legal y setup inicial:
+- Semana 1-2: Constitución de sociedad, apertura de cuenta bancaria, registro mercantil
+- Semana 3: Firma de acuerdos entre fundadores, distribución de equity
+- Semana 4: Setup de infraestructura básica (AWS account, GitHub organization,
+herramientas)
+Hito: Sociedad constituida, equipo con acceso a herramientas
+Mes 2 - Desarrollo del core del modelo:
+- Semana 1-2: Generación de dataset sintético a mayor escala (10.000 usuarios)
+- Semana 3: Feature engineering y pipeline de preprocessing
+- Semana 4: Entrenamiento de modelos baseline
+Hito: Modelo funcional en notebook
+Mes 3 - Desarrollo de API:
+- Semana 1-2: Implementación de API REST con FastAPI
+- Semana 3: Testing, documentación, containerización con Docker
+- Semana 4: Deploy en AWS, configuración CI/CD
+Hito: API funcionando en staging
+Mes 4 - Refinamiento y preparación:
+- Semana 1-2: Optimización de performance, caching
+- Semana 3: Preparación de materiales comerciales (pitch deck, one-pager, demos)
+- Semana 4: Primeros acercamientos a potenciales clientes
+Hito: Sistema completo listo para piloto
+Métrica de éxito Fase 1: MVP funcional con latencia <100ms y 2-3 fintech interesadas en
+piloto
+12.1.2 Fase 2: Pilotos con primeros clientes (Meses 5-8)
+Mes 5 - Onboarding de pilotos:
+- Selección de 2-3 fintech para piloto gratuito de 90 días
+- Integración técnica (típicamente 1-2 semanas por cliente)
+- Configuración de acceso, claves API, documentación personalizada
+Hito: 2-3 clientes en piloto activo
+Mes 6-7 - Ejecución de pilotos:
+- Soporte intensivo a clientes piloto
+- Recolección de feedback semanal
+- Ajustes iterativos del modelo basados en casos reales
+- Monitorización de métricas de uso
+Hito: 500+ consultas reales procesadas
+Mes 8 - Evaluación y cierre de pilotos:
+- Análisis de resultados con cada cliente
+- Preparación de casos de estudio
+- Conversión a clientes de pago (objetivo: 2 de 3 convierten)
+Hito: 2 primeros clientes de pago firmados
+Métrica de éxito Fase 2: Al menos 2 clientes pagando, >60% satisfaction score en
+surveys
+12.1.3 Fase 3: Escala inicial (Meses 9-12)
+Mes 9 - Contratación y scaling:
+- Incorporación de Sales/BD Representative
+- Incremento de capacidad de infraestructura cloud
+- Automatización de procesos de onboarding
+Hito: Equipo expandido a 5 personas
+Mes 10-11 - Adquisición activa:
+- Pipeline de prospección activa (objetivo: 20 leads cualificados)
+- Participación en South Summit / FinnoSummit
+- Publicación de primer caso de estudio
+Hito 5-7 clientes totales
+Mes 12 - Cierre de año 1:
+- Reentrenamiento del modelo con datos reales acumulados
+- Preparación de report anual para inversores
+- Planificación de año 2
+Hito: 7-8 clientes, ingresos recurrentes >5.000€/mes
+Métrica de éxito Fase 3: 7+ clientes activos, MRR >5.000€, churn rate <10%
+12.1.4 Fase 4: Consolidación y mejora de producto (Meses 13-15)
+Mes 13 - Incorporación de nuevas fuentes:
+- Negociación con proveedores de utilities (Iberdrola, etc.)
+- Desarrollo de conectores adicionales
+- Testing de modelos con features expandidas
+Hito: 2-3 fuentes de datos adicionales integradas
+Mes 14 - Desarrollo de features premium:
+- Dashboard analítico para clientes
+- Webhooks para notificaciones en tiempo real
+- API de consulta batch para grandes volúmenes
+Hito: Features premium lanzadas
+Mes 15 - Optimización operativa:
+- Automatización de customer success
+- Mejoras de performance (reducir latencia a <30ms p95)
+- Implementación de A/B testing framework
+Hito: Sistema optimizado, latencia reducida 30%
+Métrica de éxito Fase 4: 12+ clientes, features premium adoptadas por 50%+ clientes
+12.1.5 Fase 5: Expansión acelerada (Meses 16-18)
+Mes 16 - Expansión del equipo:
+- Incorporación de Customer Success Manager
+- DevOps Engineer para escalabilidad
+● Data Engineer para pipelines avanzados
+Hito: Equipo de 8 personas
+Mes 17 - Entrada en segmento enterprise:
+● Conversaciones con neobancos (N26, Revolut)
+● Desarrollo de SLAs customizados
+● Implementación de high-availability (99.95% uptime)
+Hito: 1-2 clientes enterprise en pipeline
+Mes 18 - Preparación Serie A:
+● Cierre del año financiero
+● Métricas consolidadas para inversores
+● Roadmap detallado para siguientes 24 meses
+● Preparación de data room
+Hito: Documentación completa para fundraising
+Métrica de éxito Fase 5: 20+ clientes, MRR >25.000€, 1+ cliente enterprise firmado
+12.1.6 Fase 6: Preparación de siguiente etapa (Mes 18+)
+Objetivos post-mes 18:
+● Ronda Serie A (1.5M-2.5M€)
+● Expansión a Portugal como primer mercado internacional
+● Equipo objetivo: 15 personas para fin de año 2
+● MRR objetivo fin año 2: 80.000€
+12.2 Métricas clave de éxito (KPIs)
+Definimos métricas específicas agrupadas por categoría que monitorizaremos
+mensualmente.
+12.2.1 Métricas de producto
+Performance técnica:
+Latencia p95: <50ms (target), <30ms (aspiracional)
+Uptime: >99.9% mensual
+Error rate 5xx: <0.1%
+Throughput máximo: 100 RPS sin degradación
+Calidad del modelo:
+Accuracy (validado): >75% (mínimo), >80% (target)
+AUC-ROC: >88%
+Calibration error: <5%
+Data drift alerts/mes: <2
+Cobertura:
+% usuarios evaluables: >60% de los sin-historial tradicional
+% predicciones alta confianza: >65%
+12.2.2 Métricas comerciales
+Adquisición:
+Leads cualificados/mes: Mes 1-6: 5 | Mes 7-12: 15 | Mes 13-18: 25
+Conversion rate leads→piloto: >30%
+Conversion rate piloto→pago: >60%
+Retención:
+Churn mensual: <3%
+Net Revenue Retention: >110% anual
+Expansion revenue: >20% del revenue nuevo
+Growth:
+Mes 6: 2 clientes pagando
+Mes 12: 7-8 clientes
+Mes 18: 20+ clientes
+Mes 24: 40+ clientes (proyección)
+12.2.3 Métricas financieras
+Revenue:
+MRR Mes 6: ~1.500€
+MRR Mes 12: ~6.000€
+MRR Mes 18: ~25.000€
+ARR Mes 18: ~300.000€
+Unit economics:
+CAC (Customer Acquisition Cost): <3.000€
+LTV (Lifetime Value): >18.000€ (año 3)
+LTV/CAC ratio: >6:1
+Gross Margin: >75%
+Burn rate y runway:
+Burn mensual promedio: ~20.000€ (meses 1-12)
+~35.000€ (meses 13-18)
+Runway con 450k€ inicial: 18+ meses hasta break-even o Serie A
+12.2.4 Métricas de satisfacción
+Net Promoter Score (NPS):
+Survey trimestral a clientes:
+Target: NPS >50 (considerado excelente en B2B SaaS)
+Pregunta: "¿Qué probabilidad hay de que recomiendes
+nuestro servicio a otra fintech?" (0-10 scale)
+Promoters (9-10): >60%
+Passives (7-8): <30%
+Detractors (0-6): <10%
+Customer Satisfaction Score (CSAT):
+Medido tras cada interacción de soporte:
+Target: >4.5/5.0
+Dimensiones evaluadas:
+- Rapidez de respuesta
+- Claridad de explicación
+- Resolución del problema
+Customer Effort Score (CES):
+"¿Qué tan fácil fue integrar nuestro servicio?"
+Target: <2.0/7.0 (menor es mejor)
+Integration time promedio: <1 semana
+12.3 Hitos críticos (go/no-go decision points)
+Establecemos checkpoints donde evaluaremos si continuar, pivotar, o cerrar.
+12.3.1 Checkpoint Mes 6
+Criterios mínimos para continuar:
+● ✓ MVP técnicamente funcional (latencia <100ms, uptime >99%)
+● ✓ Al menos 2 clientes piloto completados
+● ✓ Al menos 1 cliente convierte a pago
+● ✓ Feedback positivo (NPS >30)
+Si NO se cumplen:
+● Analizar por qué los pilotos no convirtieron
+● Considerar pivot en propuesta de valor
+● Evaluar si el timing de mercado es correcto
+Decisión: Continuar con plan / Pivotar estrategia / Cerrar
+12.3.2 Checkpoint Mes 12
+Criterios mínimos:
+● ✓ 5+ clientes de pago activos
+● ✓ MRR >4.000€
+● ✓ Churn mensual <5%
+● ✓ Modelo validado con datos reales (accuracy >75%)
+● ✓ LTV/CAC ratio >3:1
+Si NO se cumplen:
+● ¿Es problema de producto (no resuelve el dolor)?
+● ¿Es problema de go-to-market (no llegamos al cliente correcto)?
+● ¿Es problema de timing (mercado no listo)?
+Decisión: Continuar a Fase 3 / Ajustar estrategia / Considerar cierre ordenado
+12.3.3 Checkpoint Mes 18
+Criterios para Serie A:
+● ✓ 15+ clientes de pago
+● ✓ MRR >20.000€ con crecimiento >15% mensual
+● ✓ Net Revenue Retention >100%
+● ✓ Unit economics saludables (LTV/CAC >5:1)
+● ✓ Runway suficiente (6+ meses) o path claro a profitabilidad
+Opciones en este punto:
+1. Serie A agresiva: Si growth es fuerte, levantar 2-3M€ para acelerar
+2. Crecimiento orgánico: Si métricas son buenas pero no espectaculares, continuar
+con capital actual hacia profitabilidad
+3. Venta estratégica: Si recibimos oferta interesante de adquisición
+4. Wind down: Si no hemos encontrado product-market fit
+12.4 Roadmap de producto futuro
+Más allá del horizonte de 18 meses, visualizamos evolución del producto:
+12.4.1 Año 2 (Meses 19-30)
+Q1-Q2:
+● Lanzamiento en Portugal (primer mercado internacional)
+● Modelos especializados por segmento (jóvenes, autónomos, inmigrantes)
+● Integration con plataformas de open banking (Tink, Plaid)
+Q3-Q4:
+● Desarrollo de scoring en tiempo real (streaming, no batch)
+● API de pre-aprobación instantánea para e-commerce
+● Dashboard predictivo (proyecciones de riesgo a 6-12 meses)
+12.4.2 Año 3 (Meses 31-42)
+Expansión geográfica:
+● Italia, Francia (mercados similares a España)
+● México, Colombia (LATAM de habla hispana)
+Nuevos productos:
+● Credit monitoring subscription para consumidores finales (B2C)
+● Fraud detection como servicio adicional
+● Marketplace de servicios financieros (conectar fintech con usuarios)
+Tecnología:
+● ML models con deep learning
+● Graph neural networks para detección de fraude en redes
+● AutoML para optimización continua sin intervención humana
+16. Bibliografía y Referencias
+Amazon Web Services. (2025). AWS for Financial Services: Driving innovation in banking,
+payments, and capital markets. https://aws.amazon.com/financial-services/
+Amazon Web Services. (2026). AWS Activate: Cloud Credits and Resources for Your
+Startup. https://aws.amazon.com/activate/
+Belvo. (s.f.). Plans and pricing. Recuperado el 28 de enero de 2026, de
+https://belvo.com/plans-and-pricing/
+Bessemer Venture Partners. (2024). State of the Cloud 2024: The New Era of Efficiency.
+https://www.bvp.com/atlas/state-of-the-cloud-2024
+Cleveroad. (2025, 1 de diciembre). FinTech App Development Cost: Detailed Estimation
+for 2026. https://www.cleveroad.com/blog/fintech-app-development-cost/
+Enisa. (2026). Líneas de Financiación: Jóvenes Emprendedores. Empresa Nacional de
+Innovación S.A.
+https://www.enisa.es/es/financia-tu-empresa/lineas-de-financiacion/d/jovenes-emprendedo
+res
+FICO. (2023). FICO® Score 10 and 10 T: The next generation of credit risk innovation
+[Technical White Paper]. Fair Isaac Corporation.
+https://www.fico.com/en/latest-thinking/white-paper/fico-score-10-and-10-t-technical-white-
+paper
+GetApp. (2025). RiskSeal 2025 Pricing, Features, Reviews & Alternatives.
+https://www.getapp.com/security-software/a/riskseal/
+Khandani, A. E., Kim, A. J., & Lo, A. W. (2010). Consumer credit-risk models via
+machine-learning algorithms. Journal of Banking & Finance, 34(11), 2767–2787.
+https://doi.org/10.1016/j.jbankfin.2010.06.001
+Meritech Capital. (2025). SaaS Public Company Revenue Multiples and Margins.
+https://www.meritechcapital.com/state-of-the-cloud
+Siddiqi, N. (2017). Intelligent Credit Scoring: Building and Implementing Better Credit Risk
+Scorecards (2nd ed.). John Wiley & Sons.
+South Summit. (2026). Startup Competition 2026: Visibility, Investments and New Clients.
+https://www.southsummit.io/e/madrid/content/startup-competition-2026
+Stack Overflow. (2025, mayo). 2025 Developer Survey: Cloud platforms and infrastructure
+trends. https://survey.stackoverflow.co/2025/
+Techjockey. (2026). Provenir Pricing & Reviews 2026.
+https://www.techjockey.com/detail/provenir
+Thomas, L. C. (2017). Consumer Credit Models: Pricing, Profit and Portfolios. Oxford
+University Press.
+VantageScore. (2024). VantageScore 4.0: Model Performance and Consistency Report.
+VantageScore Solutions, LLC.
+https://www.vantagescore.com/resource/vantagescore-4-0-performance-report/

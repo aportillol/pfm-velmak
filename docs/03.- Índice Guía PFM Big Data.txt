@@ -1,0 +1,183 @@
+ÍNDICE
+BIG DATA & BUSINESS ANALYTICS
+PROYECTO FIN DE MÁSTER
+Introducción
+Como sabes, el proyecto fin de máster es un trabajo fundamental para tu formación
+académica y de obligado desarrollo para todos los alumnos. El PFM supone un 20% en la
+nota final de tu máster y te permitirá trabajar con otros alumnos simulando una actividad
+profesional vinculada estrechamente con tu formación.
+En este documento te ofrecemos una guía completa que te ayudará a llevar a cabo con éxito
+tu Proyecto Fin de Máster. A continuación encontrarás todos los puntos clave que debes
+abordar para desarrollar un documento sólido, haciendo para ello uso de un modelo de
+negocio actual que bajo vuestra consideración y análisis, no está aprovechando los datos y
+en el uso del big data y la analítica como pilares para su crecimiento y desarrollo.
+Este índice que te presentamos se convertirá en la herramienta clave para la elaboración del
+PFM de calidad, centrado en una idea de negocio basada en datos.
+El formato de presentación y modelo lo tienes detallado en el documento de ‘Directrices del
+proyecto fin de máster’.
+¡Ánimo!
+Proyecto Fin de Máster – Máster Big Data & Business Analytics
+Selección de negocio
+No te damos una empresa, la debes localizar tú, pero si tienes que ceñirte a uno de estos
+sectores que aquí se presentan. Localiza en tu elección una empresa sobre la que quieras
+desarrollar tu proyecto. Ejemplo: Si eliges Servicios financieros como sector, podrías elegir
+una empresa como PAYPAL, BIZUM, Fintonic, CaixaBank o similares.
+Elige uno de estos sectores:
+A. Marketing y publicidad: Empresas que pueden usar los datos de los clientes y del
+mercado para crear estrategias de marketing y publicidad personalizadas y efectivas.
+B. Servicios financieros: Bancos y otras instituciones financieras que puedan utilizar
+datos de transacciones y otros datos financieros para ofrecer mejores productos y
+servicios a sus clientes.
+C. Salud: Empresas pueden utilizar datos de pacientes y ensayos clínicos para mejorar
+el desarrollo de medicamentos y tratamientos, así como para mejorar la atención
+médica.
+D. Energía: Empresas pueden utilizar datos manera inteligente, haciendo uso del IOT u
+otro tipo de dispositivos para mejorar la eficiencia energética y reducir los costos de
+energía.
+E. Retail: Empresas que puedan utilizar datos de compras y comportamiento del
+consumidor para personalizar la experiencia de compra y mejorar la eficiencia de la
+cadena de suministro.
+F. Transporte y logística: Empresas que puedan utilizar datos de rutas de transporte y
+datos de envíos para mejorar la eficiencia y reducir los costos en la cadena de
+suministro.
+G. Agricultura: Empresas que puedan utilizar datos de suelos, clima y cosechas para
+mejorar la productividad y la eficiencia en la producción de alimentos.
+H. Recursos humanos: Empresas pueden utilizar datos de recursos humanos para
+mejorar la selección de candidatos y el desarrollo de habilidades de los empleados.
+I. Seguridad y vigilancia: Empresas que pueden utilizar datos de vigilancia y otros
+datos de seguridad para mejorar la seguridad en entornos públicos y privados.
+Desarrollo
+Una vez elegida la empresa, tendrás que desarrollar cada punto que aquí se muestra e
+incluirlos en tu documento al que darás forma de proyecto siguiendo los requerimientos de
+las directrices del PFM.
+1. Introducción: Este apartado describe el contexto y la justificación del proyecto,
+establece los objetivos y la metodología empleada.
+• Contextualización del proyecto
+• Justificación de la importancia del análisis del modelo de datos y su mejora
+• Objetivos del proyecto: generales y específicos
+• Metodología empleada
+2. Análisis de la empresa y su modelo de datos actual: Este apartado se centra en la
+descripción de la empresa y su modelo de datos actual, identificando los principales
+problemas y limitaciones y evaluando la calidad y efectividad del modelo actual.
+• Descripción de la empresa y su modelo de datos actual
+• Identificación de los principales problemas y limitaciones del modelo actual
+• Evaluación de la calidad y efectividad del modelo actual
+Proyecto Fin de Máster – Máster Big Data & Business Analytics
+3. Modelo de negocio: Define el modelo de negocio y explica cómo los datos serán
+utilizados para crear valor para los clientes y generar ingresos para el negocio.
+• Tipo de modelo de negocio
+• Ventajas y desventajas de cada modelo
+• Adaptación del modelo de negocio al uso de datos
+• Modelo de monetización de datos
+• Modelo de ingresos
+4. Análisis del mercado y competidores: Descripción del mercado objetivo,
+identificando los principales competidores y su posición en el mercado, y analizando
+las oportunidades y amenazas para la empresa y su modelo de datos.
+• Descripción del mercado objetivo y su situación actual
+• Identificación de los principales competidores y su posición en el mercado
+• Análisis de las oportunidades y amenazas para la empresa y su modelo de datos
+5. Recolección de datos: Identifica las fuentes de datos relevantes, analizando los
+procesos y tecnologías utilizadas en la recolección de datos, y evaluando la calidad
+y relevancia de los datos recolectados.
+• Identificación de las fuentes de datos relevantes para la empresa y su modelo
+actual
+• Análisis de los procesos y tecnologías utilizadas en la recolección de datos
+• Evaluación de la calidad de los datos recolectados y su relevancia para el modelo
+actual
+6. Mejoras en el modelo de datos: Propón mejoras para el modelo de datos actual,
+describiendo detalladamente cada mejora y su impacto potencial, y analizando los
+costos y beneficios de cada mejora.
+• Propuesta de mejoras para el modelo de datos
+• Descripción detallada de cada mejora y su impacto potencial
+• Análisis de los costos y beneficios de cada mejora
+7. Modelo de monetización: Define cómo se generará ingresos a través de la venta de
+datos o de la creación de productos o servicios basados en datos.
+• Monetización de datos
+• Creación de productos/servicios basados en datos
+• Precios y estrategias de precios
+• Identificación de oportunidades de venta cruzada y ventas adicionales
+• Planes de negocio a largo plazo
+8. Equipo y recursos: Identifica los recursos necesarios para construir el negocio
+basado en datos, incluyendo el personal, la infraestructura tecnológica y los
+proveedores de servicios.
+• Identificación de habilidades necesarias para construir el negocio basado en
+datos
+• Contratación de personal
+• Infraestructura tecnológica necesaria
+• Proveedores de servicios
+• Planes de crecimiento a largo plazo
+Proyecto Fin de Máster – Máster Big Data & Business Analytics
+9. Evaluación de la efectividad de las mejoras: Describe los criterios de evaluación,
+analizando la efectividad de las mejoras realizadas e identificando oportunidades de
+mejora adicionales.
+• Descripción de los criterios de evaluación
+• Análisis de la efectividad de las mejoras realizadas
+• Identificación de oportunidades de mejora adicionales
+10. Gestión de la privacidad y ética del dato: Describe los aspectos de privacidad y ética
+del dato relevantes, analizando las mejores prácticas y regulaciones pertinentes, y
+proponiendo estrategias y herramientas para garantizar la privacidad y ética del dato
+en el modelo de datos mejorado.
+• Descripción de los aspectos de privacidad y ética del dato relevantes para la
+empresa y su modelo de datos
+• Análisis de las mejores prácticas y regulaciones pertinentes
+• Propuesta de estrategias y herramientas para garantizar la privacidad y ética del
+dato en el modelo de datos mejorado
+11. Medición y control del modelo de datos mejorado: Herramientas básicas para la
+medición y control del modelo de datos mejorado, proponiendo indicadores clave
+de rendimiento (KPIs) para medir la efectividad del modelo de datos, y describiendo
+detalladamente cada herramienta y su función en el proceso de medición y control.
+• Descripción de las herramientas básicas para la medición y control del modelo
+de datos mejorado
+• Propuesta de indicadores clave de rendimiento (KPIs) para medir la efectividad
+del modelo de datos
+• Descripción detallada de cada herramienta y su función en el proceso de
+medición y control
+12. Cronograma y métricas de éxito: Establece los plazos y objetivos a corto y largo
+plazo para el negocio, y define las métricas que se utilizarán para medir el éxito.
+• Establecimiento de plazos para metas a corto y largo plazo
+• Métricas de éxito definidas
+• Indicadores clave de rendimiento (KPIs)
+• Evaluación periódica de los resultados
+• Ajuste de estrategias y tácticas en función de los resultados.
+13. Breve Plan financiero: Incluye proyecciones financieras, el capital necesario para
+financiar el negocio y datos clave para analizar la rentabilidad de vuestra propuesta.
+• Proyecciones financieras
+• Fuentes de financiamiento
+• Capital necesario para financiar el negocio
+• Gastos operativos
+• Análisis de rentabilidad
+Proyecto Fin de Máster – Máster Big Data & Business Analytics
+14. Riesgos y contingencias: Identifica los posibles riesgos y desafíos, y describe cómo
+se manejarán en caso de que se presenten.
+• Identificación de riesgos
+• Estrategias de mitigación de riesgos
+• Planes de contingencia
+• Evaluación de impacto y probabilidad de riesgos
+• Planes de respuesta a crisis
+15. Conclusiones y recomendaciones: Resume los resultados obtenidos, evalúa la
+efectividad del proyecto y propone recomendaciones para futuras investigaciones o
+mejoras adicionales.
+• Resumen de los resultados obtenidos
+• Evaluación de la efectividad del proyecto
+• Recomendaciones para futuras investigaciones o mejoras adicionales
+16. Bibliografía y referencias: Lista todas las fuentes bibliográficas y de referencia
+utilizadas en el proyecto.
+17. Anexos. Incorpora todos las referencias, fuentes, estudios y documentación que
+consideras de importancia para tu proyecto.
+Herramientas
+A continuación te indicamos herramientas y plataformas que deberán estar presentes de
+algún modo en tu proyecto. No es necesario su uso, pero sí que las incorpores dentro de tus
+planteamientos como solución. No tienen que estar presentes todas, pero es recomendable
+que al menos cuatro de las planteadas tengan cabida en tu proyecto. Dispones aquí de las
+direcciones web de cada una de ellas:
+I. Hadoop: https://hadoop.apache.org/
+II. Apache Spark: https://spark.apache.org/
+III. R: https://www.r-project.org/
+IV. Python: https://www.python.org/
+V. Tableau: https://www.tableau.com/
+VI. Power BI: https://powerbi.microsoft.com/
+VII. SAS: https://www.sas.com/
+VIII. Apache Flink: https://flink.apache.org/
+IX. MongoDB: https://www.mongodb.com/
+X. Apache Kafka: https://kafka.apache.org/
+Proyecto Fin de Máster – Máster Big Data & Business Analytics
