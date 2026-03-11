@@ -45,8 +45,8 @@ def convert_markdown_to_pdf():
         return False
     
     # Rutas de archivos
-    md_file = Path("PFM_VELMAK_PRIMERA_PRUEBA.md")
-    pdf_file = Path("PFM_VELMAK_PRIMERA_PRUEBA.pdf")
+    md_file = Path("PFM_VELMAK_DOCUMENTO_COMPLETO.md")
+    pdf_file = Path("PFM_VELMAK_DOCUMENTO_COMPLETO.pdf")
     
     if not md_file.exists():
         print(f"❌ Archivo no encontrado: {md_file}")

@@ -314,4 +314,4 @@ st.markdown("---")
 st.markdown("🏦 **PFM Velmak** - Sistema de Scoring Crediticio con IA Explicable | Desarrollado con ❤️ por el equipo PFM Velmak")
 
 if __name__ == "__main__":
-    st.run()
+    pass

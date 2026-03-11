@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Capítulo 17: Anexos</title>
+    
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000000;
+    text-align: justify;
+    margin: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20pt;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10pt;
+}
+
+h2 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 24pt;
+    margin-bottom: 12pt;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 6pt;
+}
+
+h3 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 18pt;
+    margin-bottom: 10pt;
+}
+
+p {
+    margin-bottom: 12pt;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 11pt;
+}
+
+pre {
+    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5;
+    padding: 12pt;
+    border-radius: 5px;
+    border-left: 4px solid #cccccc;
+    margin: 12pt 0;
+    font-size: 10pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+}
+
+strong, b {
+    font-weight: bold;
+}
+
+em, i {
+    font-style: italic;
+}
+
+ul, ol {
+    margin-left: 20pt;
+    margin-bottom: 12pt;
+}
+
+li {
+    margin-bottom: 6pt;
+}
+
+blockquote {
+    margin: 12pt 20pt;
+    padding-left: 12pt;
+    border-left: 3px solid #cccccc;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12pt 0;
+    font-size: 10pt;
+}
+
+th, td {
+    border: 1px solid #cccccc;
+    padding: 6pt;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.json {
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e1;
+    padding: 8pt;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+.dax {
+    background-color: #f0f8ff;
+    border: 1px solid #cce5ff;
+    padding: 8pt;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+.python {
+    background-color: #f5f5f5;
+    border: 1px solid #e1e1e1;
+    padding: 8pt;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+@media print {
+    body {
+        margin: 2.5cm 3cm;
+        max-width: none;
+        padding: 0;
+    }
+    
+    h1 {
+        page-break-after: always;
+    }
+    
+    h2, h3, p, ul, ol, blockquote, pre, table {
+        page-break-inside: avoid;
+    }
+    
+    .json, .dax, .python {
+        page-break-inside: avoid;
+        font-size: 8pt;
+    }
+}
+</style>
+
+</head>
+<body>
+<h1><strong>CAPÍTULO 17: ANEXOS</strong></h1>
+<h2><strong>Anexo 1: Diccionario de Datos Alternativos (Data Dictionary)</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Nombre Variable</th>
+<th>Tipo Dato</th>
+<th>Origen</th>
+<th>Descripción de Negocio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>account_balance_eur</code></td>
+<td>Float</td>
+<td>API PSD2</td>
+<td>Saldo total en cuenta corriente en euros. Variable fundamental para evaluar capacidad de pago y estabilidad financiera.</td>
+</tr>
+<tr>
+<td><code>monthly_income_eur</code></td>
+<td>Float</td>
+<td>API PSD2</td>
+<td>Ingreso mensual promedio declarado por el cliente. Indicador clave de capacidad de endeudamiento sostenible.</td>
+</tr>
+<tr>
+<td><code>transaction_count_30d</code></td>
+<td>Integer</td>
+<td>API PSD2</td>
+<td>Número de transacciones realizadas en últimos 30 días. Proxy de actividad financiera y estabilidad de ingresos.</td>
+</tr>
+<tr>
+<td><code>avg_transaction_amount</code></td>
+<td>Float</td>
+<td>API PSD2</td>
+<td>Importe medio de transacciones realizadas. Indicador de patrones de consumo y disciplina financiera.</td>
+</tr>
+<tr>
+<td><code>saving_account_balance</code></td>
+<td>Float</td>
+<td>API PSD2</td>
+<td>Saldo en cuenta de ahorro. Indicador de capacidad de previsión y comportamiento financiero responsable.</td>
+</tr>
+<tr>
+<td><code>credit_card_utilization</code></td>
+<td>Float</td>
+<td>API PSD2</td>
+<td>Porcentaje de utilización de límite de tarjeta de crédito. Proxy de presión financiera y gestión de deuda.</td>
+</tr>
+<tr>
+<td><code>direct_debit_frequency</code></td>
+<td>Integer</td>
+<td>API PSD2</td>
+<td>Frecuencia de domiciliaciones bancarias. Indicador de estabilidad de pagos recurrentes y compromisos financieros.</td>
+</tr>
+<tr>
+<td><code>online_banking_login_days</code></td>
+<td>Integer</td>
+<td>Web Tracking</td>
+<td>Días promedio entre inicios de sesión en banca online. Proxy de engagement digital y control financiero.</td>
+</tr>
+<tr>
+<td><code>mobile_device_type</code></td>
+<td>String</td>
+<td>Device Fingerprinting</td>
+<td>Tipo de dispositivo móvil utilizado (iOS/Android). Variable contextual para patrones de comportamiento.</td>
+</tr>
+<tr>
+<td><code>app_session_duration</code></td>
+<td>Float</td>
+<td>App Analytics</td>
+<td>Duración promedio de sesión en aplicación móvil. Indicador de interés y complejidad de operaciones financieras.</td>
+</tr>
+<tr>
+<td><code>ecommerce_transaction_count</code></td>
+<td>Integer</td>
+<td>E-commerce APIs</td>
+<td>Número de transacciones en plataformas e-commerce. Proxy de comportamiento de consumo digital.</td>
+</tr>
+<tr>
+<td><code>subscription_services_count</code></td>
+<td>Integer</td>
+<td>Telco APIs</td>
+<td>Número de servicios de suscripción activos. Indicador de compromisos financieros recurrentes.</td>
+</tr>
+<tr>
+<td><code>telco_payment_history</code></td>
+<td>String</td>
+<td>Telco APIs</td>
+<td>Historial de pagos de servicios de telecomunicaciones. Proxy de fiabilidad en pagos y estabilidad financiera.</td>
+</tr>
+<tr>
+<td><code>social_media_activity_score</code></td>
+<td>Float</td>
+<td>Social Media APIs</td>
+<td>Puntuación de actividad en redes sociales. Variable contextual para perfil de comportamiento digital.</td>
+</tr>
+<tr>
+<td><code>location_stability_months</code></td>
+<td>Integer</td>
+<td>Geolocation API</td>
+<td>Meses en misma ubicación geográfica. Proxy de estabilidad residencial y laboral.</td>
+</tr>
+<tr>
+<td><code>employment_verification_status</code></td>
+<td>Boolean</td>
+<td>HR APIs</td>
+<td>Estado de verificación de empleo. Indicador directo de capacidad de ingresos.</td>
+</tr>
+<tr>
+<td><code>utility_payment_history</code></td>
+<td>String</td>
+<td>Utility APIs</td>
+<td>Historial de pagos de servicios básicos. Proxy de responsabilidad financiera y estabilidad de vida.</td>
+</tr>
+</tbody>
+</table>
+<h2><strong>Anexo 2: Mockup de Ingesta y Procesamiento (Fragmento de Código Python/PySpark)</strong></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">sum</span> <span class="k">as</span> <span class="n">_sum</span><span class="p">,</span> <span class="n">avg</span> <span class="k">as</span> <span class="n">_avg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">FloatType</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">,</span> <span class="n">BooleanType</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">KafkaConsumer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymongo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenBankingDataProcessor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clase para procesamiento de datos de Open Banking desde Kafka&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark_session</span><span class="p">,</span> <span class="n">kafka_config</span><span class="p">,</span> <span class="n">mongo_config</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spark</span> <span class="o">=</span> <span class="n">spark_session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kafka_consumer</span> <span class="o">=</span> <span class="n">KafkaConsumer</span><span class="p">(</span>
+            <span class="s1">&#39;open_banking_topic&#39;</span><span class="p">,</span>
+            <span class="n">bootstrap_servers</span><span class="o">=</span><span class="n">kafka_config</span><span class="p">[</span><span class="s1">&#39;bootstrap_servers&#39;</span><span class="p">],</span>
+            <span class="n">value_deserializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)),</span>
+            <span class="n">group_id</span><span class="o">=</span><span class="s1">&#39;velmak_processor&#39;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mongo_client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="n">mongo_config</span><span class="p">[</span><span class="s1">&#39;connection_string&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mongo_client</span><span class="p">[</span><span class="n">mongo_config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">[</span><span class="n">mongo_config</span><span class="p">[</span><span class="s1">&#39;collection&#39;</span><span class="p">]]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_streaming_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Procesamiento en tiempo real de datos desde Kafka&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iniciando procesamiento de streaming: </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kafka_consumer</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Extraer y validar datos del mensaje</span>
+                <span class="n">raw_data</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">processed_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_and_clean_data</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">processed_data</span><span class="p">:</span>
+                    <span class="c1"># Transformar datos para análisis</span>
+                    <span class="n">enriched_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enrich_data</span><span class="p">(</span><span class="n">processed_data</span><span class="p">)</span>
+
+                    <span class="c1"># Almacenar en MongoDB</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_store_to_mongodb</span><span class="p">(</span><span class="n">enriched_data</span><span class="p">)</span>
+
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Procesado registro para cliente: </span><span class="si">{</span><span class="n">processed_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;customer_id&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error procesando mensaje: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_and_clean_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validación y limpieza básica de datos&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;customer_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># Manejo de valores nulos</span>
+        <span class="n">cleaned_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;customer_id&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;customer_id&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;account_balance&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account_balance&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account_balance&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;monthly_income&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;monthly_income&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;monthly_income&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;transaction_count&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count_30d&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count_30d&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;avg_transaction&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;avg_transaction_amount&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;avg_transaction_amount&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;processing_timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Validación de rangos lógicos</span>
+        <span class="k">if</span> <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;account_balance&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;account_balance&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Advertencia: Saldo negativo para cliente </span><span class="si">{</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;customer_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cleaned_data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_enrich_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enriquecimiento de datos con características derivadas&quot;&quot;&quot;</span>
+        <span class="n">enriched</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Calcular ratio de utilización de crédito</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;credit_limit&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;credit_card_balance&#39;</span><span class="p">):</span>
+            <span class="n">enriched</span><span class="p">[</span><span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;credit_card_balance&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;credit_limit&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Clasificar nivel de actividad financiera</span>
+        <span class="n">transaction_count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">transaction_count</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="n">enriched</span><span class="p">[</span><span class="s1">&#39;activity_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;HIGH&#39;</span>
+        <span class="k">elif</span> <span class="n">transaction_count</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">enriched</span><span class="p">[</span><span class="s1">&#39;activity_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MEDIUM&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">enriched</span><span class="p">[</span><span class="s1">&#39;activity_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;LOW&#39;</span>
+
+        <span class="c1"># Calcular score de estabilidad financiera (simplificado)</span>
+        <span class="n">balance_score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account_balance&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account_balance&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">balance_score</span> <span class="o">+=</span> <span class="mi">30</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;monthly_income&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;monthly_income&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">:</span>
+            <span class="n">balance_score</span> <span class="o">+=</span> <span class="mi">40</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">balance_score</span> <span class="o">+=</span> <span class="mi">30</span>
+
+        <span class="n">enriched</span><span class="p">[</span><span class="s1">&#39;financial_stability_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">balance_score</span>
+
+        <span class="k">return</span> <span class="n">enriched</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_store_to_mongodb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Almacenamiento de datos procesados en MongoDB&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Insertar documento con estructura optimizada para consultas</span>
+            <span class="n">document</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;customer_id&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;customer_id&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;raw_data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+                <span class="s1">&#39;processed_features&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;account_balance&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account_balance&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;monthly_income&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;monthly_income&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;transaction_metrics&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_count&#39;</span><span class="p">),</span>
+                        <span class="s1">&#39;avg_amount&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;avg_transaction&#39;</span><span class="p">),</span>
+                        <span class="s1">&#39;activity_level&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;activity_level&#39;</span><span class="p">)</span>
+                    <span class="p">},</span>
+                    <span class="s1">&#39;derived_features&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">),</span>
+                        <span class="s1">&#39;financial_stability_score&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;financial_stability_score&#39;</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;ingestion_timestamp&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;processing_timestamp&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;data_source&#39;</span><span class="p">:</span> <span class="s1">&#39;open_banking_api&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;processing_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.0&#39;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error almacenando en MongoDB: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configuración inicial</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
+        <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;OpenBankingProcessor&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.mongodb.input.uri&quot;</span><span class="p">,</span> <span class="s2">&quot;mongodb://localhost:27017/velmak.raw_data&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+    <span class="n">kafka_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;bootstrap_servers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kafka-broker-1:9092&#39;</span><span class="p">,</span> <span class="s1">&#39;kafka-broker-2:9092&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;topic&#39;</span><span class="p">:</span> <span class="s1">&#39;open_banking_transactions&#39;</span>
+    <span class="p">}</span>
+
+    <span class="n">mongo_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;connection_string&#39;</span><span class="p">:</span> <span class="s1">&#39;mongodb://localhost:27017&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="s1">&#39;velmak&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="s1">&#39;processed_alternative_data&#39;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Iniciar procesamiento</span>
+    <span class="n">processor</span> <span class="o">=</span> <span class="n">OpenBankingDataProcessor</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">kafka_config</span><span class="p">,</span> <span class="n">mongo_config</span><span class="p">)</span>
+    <span class="n">processor</span><span class="o">.</span><span class="n">process_streaming_data</span><span class="p">()</span>
+</code></pre></div>
+
+<h2><strong>Anexo 3: Ejemplo de Explicabilidad Algorítmica (Fragmento de Código Python)</strong></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CreditScoringExplainer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clase para implementar explicabilidad en modelo de scoring crediticio&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">X_train</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">feature_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span>
+
+        <span class="c1"># Inicializar SHAP explainer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="c1"># Calcular valores SHAP para dataset de entrenamiento</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculando valores SHAP para dataset de entrenamiento...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shap_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">explain_individual_prediction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera explicación detallada para una predicción individual</span>
+<span class="sd">        cumpliendo con requisitos de transparencia de AI Act</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Realizar predicción</span>
+            <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">customer_data</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">prediction_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+            <span class="n">confidence</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="n">prediction_class</span><span class="p">]</span>
+
+            <span class="c1"># Calcular valores SHAP para esta predicción</span>
+            <span class="n">shap_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">customer_data</span><span class="p">)</span>
+
+            <span class="c1"># Generar explicación estructurada</span>
+            <span class="n">explanation</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;customer_id&#39;</span><span class="p">:</span> <span class="n">customer_id</span><span class="p">,</span>
+                <span class="s1">&#39;prediction&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;APPROVED&#39;</span> <span class="k">if</span> <span class="n">prediction_class</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;REJECTED&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">confidence</span><span class="p">),</span>
+                    <span class="s1">&#39;risk_score&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Probabilidad de default</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;explanation&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;main_factors&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_main_factors</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">customer_data</span><span class="p">),</span>
+                    <span class="s1">&#39;feature_contributions&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_detailed_contributions</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">customer_data</span><span class="p">),</span>
+                    <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_explanation_summary</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">customer_data</span><span class="p">,</span> <span class="n">prediction_class</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;compliance&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;ai_act_compliant&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;explanation_method&#39;</span><span class="p">:</span> <span class="s1">&#39;SHAP (SHapley Additive exPlanations)&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;right_to_explanation&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;human_review_available&#39;</span><span class="p">:</span> <span class="kc">True</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">explanation</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error generando explicación: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s1">&#39;customer_id&#39;</span><span class="p">:</span> <span class="n">customer_id</span><span class="p">,</span>
+                <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_main_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Identifica los factores principales que influyeron en la decisión&quot;&quot;&quot;</span>
+        <span class="c1"># Obtener valores absolutos de SHAP</span>
+        <span class="n">abs_shap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+
+        <span class="c1"># Top 5 factores más influyentes</span>
+        <span class="n">top_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">abs_shap</span><span class="p">)[</span><span class="o">-</span><span class="mi">5</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">main_factors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">top_indices</span><span class="p">:</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+                <span class="s1">&#39;impact&#39;</span><span class="p">:</span> <span class="s1">&#39;INCREASES_RISK&#39;</span> <span class="k">if</span> <span class="n">shap_values</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;DECREASES_RISK&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;magnitude&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">abs_shap</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">idx</span><span class="p">])</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">customer_data</span><span class="p">,</span> <span class="s1">&#39;iloc&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="n">main_factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">main_factors</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_detailed_contributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Genera contribución detallada de cada característica&quot;&quot;&quot;</span>
+        <span class="n">contributions</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">shap_val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">)):</span>
+            <span class="n">feature_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">customer_data</span><span class="p">,</span> <span class="s1">&#39;iloc&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="n">contributions</span><span class="p">[</span><span class="n">feature_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;base_value&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">feature_value</span><span class="p">),</span>
+                <span class="s1">&#39;shap_value&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">shap_val</span><span class="p">),</span>
+                <span class="s1">&#39;impact_direction&#39;</span><span class="p">:</span> <span class="s1">&#39;POSITIVE&#39;</span> <span class="k">if</span> <span class="n">shap_val</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;NEGATIVE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;impact_percentage&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">shap_val</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_values</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">contributions</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_explanation_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">,</span> <span class="n">prediction_class</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Genera resumen en lenguaje natural de la explicación&quot;&quot;&quot;</span>
+        <span class="c1"># Identificar factores más positivos y negativos</span>
+        <span class="n">positive_factors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">negative_factors</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">shap_val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">)):</span>
+            <span class="n">feature_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">customer_data</span><span class="p">,</span> <span class="s1">&#39;iloc&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">customer_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">shap_val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">positive_factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;alto </span><span class="si">{</span><span class="n">feature_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">feature_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">negative_factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bajo </span><span class="si">{</span><span class="n">feature_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">feature_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Generar explicación según resultado</span>
+        <span class="k">if</span> <span class="n">prediction_class</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Aprobado</span>
+            <span class="n">summary</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;El crédito fue APROBADO principalmente por </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">positive_factors</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="k">if</span> <span class="n">negative_factors</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Los siguientes factores redujeron ligeramente el riesgo: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">negative_factors</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="n">summary</span> <span class="o">+=</span> <span class="s2">&quot;La decisión se basa en un análisis equilibrado de múltiples factores financieros y de comportamiento.&quot;</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Rechazado</span>
+            <span class="n">summary</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;El crédito fue RECHAZADO principalmente por </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">negative_factors</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="k">if</span> <span class="n">positive_factors</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Los siguientes factores mitigaron parcialmente el riesgo: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">positive_factors</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="n">summary</span> <span class="o">+=</span> <span class="s2">&quot;Se recomienda mejorar los aspectos identificados antes de una nueva solicitud.&quot;</span>
+
+        <span class="k">return</span> <span class="n">summary</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_explanation_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Genera reporte completo en formato JSON para API response&quot;&quot;&quot;</span>
+        <span class="n">explanation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explain_individual_prediction</span><span class="p">(</span><span class="n">customer_data</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">)</span>
+
+        <span class="c1"># Estructura de respuesta para API VELMAK</span>
+        <span class="n">api_response</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;scoring_result&#39;</span><span class="p">:</span> <span class="n">explanation</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;explanation&#39;</span><span class="p">:</span> <span class="n">explanation</span><span class="p">[</span><span class="s1">&#39;explanation&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;compliance_info&#39;</span><span class="p">:</span> <span class="n">explanation</span><span class="p">[</span><span class="s1">&#39;compliance&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;request_metadata&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;customer_id&#39;</span><span class="p">:</span> <span class="n">customer_id</span><span class="p">,</span>
+                    <span class="s1">&#39;model_version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.1&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;explanation_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;processing_time_ms&#39;</span><span class="p">:</span> <span class="mi">150</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">api_response</span>
+
+<span class="c1"># Ejemplo de uso</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">demo_explainability</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Demostración del sistema de explicabilidad&quot;&quot;&quot;</span>
+
+    <span class="c1"># Datos de ejemplo (simulando un cliente real)</span>
+    <span class="n">customer_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;account_balance&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2500.0</span><span class="p">],</span>
+        <span class="s1">&#39;monthly_income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3200.0</span><span class="p">],</span>
+        <span class="s1">&#39;transaction_count_30d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">],</span>
+        <span class="s1">&#39;avg_transaction&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">85.5</span><span class="p">],</span>
+        <span class="s1">&#39;credit_utilization&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.35</span><span class="p">],</span>
+        <span class="s1">&#39;employment_verified&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;location_stability&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+    <span class="p">})</span>
+
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;account_balance&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_income&#39;</span><span class="p">,</span> <span class="s1">&#39;transaction_count_30d&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;avg_transaction&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_utilization&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_verified&#39;</span><span class="p">,</span> <span class="s1">&#39;location_stability&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Modelo entrenado (simulado)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="c1"># Datos de entrenamiento simulados</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Crear explainer</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">CreditScoringExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+
+    <span class="c1"># Generar explicación para el cliente</span>
+    <span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">explain_individual_prediction</span><span class="p">(</span><span class="n">customer_features</span><span class="p">,</span> <span class="s2">&quot;CUST_001234&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EXPLICACIÓN DETALLADA PARA EVALUACIÓN DE CRÉDITO&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">explanation</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">explanation</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">demo_explainability</span><span class="p">()</span>
+</code></pre></div>
+
+<h2><strong>Anexo 4: Medidas DAX de Control Operativo (Power BI)</strong></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Medida 1: Tasa de Morosidad NPL a 90 días</span>
+<span class="c1">// Calcula el porcentaje de créditos en morosidad &gt; 90 días</span>
+NPL Rate 90 Days = 
+<span class="nb">VAR</span><span class="w"> </span>NPL90Days = 
+<span class="w">    </span><span class="nf">CALCULATE</span><span class="p">(</span>
+<span class="w">        </span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Loans&#39;[Amount]</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="w">        </span><span class="nf">DIVIDE</span><span class="p">(</span>
+<span class="w">            </span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Loans&#39;[Days Past Due]</span><span class="p">),</span>
+<span class="w">            </span><span class="m">90</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="na">&#39;Loans&#39;[Days Past Due]</span><span class="w"> </span>&gt; 90
+<span class="w">    </span><span class="p">)</span>
+
+<span class="nb">VAR</span><span class="w"> </span>TotalLoans = SUM(&#39;Loans&#39;[Amount])
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">DIVIDE</span><span class="p">(</span>
+<span class="w">        </span>NPL90Days,
+<span class="w">        </span>TotalLoans,
+<span class="w">        </span><span class="m">0</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 2: Volumen de Peticiones API Month-to-Date (MTD)</span>
+<span class="c1">// Calcula el volumen total de llamadas a la API en el mes actual</span>
+API Volume MTD = 
+<span class="nb">VAR</span><span class="w"> </span>CurrentMonth = MONTH(TODAY())
+<span class="nb">VAR</span><span class="w"> </span>CurrentYear = YEAR(TODAY())
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">CALCULATE</span><span class="p">(</span>
+<span class="w">        </span><span class="nf">COUNTROWS</span><span class="p">(</span><span class="na">&#39;API Logs&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">FILTER</span><span class="p">(</span>
+<span class="w">            </span><span class="na">&#39;API Logs&#39;[Date]</span><span class="w"> </span>&gt;= DATE(CurrentYear, CurrentMonth, 1) &amp;&amp;
+<span class="w">            </span><span class="na">&#39;API Logs&#39;[Date]</span><span class="w"> </span>&lt;= TODAY() &amp;&amp;
+<span class="w">            </span><span class="na">&#39;API Logs&#39;[Status]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Success&quot;</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 3: Population Stability Index (PSI) para Alerta de Drift</span>
+<span class="c1">// Calcula PSI entre distribución actual vs distribución de entrenamiento</span>
+Population Stability Index = 
+<span class="nb">VAR</span><span class="w"> </span>CurrentDistribution = 
+<span class="w">    </span><span class="nf">ADDCOLUMNS</span><span class="p">(</span>
+<span class="w">        </span><span class="nf">SUMMARIZE</span><span class="p">(</span><span class="na">&#39;Current Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">&#39;Current Data&#39;[Score Range]</span><span class="p">),</span>
+<span class="w">        </span><span class="s">&quot;Current %&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">DIVIDE</span><span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Current Data&#39;[Count]</span><span class="p">),</span><span class="w"> </span><span class="nf">CALCULATE</span><span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Current Data&#39;[Count]</span><span class="p">),</span><span class="w"> </span><span class="nf">ALL</span><span class="p">(</span><span class="na">&#39;Current Data&#39;</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="nb">VAR</span><span class="w"> </span>BaselineDistribution = 
+<span class="w">    </span><span class="nf">ADDCOLUMNS</span><span class="p">(</span>
+<span class="w">        </span><span class="nf">SUMMARIZE</span><span class="p">(</span><span class="na">&#39;Baseline Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="na">&#39;Baseline Data&#39;[Score Range]</span><span class="p">),</span>
+<span class="w">        </span><span class="s">&quot;Baseline %&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">DIVIDE</span><span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Baseline Data&#39;[Count]</span><span class="p">),</span><span class="w"> </span><span class="nf">CALCULATE</span><span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="na">&#39;Baseline Data&#39;[Count]</span><span class="p">),</span><span class="w"> </span><span class="nf">ALL</span><span class="p">(</span><span class="na">&#39;Baseline Data&#39;</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="nb">VAR</span><span class="w"> </span>MergedTables = 
+<span class="w">    </span><span class="nf">NATURALLEFTOUTERJOIN</span><span class="p">(</span>CurrentDistribution, BaselineDistribution, &#39;Current Data&#39;[Score Range], &#39;Baseline Data&#39;[Score Range])
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">SUMX</span><span class="p">(</span>
+<span class="w">        </span>MergedTables,
+<span class="w">        </span><span class="nf">IF</span><span class="p">(</span>
+<span class="w">            </span><span class="nf">ISBLANK</span><span class="p">([</span>Baseline %]),
+<span class="w">            </span><span class="m">0</span><span class="p">,</span>
+<span class="w">            </span><span class="p">([</span>Current %] - [Baseline %]) * 
+<span class="w">            </span><span class="nf">LN</span><span class="p">([</span>Current %] / [Baseline %])
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 4: Latencia Promedio de API por Percentil</span>
+<span class="c1">// Calcula latencia P95 para monitoreo de rendimiento</span>
+API Latency P95 = 
+<span class="nb">VAR</span><span class="w"> </span>LatencyValues = 
+<span class="w">    </span><span class="nf">CALCULATETABLE</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;API Logs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;API Logs&quot;</span><span class="na">[Response Time]</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;API Logs&quot;</span><span class="na">[Status]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Success&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">PERCENTILEX.INC</span><span class="p">(</span>
+<span class="w">        </span>LatencyValues,
+<span class="w">        </span><span class="m">0.95</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;API Logs&quot;</span><span class="na">[Response Time]</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 5: Tasa de Conversión por Canal de Adquisición</span>
+<span class="c1">// Calcula tasa de conversión desglosada por canal</span>
+Conversion Rate by Channel = 
+<span class="nb">VAR</span><span class="w"> </span>LeadsByChannel = SUMMARIZE(&#39;Leads&#39;, &#39;Leads&#39;[Channel], &quot;Lead Count&quot;, COUNTROWS(&#39;Leads&#39;))
+<span class="nb">VAR</span><span class="w"> </span>CustomersByChannel = SUMMARIZE(&#39;Customers&#39;, &#39;Customers&#39;[Channel], &quot;Customer Count&quot;, COUNTROWS(&#39;Customers&#39;))
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">SUMX</span><span class="p">(</span>
+<span class="w">        </span><span class="nf">NATURALINNERJOIN</span><span class="p">(</span>LeadsByChannel, CustomersByChannel, &#39;Leads&#39;[Channel], &#39;Customers&#39;[Channel]),
+<span class="w">        </span><span class="nf">DIVIDE</span><span class="p">(</span><span class="na">[Customer Count]</span><span class="p">,</span><span class="w"> </span><span class="na">[Lead Count]</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 6: Score de Riesgo Promedio por Segmento</span>
+<span class="c1">// Calcula score de riesgo promedio desglosado por segmento demográfico</span>
+<span class="nf">Average</span><span class="w"> </span>Risk Score by Segment = 
+<span class="nb">VAR</span><span class="w"> </span>RiskScores = 
+<span class="w">    </span><span class="nf">CALCULATETABLE</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;Customer Segments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Customer Segments&quot;</span><span class="na">[Risk Score]</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Customer Segments&quot;</span><span class="na">[Segment]</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">AVERAGEX</span><span class="p">(</span>
+<span class="w">        </span>RiskScores,
+<span class="w">        </span><span class="s">&quot;Customer Segments&quot;</span><span class="na">[Risk Score]</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 7: Crecimiento de Ingresos Recurrentes (MRR Growth)</span>
+<span class="c1">// Calcula crecimiento mes sobre mes de ingresos recurrentes</span>
+MRR Growth Rate = 
+<span class="nb">VAR</span><span class="w"> </span>CurrentMRR = CALCULATE(SUM(&#39;Revenue&#39;[MRR]), &#39;Revenue&#39;[Date] = EOMONTH(TODAY(), -1))
+<span class="nb">VAR</span><span class="w"> </span>PreviousMRR = CALCULATE(SUM(&#39;Revenue&#39;[MRR]), &#39;Revenue&#39;[Date] = EOMONTH(TODAY(), -2))
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">DIVIDE</span><span class="p">(</span>
+<span class="w">        </span>CurrentMRR - PreviousMRR,
+<span class="w">        </span>PreviousMRR,
+<span class="w">        </span><span class="m">0</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// Medida 8: Índice de Satisfacción del Cliente (NPS)</span>
+<span class="c1">// Calcula Net Promoter Score basado en encuestas</span>
+Net Promoter Score = 
+<span class="nb">VAR</span><span class="w"> </span>Promoters = CALCULATE(COUNTROWS(&#39;Survey Responses&#39;), &#39;Survey Responses&#39;[NPS Category] = &quot;Promoter&quot;)
+<span class="nb">VAR</span><span class="w"> </span>Detractors = CALCULATE(COUNTROWS(&#39;Survey Responses&#39;), &#39;Survey Responses&#39;[NPS Category] = &quot;Detractor&quot;)
+<span class="nb">VAR</span><span class="w"> </span>TotalResponses = COUNTROWS(&#39;Survey Responses&#39;)
+
+<span class="nb">RETURN</span>
+<span class="w">    </span><span class="nf">DIVIDE</span><span class="p">(</span>
+<span class="w">        </span><span class="p">(</span>Promoters - Detractors) * 100,
+<span class="w">        </span>TotalResponses,
+<span class="w">        </span><span class="m">0</span>
+<span class="w">    </span><span class="p">)</span>
+</code></pre></div>
+
+<h2><strong>Anexo 5: Estructura del Payload de la API de VELMAK (JSON)</strong></h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T14:32:18.452Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;request_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REQ_20240315_001234&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;customer_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUST_ES_789456&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;scoring_result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APPROVED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;risk_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">285</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;confidence_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.87</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;risk_category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOW_MEDIUM&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;recommended_credit_limit_eur&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">15000.00</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;interest_rate_applied&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.065</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decision_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T14:32:18.452Z&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;explanation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;compliance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;ai_act_compliant&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;explanation_available&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;human_review_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;right_to_explanation&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;explanation_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SHAP_v2.1&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;main_factors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_balance&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;magnitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Saldo estable de €2,500 indica capacidad de pago&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2500.00</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monthly_income&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">&quot;magnitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.28</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ingreso mensual de €3,200 demuestra solvencia&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3200.00</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credit_utilization&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NEGATIVE&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;magnitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.18</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Utilización del crédito al 35% indica presión financiera moderada&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_frequency&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;magnitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alta frecuencia de transacciones (45/mes) muestra actividad financiera saludable&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;employment_stability&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POSITIVE&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;magnitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verificación de empleo estable por más de 2 años&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;detailed_contributions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;positive_factors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_balance&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+35%&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;base_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2500.00</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;reasoning&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Saldo por encima del umbral mínimo de €1,000&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monthly_income&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+28%&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;base_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3200.00</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;reasoning&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ingreso superior al promedio del segmento&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;negative_factors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credit_utilization&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-18%&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;base_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;reasoning&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Utilización moderada pero por encima del óptimo del 30%&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;natural_language_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;El crédito ha sido APROBADO basado principalmente en su saldo estable de €2,500 y ingresos mensuales de €3,200. Los factores positivos incluyen alta actividad transaccional (45 operaciones/mes) y estabilidad laboral verificada (24 meses). Se observó una utilización moderada del crédito (35%) que genera ligera presión financiera. La decisión cumple con los criterios de riesgo establecidos y se basa en análisis equilibrado de múltiples indicadores financieros y de comportamiento.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;model_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.1.3&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;training_data_period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-01 to 2024-02-29&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;feature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;algorithm_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XGBoost_Ensemble&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;accuracy_metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;roc_auc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.92</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.89</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;recall&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.87</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;f1_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.88</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;last_training_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-01T00:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;next_retraining_scheduled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-04-01T00:00:00Z&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;regulatory_compliance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;gdpr_compliant&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data_retention_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;processing_lawful_basis&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;legitimate_interest&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;automated_decision_making&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;human_oversight_available&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;performance_metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;processing_time_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">147</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data_sources_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;open_banking_api&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;telco_data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;digital_footprint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;employment_verification&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;confidence_threshold_met&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;api_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/scoring/evaluate&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rate_limit_remaining&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9987</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rate_limit_reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T15:00:00Z&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</body>
+</html>
