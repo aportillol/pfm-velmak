@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECCIÓN 10: ANEXOS - PFM VELMAK</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 2.5cm 3cm 2.5cm 3cm;
+        }
+        
+        @media print {
+            body {
+                font-family: 'Inter', Arial, sans-serif;
+                font-size: 11pt;
+                line-height: 1.5;
+                color: #072146;
+                margin: 0;
+                background: white;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            h1 {
+                font-size: 18pt;
+                font-weight: 700;
+                color: #004481;
+                text-align: center;
+                margin-bottom: 30pt;
+                border-bottom: 2px solid #028484;
+                padding-bottom: 10pt;
+                page-break-after: avoid;
+            }
+            
+            h2 {
+                font-size: 14pt;
+                font-weight: 600;
+                color: #072146;
+                margin-top: 24pt;
+                margin-bottom: 16pt;
+                border-left: 4px solid #004481;
+                padding-left: 12pt;
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                font-size: 12pt;
+                font-weight: 600;
+                color: #004481;
+                margin-top: 18pt;
+                margin-bottom: 12pt;
+                page-break-after: avoid;
+            }
+            
+            p {
+                margin-bottom: 12pt;
+                text-align: justify;
+                orphans: 2;
+                widows: 2;
+            }
+            
+            strong {
+                color: #004481;
+                font-weight: 600;
+            }
+            
+            blockquote {
+                border-left: 4px solid #028484;
+                margin: 16pt 0;
+                padding: 12pt 20pt;
+                background-color: #f8f9fa;
+                font-style: italic;
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 16pt 0;
+                font-size: 10pt;
+                page-break-inside: avoid;
+            }
+            
+            th, td {
+                border: 1px solid #dee2e6;
+                padding: 8pt;
+                text-align: left;
+                vertical-align: top;
+            }
+            
+            th {
+                background-color: #f8f9fa;
+                font-weight: 600;
+                color: #004481;
+            }
+            
+            code {
+                background-color: #e9ecef;
+                padding: 2pt 4pt;
+                border-radius: 3pt;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10pt;
+            }
+            
+            pre {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 4pt;
+                padding: 16pt;
+                overflow-x: auto;
+                margin: 16pt 0;
+                page-break-inside: avoid;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 9pt;
+                line-height: 1.4;
+            }
+            
+            pre code {
+                background-color: transparent;
+                padding: 0;
+                border-radius: 0;
+                font-size: 9pt;
+            }
+            
+            .mermaid {
+                text-align: center;
+                margin: 20pt 0;
+                padding: 16pt;
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 4pt;
+                page-break-inside: avoid;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            
+            table, pre, blockquote {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media screen {
+            body {
+                font-family: 'Inter', Arial, sans-serif;
+                font-size: 12pt;
+                line-height: 1.6;
+                color: #072146;
+                margin: 20px;
+                background: #f8f9fa;
+            }
+            
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                background: white;
+                padding: 40px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            
+            h1 {
+                font-size: 24pt;
+                font-weight: 700;
+                color: #004481;
+                text-align: center;
+                margin-bottom: 30px;
+                border-bottom: 2px solid #028484;
+                padding-bottom: 15px;
+            }
+            
+            h2 {
+                font-size: 18pt;
+                font-weight: 600;
+                color: #072146;
+                margin-top: 30px;
+                margin-bottom: 20px;
+                border-left: 4px solid #004481;
+                padding-left: 15px;
+            }
+            
+            h3 {
+                font-size: 16pt;
+                font-weight: 600;
+                color: #004481;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+            
+            p {
+                margin-bottom: 15px;
+                text-align: justify;
+            }
+            
+            strong {
+                color: #004481;
+                font-weight: 600;
+            }
+            
+            blockquote {
+                border-left: 4px solid #028484;
+                margin: 20px 0;
+                padding: 15px 25px;
+                background-color: #f8f9fa;
+                font-style: italic;
+                border-radius: 0 8px 8px 0;
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 11pt;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            th, td {
+                border: 1px solid #dee2e6;
+                padding: 12px;
+                text-align: left;
+                vertical-align: top;
+            }
+            
+            th {
+                background-color: #004481;
+                color: white;
+                font-weight: 600;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+            
+            code {
+                background-color: #e9ecef;
+                padding: 3px 6px;
+                border-radius: 4px;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11pt;
+            }
+            
+            pre {
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+                border: 1px solid #dee2e6;
+                border-radius: 8px;
+                padding: 20px;
+                overflow-x: auto;
+                margin: 20px 0;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10pt;
+                line-height: 1.5;
+            }
+            
+            pre code {
+                background-color: transparent;
+                padding: 0;
+                border-radius: 0;
+                font-size: 10pt;
+                color: inherit;
+            }
+            
+            .mermaid {
+                text-align: center;
+                margin: 25px 0;
+                padding: 20px;
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 8px;
+            }
+            
+            .print-button {
+                background: #004481;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                margin: 20px 0;
+                display: inline-block;
+                text-decoration: none;
+            }
+            
+            .print-button:hover {
+                background: #028484;
+            }
+            
+            .header-info {
+                text-align: center;
+                margin-bottom: 30px;
+                padding: 15px;
+                background: #f8f9fa;
+                border-radius: 8px;
+                border: 1px solid #dee2e6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="no-print">
+            <div class="header-info">
+                <h3>📊 SECCIÓN 10: ANEXOS</h3>
+                <p><strong>PFM VELMAK - Proyecto Fin de Máster</strong><br>
+                EUDE Business School | Máster Big Data & Business Analytics</p>
+            </div>
+        </div>
+        
+        <h1 id="seccion-10-anexos">SECCIÓN 10: ANEXOS</h1>
+<h2 id="101-anexo-a-diccionario-de-datos-alternativos-data-dictionary">10.1 Anexo A: Diccionario de Datos Alternativos (Data Dictionary)</h2>
+<p>El presente anexo documenta exhaustivamente las variables clave que conforman el universo de datos alternativos procesados por el motor de scoring de VELMAK, proporcionando una visión detallada de la estructura semántica y técnica que sustenta la capacidad predictiva del sistema. Este diccionario de datos representa el fundamento técnico sobre el cual se construyen los modelos de machine learning y los algoritmos de IA explicable, garantizando consistencia, trazabilidad y comprensibilidad en todo el pipeline de procesamiento de información. Las variables descritas provienen de múltiples fuentes de datos alternativos incluyendo APIs de Open Banking bajo el marco regulatorio PSD2, agregadores de datos de comportamiento digital, y fuentes de información pública que enriquecen el perfil de riesgo crediticio más allá de los datos tradicionales utilizados por burós de crédito convencionales.</p>
+<table>
+<thead>
+<tr>
+<th>Nombre de Variable</th>
+<th>Tipo de Dato</th>
+<th>Origen</th>
+<th>Descripción de Negocio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_monthly_balance</td>
+<td>Decimal(15,2)</td>
+<td>PSD2</td>
+<td>Saldo promedio mensual en todas las cuentas del usuario durante los últimos 12 meses. Indicador clave de estabilidad financiera y capacidad de ahorro.</td>
+</tr>
+<tr>
+<td>gambling_transactions_ratio</td>
+<td>Decimal(5,4)</td>
+<td>PSD2</td>
+<td>Proporción de transacciones identificadas como juego de azar respecto al total de transacciones mensuales. Ratio superior a 0.05 indica comportamiento de riesgo potencial.</td>
+</tr>
+<tr>
+<td>days_since_last_overdraft</td>
+<td>Integer</td>
+<td>PSD2</td>
+<td>Días transcurridos desde el último descubierto en cuenta. Valores inferiores a 30 días sugieren dificultades de liquidez recientes.</td>
+</tr>
+<tr>
+<td>income_volatility_index</td>
+<td>Decimal(8,4)</td>
+<td>PSD2</td>
+<td>Índice calculado basado en la desviación estándar de los ingresos mensuales normalizados. Valores superiores a 0.3 indican alta volatilidad de ingresos.</td>
+</tr>
+<tr>
+<td>subscription_services_count</td>
+<td>Integer</td>
+<td>PSD2</td>
+<td>Número de servicios de suscripción recurrentes detectados (Netflix, Spotify, etc.). Indica compromiso financiero mensual fijo.</td>
+</tr>
+<tr>
+<td>emergency_fund_ratio</td>
+<td>Decimal(5,4)</td>
+<td>PSD2</td>
+<td>Proporción del saldo mensual promedio respecto a los gastos fijos mensuales. Ratio inferior a 1.0 indica falta de fondo de emergencia.</td>
+</tr>
+<tr>
+<td>international_transactions_pct</td>
+<td>Decimal(5,4)</td>
+<td>PSD2</td>
+<td>Porcentaje de transacciones realizadas en moneda extranjera. Valores elevados pueden indicar viajes frecuentes o residencia internacional.</td>
+</tr>
+<tr>
+<td>utility_payment_consistency</td>
+<td>Decimal(3,2)</td>
+<td>PSD2</td>
+<td>Consistencia en pagos de servicios básicos (electricidad, agua, gas) calculada mediante análisis de patrones temporales. Valores cercanos a 1.0 indican alta fiabilidad.</td>
+</tr>
+<tr>
+<td>digital_footprint_score</td>
+<td>Integer</td>
+<td>Web</td>
+<td>Puntuación compuesta (0-100) basada en presencia digital profesional, actividad en redes y comportamiento online. Indica estabilidad digital y profesional.</td>
+</tr>
+<tr>
+<td>device_fingerprint_stability</td>
+<td>Integer</td>
+<td>Web</td>
+<td>Número de dispositivos únicos utilizados en los últimos 6 meses. Valores inferiores a 3 sugieren alta estabilidad de comportamiento digital.</td>
+</tr>
+<tr>
+<td>employment_income_correlation</td>
+<td>Decimal(5,4)</td>
+<td>PSD2</td>
+<td>Correlación entre depósitos periódicos y patrones típicos de nómina. Valores superiores a 0.8 sugieren empleo estable.</td>
+</tr>
+<tr>
+<td>cash_withdrawal_frequency</td>
+<td>Integer</td>
+<td>PSD2</td>
+<td>Número promedio de retiradas de efectivo mensuales. Frecuencias superiores a 10 pueden indicar preferencia por efectivo y menor trazabilidad.</td>
+</tr>
+<tr>
+<td>peer_to_peer_lending_activity</td>
+<td>Integer</td>
+<td>PSD2</td>
+<td>Número de transacciones identificadas con plataformas P2P. Actividad elevada puede indicar necesidad de financiamiento alternativo.</td>
+</tr>
+<tr>
+<td>crypto_currency_exposure</td>
+<td>Boolean</td>
+<td>PSD2</td>
+<td>Indicador de exposición a criptomonedas detectada mediante transacciones con exchanges conocidos. True sugiere mayor tolerancia al riesgo.</td>
+</tr>
+<tr>
+<td>savings_goal_adherence</td>
+<td>Decimal(5,4)</td>
+<td>PSD2</td>
+<td>Proporción de ahorro real respecto a metas de ahorro inferidas mediante análisis de patrones de depósito regular.</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">erDiagram</span>
+<span class="w">    </span><span class="n">CLIENTE_B2B</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">USUARIO_FINAL</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;evalúa&quot;</span>
+<span class="w">    </span><span class="n">USUARIO_FINAL</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">CUENTA_BANCARIA</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;posee&quot;</span>
+<span class="w">    </span><span class="n">CUENTA_BANCARIA</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">TRANSACCION_PSD2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;genera&quot;</span>
+<span class="w">    </span><span class="n">USUARIO_FINAL</span><span class="w"> </span><span class="o">||--||</span><span class="w"> </span><span class="n">PERFIL_DIGITAL</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tiene&quot;</span>
+<span class="w">    </span><span class="n">USUARIO_FINAL</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">RESULTADO_SCORING</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recibe&quot;</span>
+<span class="w">    </span><span class="n">RESULTADO_SCORING</span><span class="w"> </span><span class="o">||--</span><span class="n">o</span><span class="p">{</span><span class="w"> </span><span class="n">EXPLICABILIDAD_SHAP</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;contiene&quot;</span>
+
+<span class="w">    </span><span class="n">CLIENTE_B2B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_cliente_b2b</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">nombre_institucion</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">tipo_licencia</span>
+<span class="w">        </span><span class="n">date</span><span class="w"> </span><span class="n">fecha_onboarding</span>
+<span class="w">        </span><span class="n">boolean</span><span class="w"> </span><span class="n">status_activo</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">USUARIO_FINAL</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_usuario_final</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_cliente_b2b</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">hash_identificacion</span>
+<span class="w">        </span><span class="n">date</span><span class="w"> </span><span class="n">fecha_evaluacion</span>
+<span class="w">        </span><span class="n">integer</span><span class="w"> </span><span class="n">edad_calculada</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">segmento_riesgo</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">CUENTA_BANCARIA</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_cuenta</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_usuario_final</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">iban_enmascarado</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">tipo_cuenta</span>
+<span class="w">        </span><span class="n">date</span><span class="w"> </span><span class="n">fecha_apertura</span>
+<span class="w">        </span><span class="n">decimal</span><span class="w"> </span><span class="n">saldo_actual</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">divisa</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">TRANSACCION_PSD2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_transaccion</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_cuenta</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="n">fecha_transaccion</span>
+<span class="w">        </span><span class="n">decimal</span><span class="w"> </span><span class="n">importe</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">categoria_mcc</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">descripcion</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">tipo_transaccion</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">comerciante</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">PERFIL_DIGITAL</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_perfil</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_usuario_final</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">integer</span><span class="w"> </span><span class="n">digital_footprint_score</span>
+<span class="w">        </span><span class="n">integer</span><span class="w"> </span><span class="n">device_fingerprint_stability</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="n">ultima_actividad</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">ip_principal</span>
+<span class="w">        </span><span class="n">boolean</span><span class="w"> </span><span class="n">verificacion_doble_factor</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">RESULTADO_SCORING</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_resultado</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_usuario_final</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">integer</span><span class="w"> </span><span class="n">score_final</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">decision_riesgo</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="n">fecha_procesamiento</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">version_modelo</span>
+<span class="w">        </span><span class="n">decimal</span><span class="w"> </span><span class="n">nivel_confianza</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">EXPLICABILIDAD_SHAP</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_explicacion</span><span class="w"> </span><span class="n">PK</span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">id_resultado</span><span class="w"> </span><span class="n">FK</span>
+<span class="w">        </span><span class="n">json</span><span class="w"> </span><span class="n">variables_positivas</span>
+<span class="w">        </span><span class="n">json</span><span class="w"> </span><span class="n">variables_negativas</span>
+<span class="w">        </span><span class="n">decimal</span><span class="w"> </span><span class="n">contribucion_total</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="n">generacion</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+
+<h2 id="102-anexo-b-modelos-financieros-detallados-proyecciones-a-36-meses">10.2 Anexo B: Modelos Financieros Detallados (Proyecciones a 36 meses)</h2>
+<p>El siguiente modelo financiero detalla las proyecciones trimestrales de la cuenta de resultados para el horizonte de 36 meses, proporcionando una visión comprehensiva de la evolución esperada de ingresos, costes y rentabilidad de VELMAK. Estas proyecciones se fundamentan en supuestos conservadores basados en el análisis de mercado, ciclos de ventas típicos del sector B2B FinTech, y métricas de benchmarks de empresas SaaS similares. El modelo demuestra la trayectoria hacia la sostenibilidad financiera con un break-even proyectado para el mes 24 y una rentabilidad creciente a partir del tercer año, validando así la viabilidad económica del proyecto y su atractivo como oportunidad de inversión.</p>
+<table>
+<thead>
+<tr>
+<th>Trimestre</th>
+<th>Ingresos MRR</th>
+<th>Costes Cloud</th>
+<th>Salarios Tech</th>
+<th>Salarios Negocio</th>
+<th>Marketing CAC</th>
+<th>Otros Costes</th>
+<th>EBITDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1 Año 1</td>
+<td>5.000€</td>
+<td>8.000€</td>
+<td>45.000€</td>
+<td>25.000€</td>
+<td>15.000€</td>
+<td>12.000€</td>
+<td>-110.000€</td>
+</tr>
+<tr>
+<td>Q2 Año 1</td>
+<td>12.500€</td>
+<td>10.000€</td>
+<td>45.000€</td>
+<td>25.000€</td>
+<td>20.000€</td>
+<td>12.500€</td>
+<td>-120.000€</td>
+</tr>
+<tr>
+<td>Q3 Año 1</td>
+<td>22.500€</td>
+<td>12.000€</td>
+<td>50.000€</td>
+<td>30.000€</td>
+<td>25.000€</td>
+<td>13.000€</td>
+<td>-127.500€</td>
+</tr>
+<tr>
+<td>Q4 Año 1</td>
+<td>35.000€</td>
+<td>15.000€</td>
+<td>50.000€</td>
+<td>30.000€</td>
+<td>30.000€</td>
+<td>14.000€</td>
+<td>-124.000€</td>
+</tr>
+<tr>
+<td>Q1 Año 2</td>
+<td>55.000€</td>
+<td>18.000€</td>
+<td>60.000€</td>
+<td>35.000€</td>
+<td>35.000€</td>
+<td>15.000€</td>
+<td>-118.000€</td>
+</tr>
+<tr>
+<td>Q2 Año 2</td>
+<td>75.000€</td>
+<td>20.000€</td>
+<td>60.000€</td>
+<td>35.000€</td>
+<td>40.000€</td>
+<td>16.000€</td>
+<td>-106.000€</td>
+</tr>
+<tr>
+<td>Q3 Año 2</td>
+<td>95.000€</td>
+<td>22.000€</td>
+<td>65.000€</td>
+<td>40.000€</td>
+<td>45.000€</td>
+<td>17.000€</td>
+<td>-104.000€</td>
+</tr>
+<tr>
+<td>Q4 Año 2</td>
+<td>125.000€</td>
+<td>25.000€</td>
+<td>65.000€</td>
+<td>40.000€</td>
+<td>50.000€</td>
+<td>18.000€</td>
+<td>-83.000€</td>
+</tr>
+<tr>
+<td>Q1 Año 3</td>
+<td>155.000€</td>
+<td>28.000€</td>
+<td>70.000€</td>
+<td>45.000€</td>
+<td>45.000€</td>
+<td>19.000€</td>
+<td>-52.000€</td>
+</tr>
+<tr>
+<td>Q2 Año 3</td>
+<td>185.000€</td>
+<td>30.000€</td>
+<td>70.000€</td>
+<td>45.000€</td>
+<td>40.000€</td>
+<td>20.000€</td>
+<td>-20.000€</td>
+</tr>
+<tr>
+<td>Q3 Año 3</td>
+<td>210.000€</td>
+<td>32.000€</td>
+<td>75.000€</td>
+<td>50.000€</td>
+<td>35.000€</td>
+<td>21.000€</td>
+<td>-3.000€</td>
+</tr>
+<tr>
+<td>Q4 Año 3</td>
+<td>250.000€</td>
+<td>35.000€</td>
+<td>75.000€</td>
+<td>50.000€</td>
+<td>30.000€</td>
+<td>22.000€</td>
+<td>38.000€</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resumen Anual Consolidado:</strong>
+- <strong>Año 1:</strong> Ingresos 75.000€ | Costes 395.500€ | <strong>EBITDA -320.500€</strong>
+- <strong>Año 2:</strong> Ingresos 350.000€ | Costes 411.000€ | <strong>EBITDA -61.000€</strong>
+- <strong>Año 3:</strong> Ingresos 800.000€ | Costes 447.000€ | <strong>EBITDA +353.000€</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">xychart</span><span class="o">-</span><span class="n">beta</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="s">&quot;Evolución Flujo de Caja Acumulado (Cash Flow)&quot;</span>
+<span class="w">    </span><span class="n">x</span><span class="o">-</span><span class="n">axis</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;Q1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q6&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q7&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q9&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q10&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q11&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Q12&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">y</span><span class="o">-</span><span class="n">axis</span><span class="w"> </span><span class="s">&quot;Cash Flow (€)&quot;</span><span class="w"> </span><span class="o">-</span><span class="mi">400000</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="mi">100000</span>
+<span class="w">    </span><span class="n">line</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">110000</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">230000</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">357500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">481500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">599500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">705500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">809500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">892500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">944500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">964500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">967500</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">929500</span><span class="p">]</span>
+</code></pre></div>
+
+<h2 id="103-anexo-c-especificaciones-de-la-api-b2b-estructura-json-y-explicabilidad">10.3 Anexo C: Especificaciones de la API B2B (Estructura JSON y Explicabilidad)</h2>
+<p>La API RESTful de VELMAK proporciona una interfaz estandarizada para que las instituciones financieras clientes puedan solicitar evaluaciones de riesgo crediticio mediante el envío de datos de usuarios finales y recibir resultados detallados incluyendo puntuaciones, decisiones y explicabilidad algorítmica. El siguiente payload representa la respuesta estructurada que el sistema devuelve tras procesar una solicitud de scoring, incorporando todos los elementos necesarios para cumplimiento regulatorio, transparencia algorítmica y toma de decisiones informadas por parte de las instituciones financieras. Esta estructura JSON ha sido diseñada siguiendo principios de REST API best practices y cumple con los requisitos de interoperabilidad con sistemas bancarios legacy y modernos.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;request_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEL-2024-03-15-001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T14:30:22Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;processing_time_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">187</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.1.3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;api_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_institution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANK_ES_001&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;risk_category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOW&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APPROVED&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;confidence_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.87</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;recommended_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;interest_rate_premium&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.25</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;valid_until&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T23:59:59Z&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;explainability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;shap_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;positive_contributors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avg_monthly_balance&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8750.50</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">85.2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Saldo mensual promedio elevado indica estabilidad financiera&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">34.1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;utility_payment_consistency&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">42.8</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Historial consistente de pagos de servicios básicos&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17.1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;employment_income_correlation&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.92</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">38.5</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fuerte correlación con patrones de nómina estable&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">15.4</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;negative_contributors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gambling_transactions_ratio&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-28.3</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ratio elevado de transacciones de juego&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-11.3</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;crypto_currency_exposure&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-15.7</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Exposición a criptomonedas detectada&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.3</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;feature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;income_volatility_index&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-12.4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Volatilidad de ingresos superior al umbral óptimo&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;impact_percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.0</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;base_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">650</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total_shap_contribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;feature_importance_ranking&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;avg_monthly_balance&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;utility_payment_consistency&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;employment_income_correlation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;gambling_transactions_ratio&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;crypto_currency_exposure&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;income_volatility_index&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;data_quality&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;completeness_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.94</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;freshness_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data_sources_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;psd2_transactions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;digital_footprint&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;public_records&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;missing_fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;anomalies_detected&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;regulatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdpr_compliant&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;consent_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15T14:25:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;consent_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credit_scoring&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data_retention_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;right_to_explanation_available&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">mindmap</span>
+<span class="w">  </span><span class="n">root</span><span class="p">((</span><span class="n">Payload</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">Response</span><span class="p">))</span>
+<span class="w">    </span><span class="n">Metadatos</span>
+<span class="w">      </span><span class="n">request_id</span>
+<span class="w">      </span><span class="n">timestamp</span>
+<span class="w">      </span><span class="n">processing_time_ms</span>
+<span class="w">      </span><span class="n">model_version</span>
+<span class="w">      </span><span class="n">api_version</span>
+<span class="w">      </span><span class="n">client_institution</span>
+<span class="w">    </span><span class="n">Decisión</span>
+<span class="w">      </span><span class="n">Score</span><span class="w"> </span><span class="p">(</span><span class="mi">750</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Risk</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="p">(</span><span class="n">LOW</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Decision</span><span class="w"> </span><span class="p">(</span><span class="n">APPROVED</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Confidence</span><span class="w"> </span><span class="n">Level</span>
+<span class="w">      </span><span class="n">Recommended</span><span class="w"> </span><span class="n">Limit</span>
+<span class="w">      </span><span class="n">Interest</span><span class="w"> </span><span class="n">Rate</span><span class="w"> </span><span class="n">Premium</span>
+<span class="w">      </span><span class="n">Valid</span><span class="w"> </span><span class="n">Until</span>
+<span class="w">    </span><span class="n">Explicabilidad</span><span class="w"> </span><span class="n">SHAP</span>
+<span class="w">      </span><span class="n">Base</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="p">(</span><span class="mi">650</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Positive</span><span class="w"> </span><span class="n">Contributors</span>
+<span class="w">        </span><span class="n">avg_monthly_balance</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="mf">85.2</span><span class="p">)</span>
+<span class="w">        </span><span class="n">utility_payment_consistency</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="mf">42.8</span><span class="p">)</span>
+<span class="w">        </span><span class="n">employment_income_correlation</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="mf">38.5</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Negative</span><span class="w"> </span><span class="n">Contributors</span>
+<span class="w">        </span><span class="n">gambling_transactions_ratio</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">28.3</span><span class="p">)</span>
+<span class="w">        </span><span class="n">crypto_currency_exposure</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">15.7</span><span class="p">)</span>
+<span class="w">        </span><span class="n">income_volatility_index</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">12.4</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Feature</span><span class="w"> </span><span class="n">Importance</span><span class="w"> </span><span class="n">Ranking</span>
+<span class="w">    </span><span class="n">Calidad</span><span class="w"> </span><span class="n">Datos</span>
+<span class="w">      </span><span class="n">Completeness</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="p">(</span><span class="mf">0.94</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Freshness</span><span class="w"> </span><span class="n">Days</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="n">Data</span><span class="w"> </span><span class="n">Sources</span><span class="w"> </span><span class="n">Used</span>
+<span class="w">      </span><span class="n">Missing</span><span class="w"> </span><span class="n">Fields</span>
+<span class="w">      </span><span class="n">Anomalies</span><span class="w"> </span><span class="n">Detected</span>
+<span class="w">    </span><span class="n">Cumplimiento</span><span class="w"> </span><span class="n">Regulatorio</span>
+<span class="w">      </span><span class="n">GDPR</span><span class="w"> </span><span class="n">Compliant</span>
+<span class="w">      </span><span class="n">Consent</span><span class="w"> </span><span class="n">Timestamp</span>
+<span class="w">      </span><span class="n">Consent</span><span class="w"> </span><span class="n">Scope</span>
+<span class="w">      </span><span class="n">Data</span><span class="w"> </span><span class="n">Retention</span><span class="w"> </span><span class="n">Days</span>
+<span class="w">      </span><span class="n">Right</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Explanation</span>
+</code></pre></div>
+
+<h2 id="104-anexo-d-flujo-de-consentimiento-psd2-soporte-legal">10.4 Anexo D: Flujo de Consentimiento PSD2 (Soporte Legal)</h2>
+<p>El proceso de consentimiento PSD2 en VELMAK se diseña garantizando el cumplimiento estricto del Reglamento General de Protección de Datos (GDPR) y la Directiva de Servicios de Pago (PSD2), asegurando que los usuarios finales mantengan control total sobre sus datos financieros y comprendan perfectamente el propósito y alcance del procesamiento. Este flujo de consentimiento implementa los principios de privacidad desde el diseño (privacy by design) y privacidad por defecto (privacy by default), proporcionando transparencia máxima y mecanismos robustos de gestión de consentimientos que permiten a los usuarios ejercer sus derechos de forma efectiva y en cualquier momento.</p>
+<p>El proceso se inicia cuando el usuario final accede a la interfaz del banco cliente y solicita un producto financiero que requiere evaluación de riesgo. En este momento, el sistema presenta una capa de consentimiento diferenciada que explica claramente qué datos específicos serán accedidos, con qué propósito, durante cuánto tiempo serán conservados, y qué derechos tiene el usuario sobre sus datos. El consentimiento debe ser explícito, informado e inequívoco, obtenido mediante acción afirmativa del usuario (checkbox activo o firma electrónica) sin posibilidad de consentimiento tácito o silencioso. Una vez obtenido el consentimiento, el sistema genera un registro auditable con timestamp, hash del consentimiento, y metadatos de la sesión que garantizan trazabilidad completa y no repudio.</p>
+<p>La comunicación con el proveedor AISP (Account Information Service Provider) se realiza mediante tokens de acceso OAuth 2.0 que limitan estrictamente el alcance de los datos solicitados únicamente a aquellos para los cuales el usuario ha concedido consentimiento explícito. Los datos transmitidos se anonimizan y seudonimizan antes de su procesamiento por VELMAK, eliminando información identificativa directa y manteniendo únicamente los datos necesarios para el scoring. El sistema implementa additionally mecanismos de minimización de datos que acceden únicamente a la información estrictamente necesaria para cada evaluación específica, rechazando automáticamente solicitudes de datos excesivos o no pertinentes.</p>
+<p>El usuario final mantiene control continuo sobre sus datos mediante interfaces de gestión de consentimientos que permiten revocar el acceso en cualquier momento, solicitar la eliminación de datos (derecho al olvido), y obtener información detallada sobre el procesamiento realizado. VELMAK implementa procedimientos automatizados para atender estas solicitudes dentro de los plazos legales establecidos, incluyendo la eliminación inmediata de datos de sus sistemas y la notificación a terceros que hayan recibido la información. Adicionalmente, el sistema proporciona explicaciones comprensibles sobre las decisiones automatizadas tomadas basadas en los datos del usuario, cumpliendo con el derecho a la explicación establecido en el GDPR y facilitando el ejercicio del derecho a intervención humana cuando el usuario lo solicite.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">UF</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Usuario</span><span class="w"> </span><span class="n">Final</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">IB</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Interfaz</span><span class="w"> </span><span class="n">Banco</span><span class="w"> </span><span class="n">Cliente</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">VELMAK</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">AISP</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Proveedor</span><span class="w"> </span><span class="n">AISP</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">DB</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Datos</span><span class="w"> </span><span class="n">VELMAK</span>
+
+<span class="w">    </span><span class="n">UF</span><span class="o">-&gt;&gt;</span><span class="n">IB</span><span class="o">:</span><span class="w"> </span><span class="n">Solicita</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="n">financiero</span>
+<span class="w">    </span><span class="n">IB</span><span class="o">-&gt;&gt;</span><span class="n">UF</span><span class="o">:</span><span class="w"> </span><span class="n">Presenta</span><span class="w"> </span><span class="n">capa</span><span class="w"> </span><span class="n">consentimiento</span><span class="w"> </span><span class="n">PSD2</span><span class="o">/</span><span class="n">GDPR</span>
+<span class="w">    </span><span class="n">UF</span><span class="o">-&gt;&gt;</span><span class="n">IB</span><span class="o">:</span><span class="w"> </span><span class="n">Consiente</span><span class="w"> </span><span class="n">explícitamente</span><span class="w"> </span><span class="p">(</span><span class="n">checkbox</span><span class="o">/</span><span class="n">firma</span><span class="p">)</span>
+<span class="w">    </span><span class="n">IB</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span><span class="w"> </span><span class="o">/</span><span class="n">consent</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="n">anonimizados</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">Genera</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="n">OAuth</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">limitado</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">Registra</span><span class="w"> </span><span class="n">consentimiento</span><span class="w"> </span><span class="p">(</span><span class="n">timestamp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">hash</span><span class="p">)</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">AISP</span><span class="o">:</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">PSD2</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="n">OAuth</span>
+<span class="w">    </span><span class="n">AISP</span><span class="o">-&gt;&gt;</span><span class="n">AISP</span><span class="o">:</span><span class="w"> </span><span class="n">Valida</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">scope</span>
+<span class="w">    </span><span class="n">AISP</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">anonimizados</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">DB</span><span class="o">:</span><span class="w"> </span><span class="n">Almacena</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">minimización</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">Procesa</span><span class="w"> </span><span class="n">scoring</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SHAP</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">IB</span><span class="o">:</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">explicabilidad</span>
+<span class="w">    </span><span class="n">IB</span><span class="o">-&gt;&gt;</span><span class="n">UF</span><span class="o">:</span><span class="w"> </span><span class="n">Presenta</span><span class="w"> </span><span class="n">decisión</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">derecho</span><span class="w"> </span><span class="n">explicación</span>
+
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">UF</span><span class="p">,</span><span class="n">DB</span><span class="o">:</span><span class="w"> </span><span class="n">Flujo</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">gestión</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">derechos</span>
+<span class="w">    </span><span class="n">UF</span><span class="o">-&gt;&gt;</span><span class="n">IB</span><span class="o">:</span><span class="w"> </span><span class="n">Solicita</span><span class="w"> </span><span class="n">revocación</span><span class="w"> </span><span class="n">consentimiento</span>
+<span class="w">    </span><span class="n">IB</span><span class="o">-&gt;&gt;</span><span class="n">API</span><span class="o">:</span><span class="w"> </span><span class="n">DELETE</span><span class="w"> </span><span class="o">/</span><span class="n">consent</span><span class="o">/</span><span class="p">{</span><span class="n">user_id</span><span class="p">}</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">DB</span><span class="o">:</span><span class="w"> </span><span class="n">Elimina</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">usuario</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">AISP</span><span class="o">:</span><span class="w"> </span><span class="n">Revoca</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="n">OAuth</span>
+<span class="w">    </span><span class="n">API</span><span class="o">-&gt;&gt;</span><span class="n">IB</span><span class="o">:</span><span class="w"> </span><span class="n">Confirmación</span><span class="w"> </span><span class="n">eliminación</span>
+<span class="w">    </span><span class="n">IB</span><span class="o">-&gt;&gt;</span><span class="n">UF</span><span class="o">:</span><span class="w"> </span><span class="n">Notificación</span><span class="w"> </span><span class="n">cumplimiento</span><span class="w"> </span><span class="n">GDPR</span>
+</code></pre></div>
+        
+        <div class="no-print">
+            <button class="print-button" onclick="window.print()">🖨️ Imprimir como PDF</button>
+            <p style="text-align: center; color: #666; font-size: 11px; margin-top: 20px;">
+                <strong>Formato PFM:</strong> Arial 11, interlineado 1.5, márgenes 2.5cm/3cm<br>
+                <strong>Para imprimir:</strong> Usar Ctrl+P o el botón above, seleccionar "Guardar como PDF"
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+        
